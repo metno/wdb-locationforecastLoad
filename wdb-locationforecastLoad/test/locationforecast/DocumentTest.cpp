@@ -45,7 +45,7 @@ TEST(DocumentTest, itWorks)
 {
 	Document doc(testFiles/"real_example.xml");
 
-	Document::size_type expectedSize = 260;
+	Document::size_type expectedSize = 1290;
 
 	EXPECT_FALSE(doc.empty());
 	ASSERT_EQ(expectedSize, doc.size());

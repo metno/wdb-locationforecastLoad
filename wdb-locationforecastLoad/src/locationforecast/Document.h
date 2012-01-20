@@ -85,6 +85,7 @@ public:
 
 	DOCUMENT_EXCEPTION(NoSuchFile);
 	DOCUMENT_EXCEPTION(FileIsDirectory);
+	DOCUMENT_EXCEPTION(ParseException);
 
 private:
 	DataList elements_;

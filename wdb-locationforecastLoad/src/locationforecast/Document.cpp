@@ -27,14 +27,17 @@
  */
 
 #include "Document.h"
+#include "parse_document.h"
 #include <boost/filesystem.hpp>
-#include <ostream>
+#include <boost/filesystem/fstream.hpp>
+#include <iostream>
 
 namespace locationforecast
 {
 
 Document::Document()
 {
+	parse_document(std::cin, elements_);
 }
 
 Document::Document(const boost::filesystem::path & file)
@@ -43,6 +46,10 @@ Document::Document(const boost::filesystem::path & file)
 		throw NoSuchFile(file.string() + "does not exist");
 	if ( is_directory(file) )
 		throw FileIsDirectory(file.string() + " is a directory");
+
+	boost::filesystem::ifstream xmlStream(file);
+
+	parse_document(xmlStream, elements_);
 }
 
 Document::~Document()
