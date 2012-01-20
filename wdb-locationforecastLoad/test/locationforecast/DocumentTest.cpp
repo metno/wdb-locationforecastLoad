@@ -29,6 +29,7 @@
 
 #include <gtest/gtest.h>
 #include <locationforecast/Document.h>
+#include <boost/filesystem/path.hpp>
 #include <iterator>
 
 
@@ -77,5 +78,5 @@ TEST(DocumentTest, oneElementDocument)
 	Document doc(testFiles/"one_element_document.xml");
 
 	EXPECT_FALSE(doc.empty());
-	EXPECT_EQ(1, doc.size());
+	EXPECT_EQ(1u, doc.size());
 }
