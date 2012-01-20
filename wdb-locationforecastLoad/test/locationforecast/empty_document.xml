@@ -1,0 +1,16 @@
+<weatherdata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://api.met.no/weatherapi/locationforecast/1.8/schema"
+	created="2012-01-19T09:30:20Z">
+	<meta>
+		<model name="YR" termin="2012-01-19T00:00:00Z" runended="2012-01-19T06:08:07Z"
+			nextrun="2012-01-19T18:00:00Z" from="2012-01-19T10:00:00Z" to="2012-01-21T18:00:00Z" />
+		<model name="EPS" termin="2012-01-18T12:00:00Z" runended="2012-01-18T21:42:17Z"
+			nextrun="2012-01-19T09:45:00Z" from="2012-01-22T00:00:00Z" to="2012-01-28T06:00:00Z" />
+	</meta>
+	<product class="pointData">
+		<time datatype="forecast" from="2012-01-19T10:00:00Z" to="2012-01-19T10:00:00Z">
+			<location altitude="485" latitude="60.1000" longitude="9.5800">
+			</location>
+		</time>
+	</product>
+</weatherdata>

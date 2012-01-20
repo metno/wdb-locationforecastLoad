@@ -1,0 +1,2646 @@
+<weatherdata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://api.met.no/weatherapi/locationforecast/1.8/schema" created="2012-01-19T09:30:20Z">
+   <meta>
+      <model name="YR" termin="2012-01-19T00:00:00Z" runended="2012-01-19T06:08:07Z" nextrun="2012-01-19T18:00:00Z" from="2012-01-19T10:00:00Z" to="2012-01-21T18:00:00Z"/>
+      <model name="EPS" termin="2012-01-18T12:00:00Z" runended="2012-01-18T21:42:17Z" nextrun="2012-01-19T09:45:00Z" from="2012-01-22T00:00:00Z" to="2012-01-28T06:00:00Z"/>
+      </meta>
+   <product class="pointData">
+      <time datatype="forecast" from="2012-01-19T10:00:00Z" to="2012-01-19T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.4"/>
+            <windDirection id="dd" deg="262.3" name="W"/>
+            <windSpeed id="ff" mps="1.4" beaufort="1" name="Flau vind"/>
+            <humidity value="91.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.6"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="81.9"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T09:00:00Z" to="2012-01-19T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T08:00:00Z" to="2012-01-19T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T07:00:00Z" to="2012-01-19T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T04:00:00Z" to="2012-01-19T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.1" minvalue="0.0" maxvalue="0.1"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T11:00:00Z" to="2012-01-19T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.4"/>
+            <windDirection id="dd" deg="261.7" name="W"/>
+            <windSpeed id="ff" mps="1.6" beaufort="1" name="Flau vind"/>
+            <humidity value="91.0" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.0"/>
+            <cloudiness id="NN" percent="95.3"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="72.2"/>
+            <highClouds id="HIGH" percent="97.9"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T10:00:00Z" to="2012-01-19T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T09:00:00Z" to="2012-01-19T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T08:00:00Z" to="2012-01-19T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T05:00:00Z" to="2012-01-19T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.1" minvalue="0.0" maxvalue="0.1"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T12:00:00Z" to="2012-01-19T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.2"/>
+            <windDirection id="dd" deg="262.4" name="W"/>
+            <windSpeed id="ff" mps="2.1" beaufort="1" name="Flau vind"/>
+            <humidity value="91.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.4"/>
+            <cloudiness id="NN" percent="45.2"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="28.8"/>
+            <highClouds id="HIGH" percent="19.4"/>
+            <temperatureProbability unit="probabilitycode" value="1"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T11:00:00Z" to="2012-01-19T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T10:00:00Z" to="2012-01-19T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T09:00:00Z" to="2012-01-19T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T06:00:00Z" to="2012-01-19T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+<symbolProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T13:00:00Z" to="2012-01-19T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-1.7"/>
+            <windDirection id="dd" deg="258.7" name="W"/>
+            <windSpeed id="ff" mps="0.5" beaufort="1" name="Flau vind"/>
+            <humidity value="94.1" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="996.4"/>
+            <cloudiness id="NN" percent="22.1"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="13.9"/>
+            <highClouds id="HIGH" percent="19.6"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T12:00:00Z" to="2012-01-19T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T11:00:00Z" to="2012-01-19T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T10:00:00Z" to="2012-01-19T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T07:00:00Z" to="2012-01-19T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T14:00:00Z" to="2012-01-19T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.1"/>
+            <windDirection id="dd" deg="260.1" name="W"/>
+            <windSpeed id="ff" mps="1.2" beaufort="1" name="Flau vind"/>
+            <humidity value="92.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="996.5"/>
+            <cloudiness id="NN" percent="85.2"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="85.2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T13:00:00Z" to="2012-01-19T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T12:00:00Z" to="2012-01-19T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T11:00:00Z" to="2012-01-19T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T08:00:00Z" to="2012-01-19T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T15:00:00Z" to="2012-01-19T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.4"/>
+            <windDirection id="dd" deg="239.0" name="SW"/>
+            <windSpeed id="ff" mps="1.6" beaufort="1" name="Flau vind"/>
+            <humidity value="91.2" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="996.2"/>
+            <cloudiness id="NN" percent="80.7"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="22.5"/>
+            <highClouds id="HIGH" percent="74.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T14:00:00Z" to="2012-01-19T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T13:00:00Z" to="2012-01-19T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T12:00:00Z" to="2012-01-19T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T09:00:00Z" to="2012-01-19T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T16:00:00Z" to="2012-01-19T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.9"/>
+            <windDirection id="dd" deg="141.2" name="SE"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="93.6" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="996.7"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="99.1"/>
+            <highClouds id="HIGH" percent="99.7"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T15:00:00Z" to="2012-01-19T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T14:00:00Z" to="2012-01-19T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T13:00:00Z" to="2012-01-19T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T10:00:00Z" to="2012-01-19T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T17:00:00Z" to="2012-01-19T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.3"/>
+            <windDirection id="dd" deg="272.3" name="W"/>
+            <windSpeed id="ff" mps="0.5" beaufort="0" name="Stille"/>
+            <humidity value="92.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.2"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T16:00:00Z" to="2012-01-19T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T15:00:00Z" to="2012-01-19T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T14:00:00Z" to="2012-01-19T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T11:00:00Z" to="2012-01-19T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T18:00:00Z" to="2012-01-19T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.3"/>
+            <windDirection id="dd" deg="292.6" name="NW"/>
+            <windSpeed id="ff" mps="1.4" beaufort="1" name="Flau vind"/>
+            <humidity value="90.0" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.4"/>
+            <cloudiness id="NN" percent="99.9"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="66.4"/>
+            <highClouds id="HIGH" percent="100.0"/>
+            <temperatureProbability unit="probabilitycode" value="1"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T17:00:00Z" to="2012-01-19T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T16:00:00Z" to="2012-01-19T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T15:00:00Z" to="2012-01-19T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T12:00:00Z" to="2012-01-19T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T19:00:00Z" to="2012-01-19T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.4"/>
+            <windDirection id="dd" deg="279.0" name="W"/>
+            <windSpeed id="ff" mps="2.6" beaufort="2" name="Svak vind"/>
+            <humidity value="88.2" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.3"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="36.0"/>
+            <highClouds id="HIGH" percent="99.9"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T18:00:00Z" to="2012-01-19T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T17:00:00Z" to="2012-01-19T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T16:00:00Z" to="2012-01-19T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T13:00:00Z" to="2012-01-19T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T20:00:00Z" to="2012-01-19T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.7"/>
+            <windDirection id="dd" deg="301.9" name="NW"/>
+            <windSpeed id="ff" mps="1.2" beaufort="1" name="Flau vind"/>
+            <humidity value="90.5" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.9"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="99.2"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T19:00:00Z" to="2012-01-19T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T18:00:00Z" to="2012-01-19T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T17:00:00Z" to="2012-01-19T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T14:00:00Z" to="2012-01-19T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T21:00:00Z" to="2012-01-19T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.0"/>
+            <windDirection id="dd" deg="251.5" name="W"/>
+            <windSpeed id="ff" mps="0.5" beaufort="0" name="Stille"/>
+            <humidity value="91.1" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.1"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T20:00:00Z" to="2012-01-19T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T19:00:00Z" to="2012-01-19T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T18:00:00Z" to="2012-01-19T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T15:00:00Z" to="2012-01-19T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T22:00:00Z" to="2012-01-19T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.0"/>
+            <windDirection id="dd" deg="273.5" name="W"/>
+            <windSpeed id="ff" mps="2.0" beaufort="1" name="Flau vind"/>
+            <humidity value="89.1" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.4"/>
+            <cloudiness id="NN" percent="0.7"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.9"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T21:00:00Z" to="2012-01-19T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T20:00:00Z" to="2012-01-19T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T19:00:00Z" to="2012-01-19T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T16:00:00Z" to="2012-01-19T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T23:00:00Z" to="2012-01-19T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.2"/>
+            <windDirection id="dd" deg="269.7" name="W"/>
+            <windSpeed id="ff" mps="2.4" beaufort="2" name="Svak vind"/>
+            <humidity value="89.7" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.5"/>
+            <cloudiness id="NN" percent="30.2"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="19.6"/>
+            <highClouds id="HIGH" percent="28.3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T22:00:00Z" to="2012-01-19T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T21:00:00Z" to="2012-01-19T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T20:00:00Z" to="2012-01-19T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T17:00:00Z" to="2012-01-19T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T00:00:00Z" to="2012-01-20T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.2"/>
+            <windDirection id="dd" deg="271.3" name="W"/>
+            <windSpeed id="ff" mps="2.0" beaufort="1" name="Flau vind"/>
+            <humidity value="91.1" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.4"/>
+            <cloudiness id="NN" percent="99.6"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="99.2"/>
+            <highClouds id="HIGH" percent="97.2"/>
+            <temperatureProbability unit="probabilitycode" value="1"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T23:00:00Z" to="2012-01-20T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T22:00:00Z" to="2012-01-20T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T21:00:00Z" to="2012-01-20T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T18:00:00Z" to="2012-01-20T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T01:00:00Z" to="2012-01-20T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.2"/>
+            <windDirection id="dd" deg="288.2" name="W"/>
+            <windSpeed id="ff" mps="1.9" beaufort="1" name="Flau vind"/>
+            <humidity value="92.2" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.7"/>
+            <cloudiness id="NN" percent="99.8"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="97.9"/>
+            <highClouds id="HIGH" percent="97.8"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T00:00:00Z" to="2012-01-20T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T23:00:00Z" to="2012-01-20T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T22:00:00Z" to="2012-01-20T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T19:00:00Z" to="2012-01-20T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T02:00:00Z" to="2012-01-20T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.3"/>
+            <windDirection id="dd" deg="286.4" name="W"/>
+            <windSpeed id="ff" mps="2.3" beaufort="2" name="Svak vind"/>
+            <humidity value="92.5" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.8"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="99.9"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T01:00:00Z" to="2012-01-20T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T00:00:00Z" to="2012-01-20T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T23:00:00Z" to="2012-01-20T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T20:00:00Z" to="2012-01-20T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T03:00:00Z" to="2012-01-20T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.1"/>
+            <windDirection id="dd" deg="273.8" name="W"/>
+            <windSpeed id="ff" mps="2.0" beaufort="1" name="Flau vind"/>
+            <humidity value="93.5" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.9"/>
+            <cloudiness id="NN" percent="91.9"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="87.6"/>
+            <highClouds id="HIGH" percent="30.8"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T02:00:00Z" to="2012-01-20T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T01:00:00Z" to="2012-01-20T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T00:00:00Z" to="2012-01-20T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T21:00:00Z" to="2012-01-20T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T04:00:00Z" to="2012-01-20T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.0"/>
+            <windDirection id="dd" deg="310.1" name="NW"/>
+            <windSpeed id="ff" mps="0.7" beaufort="1" name="Flau vind"/>
+            <humidity value="95.4" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1000.1"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="19.6"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T03:00:00Z" to="2012-01-20T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T02:00:00Z" to="2012-01-20T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T01:00:00Z" to="2012-01-20T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T22:00:00Z" to="2012-01-20T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T05:00:00Z" to="2012-01-20T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.5"/>
+            <windDirection id="dd" deg="216.5" name="SW"/>
+            <windSpeed id="ff" mps="1.3" beaufort="1" name="Flau vind"/>
+            <humidity value="93.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1000.7"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="29.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T04:00:00Z" to="2012-01-20T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T03:00:00Z" to="2012-01-20T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T02:00:00Z" to="2012-01-20T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-19T23:00:00Z" to="2012-01-20T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T06:00:00Z" to="2012-01-20T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.6"/>
+            <windDirection id="dd" deg="318.8" name="NW"/>
+            <windSpeed id="ff" mps="0.9" beaufort="1" name="Flau vind"/>
+            <humidity value="92.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1000.8"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="4.6"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="17.1"/>
+            <highClouds id="HIGH" percent="100.0"/>
+            <temperatureProbability unit="probabilitycode" value="1"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T05:00:00Z" to="2012-01-20T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T04:00:00Z" to="2012-01-20T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T03:00:00Z" to="2012-01-20T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T00:00:00Z" to="2012-01-20T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T07:00:00Z" to="2012-01-20T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.4"/>
+            <windDirection id="dd" deg="300.2" name="NW"/>
+            <windSpeed id="ff" mps="0.9" beaufort="1" name="Flau vind"/>
+            <humidity value="89.7" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1001.4"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T06:00:00Z" to="2012-01-20T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T05:00:00Z" to="2012-01-20T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T04:00:00Z" to="2012-01-20T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T01:00:00Z" to="2012-01-20T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T08:00:00Z" to="2012-01-20T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.7"/>
+            <windDirection id="dd" deg="136.1" name="SE"/>
+            <windSpeed id="ff" mps="0.1" beaufort="0" name="Stille"/>
+            <humidity value="95.3" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1001.9"/>
+            <cloudiness id="NN" percent="98.3"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="98.3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T07:00:00Z" to="2012-01-20T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T06:00:00Z" to="2012-01-20T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T05:00:00Z" to="2012-01-20T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T02:00:00Z" to="2012-01-20T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T09:00:00Z" to="2012-01-20T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.4"/>
+            <windDirection id="dd" deg="16.1" name="N"/>
+            <windSpeed id="ff" mps="0.0" beaufort="0" name="Stille"/>
+            <humidity value="95.7" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1002.8"/>
+            <cloudiness id="NN" percent="69.2"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="63.2"/>
+            <highClouds id="HIGH" percent="0.5"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T08:00:00Z" to="2012-01-20T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T07:00:00Z" to="2012-01-20T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T06:00:00Z" to="2012-01-20T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T03:00:00Z" to="2012-01-20T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T10:00:00Z" to="2012-01-20T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-7.9"/>
+            <windDirection id="dd" deg="332.1" name="NW"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="91.7" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1002.6"/>
+            <cloudiness id="NN" percent="22.7"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="6.4"/>
+            <highClouds id="HIGH" percent="18.7"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T09:00:00Z" to="2012-01-20T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T08:00:00Z" to="2012-01-20T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T07:00:00Z" to="2012-01-20T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T04:00:00Z" to="2012-01-20T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T11:00:00Z" to="2012-01-20T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.7"/>
+            <windDirection id="dd" deg="351.6" name="N"/>
+            <windSpeed id="ff" mps="0.2" beaufort="0" name="Stille"/>
+            <humidity value="91.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1002.8"/>
+            <cloudiness id="NN" percent="65.4"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="66.5"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T10:00:00Z" to="2012-01-20T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T09:00:00Z" to="2012-01-20T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T08:00:00Z" to="2012-01-20T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T05:00:00Z" to="2012-01-20T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T12:00:00Z" to="2012-01-20T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.5"/>
+            <windDirection id="dd" deg="252.2" name="W"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="91.3" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1003.0"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+            <temperatureProbability unit="probabilitycode" value="1"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T11:00:00Z" to="2012-01-20T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T10:00:00Z" to="2012-01-20T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T09:00:00Z" to="2012-01-20T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T06:00:00Z" to="2012-01-20T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T13:00:00Z" to="2012-01-20T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.1"/>
+            <windDirection id="dd" deg="333.3" name="NW"/>
+            <windSpeed id="ff" mps="0.6" beaufort="1" name="Flau vind"/>
+            <humidity value="91.0" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1003.3"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T12:00:00Z" to="2012-01-20T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T11:00:00Z" to="2012-01-20T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T10:00:00Z" to="2012-01-20T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T07:00:00Z" to="2012-01-20T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T14:00:00Z" to="2012-01-20T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.5"/>
+            <windDirection id="dd" deg="340.4" name="N"/>
+            <windSpeed id="ff" mps="0.6" beaufort="1" name="Flau vind"/>
+            <humidity value="91.7" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1003.7"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T13:00:00Z" to="2012-01-20T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T12:00:00Z" to="2012-01-20T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T11:00:00Z" to="2012-01-20T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T08:00:00Z" to="2012-01-20T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T15:00:00Z" to="2012-01-20T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.3"/>
+            <windDirection id="dd" deg="318.3" name="NW"/>
+            <windSpeed id="ff" mps="0.7" beaufort="1" name="Flau vind"/>
+            <humidity value="91.2" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1004.2"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T14:00:00Z" to="2012-01-20T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T13:00:00Z" to="2012-01-20T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T12:00:00Z" to="2012-01-20T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T09:00:00Z" to="2012-01-20T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T16:00:00Z" to="2012-01-20T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.3"/>
+            <windDirection id="dd" deg="293.2" name="NW"/>
+            <windSpeed id="ff" mps="0.8" beaufort="1" name="Flau vind"/>
+            <humidity value="90.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1004.8"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T15:00:00Z" to="2012-01-20T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T14:00:00Z" to="2012-01-20T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T13:00:00Z" to="2012-01-20T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T10:00:00Z" to="2012-01-20T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T17:00:00Z" to="2012-01-20T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.6"/>
+            <windDirection id="dd" deg="280.9" name="W"/>
+            <windSpeed id="ff" mps="0.8" beaufort="1" name="Flau vind"/>
+            <humidity value="90.3" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1005.2"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T16:00:00Z" to="2012-01-20T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T15:00:00Z" to="2012-01-20T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T14:00:00Z" to="2012-01-20T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T11:00:00Z" to="2012-01-20T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T18:00:00Z" to="2012-01-20T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.2"/>
+            <windDirection id="dd" deg="247.6" name="W"/>
+            <windSpeed id="ff" mps="0.7" beaufort="1" name="Flau vind"/>
+            <humidity value="90.3" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1005.4"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T17:00:00Z" to="2012-01-20T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T16:00:00Z" to="2012-01-20T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T15:00:00Z" to="2012-01-20T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T12:00:00Z" to="2012-01-20T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T19:00:00Z" to="2012-01-20T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.5"/>
+            <windDirection id="dd" deg="229.6" name="SW"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="90.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1005.3"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T18:00:00Z" to="2012-01-20T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T17:00:00Z" to="2012-01-20T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T16:00:00Z" to="2012-01-20T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T13:00:00Z" to="2012-01-20T19:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T20:00:00Z" to="2012-01-20T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.8"/>
+            <windDirection id="dd" deg="197.4" name="S"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="91.6" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1005.4"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T19:00:00Z" to="2012-01-20T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T18:00:00Z" to="2012-01-20T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T17:00:00Z" to="2012-01-20T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T14:00:00Z" to="2012-01-20T20:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T21:00:00Z" to="2012-01-20T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.9"/>
+            <windDirection id="dd" deg="274.5" name="W"/>
+            <windSpeed id="ff" mps="0.7" beaufort="1" name="Flau vind"/>
+            <humidity value="90.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1005.4"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T20:00:00Z" to="2012-01-20T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T19:00:00Z" to="2012-01-20T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T18:00:00Z" to="2012-01-20T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T15:00:00Z" to="2012-01-20T21:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T22:00:00Z" to="2012-01-20T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-7.3"/>
+            <windDirection id="dd" deg="276.2" name="W"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="91.2" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1005.1"/>
+            <cloudiness id="NN" percent="0.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T21:00:00Z" to="2012-01-20T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T20:00:00Z" to="2012-01-20T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T19:00:00Z" to="2012-01-20T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T16:00:00Z" to="2012-01-20T22:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T23:00:00Z" to="2012-01-20T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-8.0"/>
+            <windDirection id="dd" deg="265.2" name="W"/>
+            <windSpeed id="ff" mps="0.7" beaufort="1" name="Flau vind"/>
+            <humidity value="90.5" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1004.5"/>
+            <cloudiness id="NN" percent="25.1"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="0.0"/>
+            <highClouds id="HIGH" percent="25.1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T22:00:00Z" to="2012-01-20T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T21:00:00Z" to="2012-01-20T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T20:00:00Z" to="2012-01-20T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T17:00:00Z" to="2012-01-20T23:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="SUN" number="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T00:00:00Z" to="2012-01-21T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-8.1"/>
+            <windDirection id="dd" deg="323.4" name="NW"/>
+            <windSpeed id="ff" mps="0.2" beaufort="0" name="Stille"/>
+            <humidity value="91.5" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1003.5"/>
+            <cloudiness id="NN" percent="66.7"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="31.6"/>
+            <highClouds id="HIGH" percent="66.7"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T23:00:00Z" to="2012-01-21T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T22:00:00Z" to="2012-01-21T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T21:00:00Z" to="2012-01-21T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T18:00:00Z" to="2012-01-21T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T01:00:00Z" to="2012-01-21T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-8.5"/>
+            <windDirection id="dd" deg="67.9" name="E"/>
+            <windSpeed id="ff" mps="0.4" beaufort="0" name="Stille"/>
+            <humidity value="93.6" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1002.5"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="1.6"/>
+            <lowClouds id="LOW" percent="0.0"/>
+            <mediumClouds id="MEDIUM" percent="49.1"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T00:00:00Z" to="2012-01-21T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T23:00:00Z" to="2012-01-21T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T22:00:00Z" to="2012-01-21T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T19:00:00Z" to="2012-01-21T01:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="LIGHTCLOUD" number="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T02:00:00Z" to="2012-01-21T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-9.5"/>
+            <windDirection id="dd" deg="98.1" name="E"/>
+            <windSpeed id="ff" mps="1.0" beaufort="1" name="Flau vind"/>
+            <humidity value="91.6" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="1001.1"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="15.3"/>
+            <lowClouds id="LOW" percent="13.2"/>
+            <mediumClouds id="MEDIUM" percent="79.2"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T01:00:00Z" to="2012-01-21T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T00:00:00Z" to="2012-01-21T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T23:00:00Z" to="2012-01-21T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T20:00:00Z" to="2012-01-21T02:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T03:00:00Z" to="2012-01-21T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.5"/>
+            <windDirection id="dd" deg="78.5" name="E"/>
+            <windSpeed id="ff" mps="1.2" beaufort="1" name="Flau vind"/>
+            <humidity value="90.6" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="999.5"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="95.9"/>
+            <lowClouds id="LOW" percent="90.4"/>
+            <mediumClouds id="MEDIUM" percent="79.4"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T02:00:00Z" to="2012-01-21T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T01:00:00Z" to="2012-01-21T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T00:00:00Z" to="2012-01-21T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T21:00:00Z" to="2012-01-21T03:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T04:00:00Z" to="2012-01-21T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-11.0"/>
+            <windDirection id="dd" deg="49.7" name="NE"/>
+            <windSpeed id="ff" mps="1.3" beaufort="1" name="Flau vind"/>
+            <humidity value="90.2" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="997.4"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="100.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T03:00:00Z" to="2012-01-21T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.1"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T02:00:00Z" to="2012-01-21T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.1"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T01:00:00Z" to="2012-01-21T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.1"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T22:00:00Z" to="2012-01-21T04:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0" minvalue="0.0" maxvalue="0.1"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T05:00:00Z" to="2012-01-21T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.9"/>
+            <windDirection id="dd" deg="11.8" name="N"/>
+            <windSpeed id="ff" mps="1.8" beaufort="1" name="Flau vind"/>
+            <humidity value="90.7" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="995.2"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="99.7"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T04:00:00Z" to="2012-01-21T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.6"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T03:00:00Z" to="2012-01-21T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T02:00:00Z" to="2012-01-21T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-20T23:00:00Z" to="2012-01-21T05:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.5"/>
+<symbol id="CLOUD" number="4"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T06:00:00Z" to="2012-01-21T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.6"/>
+            <windDirection id="dd" deg="4.2" name="N"/>
+            <windSpeed id="ff" mps="2.3" beaufort="2" name="Svak vind"/>
+            <humidity value="91.1" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="993.0"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="14.7"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+            <temperatureProbability unit="probabilitycode" value="1"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T05:00:00Z" to="2012-01-21T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.0" minvalue="0.8" maxvalue="1.1"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T04:00:00Z" to="2012-01-21T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.3" minvalue="1.0" maxvalue="1.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T03:00:00Z" to="2012-01-21T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.3" minvalue="1.1" maxvalue="1.6"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T00:00:00Z" to="2012-01-21T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.3" minvalue="1.1" maxvalue="1.6"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T07:00:00Z" to="2012-01-21T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.4"/>
+            <windDirection id="dd" deg="14.1" name="N"/>
+            <windSpeed id="ff" mps="1.4" beaufort="1" name="Flau vind"/>
+            <humidity value="91.4" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="991.1"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T06:00:00Z" to="2012-01-21T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.0" minvalue="0.9" maxvalue="1.1"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T05:00:00Z" to="2012-01-21T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.0" minvalue="1.7" maxvalue="2.2"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T04:00:00Z" to="2012-01-21T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.2" minvalue="1.9" maxvalue="2.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T01:00:00Z" to="2012-01-21T07:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.3" minvalue="2.0" maxvalue="2.6"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T08:00:00Z" to="2012-01-21T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-9.8"/>
+            <windDirection id="dd" deg="0.2" name="N"/>
+            <windSpeed id="ff" mps="2.4" beaufort="2" name="Svak vind"/>
+            <humidity value="92.0" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="989.4"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T07:00:00Z" to="2012-01-21T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.1" minvalue="0.9" maxvalue="1.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T06:00:00Z" to="2012-01-21T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.1" minvalue="1.8" maxvalue="2.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T05:00:00Z" to="2012-01-21T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="3.1" minvalue="2.7" maxvalue="3.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T02:00:00Z" to="2012-01-21T08:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="3.4" minvalue="2.9" maxvalue="3.9"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T09:00:00Z" to="2012-01-21T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-8.8"/>
+            <windDirection id="dd" deg="359.3" name="N"/>
+            <windSpeed id="ff" mps="2.3" beaufort="2" name="Svak vind"/>
+            <humidity value="91.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="989.0"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="99.9"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T08:00:00Z" to="2012-01-21T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.2" minvalue="1.0" maxvalue="1.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T07:00:00Z" to="2012-01-21T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.3" minvalue="2.0" maxvalue="2.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T06:00:00Z" to="2012-01-21T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="3.3" minvalue="2.9" maxvalue="3.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T03:00:00Z" to="2012-01-21T09:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="4.6" minvalue="3.9" maxvalue="5.3"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T10:00:00Z" to="2012-01-21T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-8.0"/>
+            <windDirection id="dd" deg="18.6" name="N"/>
+            <windSpeed id="ff" mps="2.1" beaufort="2" name="Svak vind"/>
+            <humidity value="92.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="988.0"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="0.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T09:00:00Z" to="2012-01-21T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.9" minvalue="0.7" maxvalue="1.1"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T08:00:00Z" to="2012-01-21T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.1" minvalue="1.8" maxvalue="2.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T07:00:00Z" to="2012-01-21T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="3.3" minvalue="2.8" maxvalue="3.8"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T04:00:00Z" to="2012-01-21T10:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="5.5" minvalue="4.6" maxvalue="6.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T11:00:00Z" to="2012-01-21T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-7.1"/>
+            <windDirection id="dd" deg="48.9" name="NE"/>
+            <windSpeed id="ff" mps="1.8" beaufort="1" name="Flau vind"/>
+            <humidity value="94.1" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="987.1"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="90.8"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T10:00:00Z" to="2012-01-21T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.2" minvalue="0.9" maxvalue="1.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T09:00:00Z" to="2012-01-21T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.2" minvalue="1.8" maxvalue="2.6"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T08:00:00Z" to="2012-01-21T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="3.4" minvalue="2.8" maxvalue="3.9"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T05:00:00Z" to="2012-01-21T11:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="6.5" minvalue="5.5" maxvalue="7.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T12:00:00Z" to="2012-01-21T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.6"/>
+            <windDirection id="dd" deg="35.2" name="NE"/>
+            <windSpeed id="ff" mps="1.3" beaufort="1" name="Flau vind"/>
+            <humidity value="95.5" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="987.1"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="63.7"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T11:00:00Z" to="2012-01-21T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.6" minvalue="0.4" maxvalue="0.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T10:00:00Z" to="2012-01-21T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.8" minvalue="1.5" maxvalue="2.2"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T09:00:00Z" to="2012-01-21T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.8" minvalue="2.3" maxvalue="3.2"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T06:00:00Z" to="2012-01-21T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="6.1" minvalue="5.1" maxvalue="7.0"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T13:00:00Z" to="2012-01-21T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.3"/>
+            <windDirection id="dd" deg="26.2" name="NE"/>
+            <windSpeed id="ff" mps="2.7" beaufort="2" name="Svak vind"/>
+            <humidity value="95.9" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="987.0"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="43.1"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T12:00:00Z" to="2012-01-21T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.6" minvalue="0.4" maxvalue="0.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T11:00:00Z" to="2012-01-21T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.2" minvalue="1.0" maxvalue="1.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T10:00:00Z" to="2012-01-21T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.4" minvalue="1.9" maxvalue="2.9"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T07:00:00Z" to="2012-01-21T13:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="5.7" minvalue="4.6" maxvalue="6.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T14:00:00Z" to="2012-01-21T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.1"/>
+            <windDirection id="dd" deg="42.1" name="NE"/>
+            <windSpeed id="ff" mps="3.7" beaufort="3" name="Lett bris"/>
+            <humidity value="96.0" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="986.8"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T13:00:00Z" to="2012-01-21T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.6" minvalue="0.3" maxvalue="0.8"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T12:00:00Z" to="2012-01-21T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.1" minvalue="0.9" maxvalue="1.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T11:00:00Z" to="2012-01-21T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.7" minvalue="1.4" maxvalue="2.1"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T08:00:00Z" to="2012-01-21T14:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="5.1" minvalue="4.1" maxvalue="6.1"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T15:00:00Z" to="2012-01-21T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.6"/>
+            <windDirection id="dd" deg="53.5" name="NE"/>
+            <windSpeed id="ff" mps="3.5" beaufort="2" name="Svak vind"/>
+            <humidity value="96.6" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="987.3"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T14:00:00Z" to="2012-01-21T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.4" minvalue="0.3" maxvalue="0.6"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T13:00:00Z" to="2012-01-21T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.0" minvalue="0.7" maxvalue="1.3"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T12:00:00Z" to="2012-01-21T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.5" minvalue="1.2" maxvalue="1.9"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T09:00:00Z" to="2012-01-21T15:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="4.3" minvalue="3.3" maxvalue="5.2"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T16:00:00Z" to="2012-01-21T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.5"/>
+            <windDirection id="dd" deg="47.7" name="NE"/>
+            <windSpeed id="ff" mps="3.6" beaufort="3" name="Lett bris"/>
+            <humidity value="96.0" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="987.8"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="100.0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T15:00:00Z" to="2012-01-21T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T14:00:00Z" to="2012-01-21T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.7" minvalue="0.5" maxvalue="0.9"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T13:00:00Z" to="2012-01-21T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.3" minvalue="0.9" maxvalue="1.6"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T10:00:00Z" to="2012-01-21T16:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="3.7" minvalue="2.9" maxvalue="4.5"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T17:00:00Z" to="2012-01-21T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.7"/>
+            <windDirection id="dd" deg="44.7" name="NE"/>
+            <windSpeed id="ff" mps="3.7" beaufort="3" name="Lett bris"/>
+            <humidity value="94.8" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="988.5"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="98.8"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T16:00:00Z" to="2012-01-21T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.3"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T15:00:00Z" to="2012-01-21T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.6" minvalue="0.5" maxvalue="0.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T14:00:00Z" to="2012-01-21T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.0" minvalue="0.8" maxvalue="1.2"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T11:00:00Z" to="2012-01-21T17:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.7" minvalue="2.1" maxvalue="3.3"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T18:00:00Z" to="2012-01-21T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.9"/>
+            <windDirection id="dd" deg="43.4" name="NE"/>
+            <windSpeed id="ff" mps="4.0" beaufort="3" name="Lett bris"/>
+            <humidity value="94.4" unit="percent"/>
+            <pressure id="pr" unit="hPa" value="989.0"/>
+            <cloudiness id="NN" percent="100.0"/>
+            <fog id="FOG" percent="0.0"/>
+            <lowClouds id="LOW" percent="100.0"/>
+            <mediumClouds id="MEDIUM" percent="100.0"/>
+            <highClouds id="HIGH" percent="43.3"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T17:00:00Z" to="2012-01-21T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.3" minvalue="0.2" maxvalue="0.4"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T16:00:00Z" to="2012-01-21T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.6" minvalue="0.5" maxvalue="0.7"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T15:00:00Z" to="2012-01-21T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.9" minvalue="0.8" maxvalue="1.1"/>
+<symbol id="SNOW" number="13"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T12:00:00Z" to="2012-01-21T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="2.5" minvalue="1.9" maxvalue="3.0"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T00:00:00Z" to="2012-01-22T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.6"/>
+            <windDirection id="dd" deg="355.6" name="N"/>
+            <windSpeed id="ff" mps="2.4" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="992.8"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-21T18:00:00Z" to="2012-01-22T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.7"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T06:00:00Z" to="2012-01-22T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.7"/>
+            <windDirection id="dd" deg="13.1" name="N"/>
+            <windSpeed id="ff" mps="2.2" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="993.2"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T00:00:00Z" to="2012-01-22T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.0"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T12:00:00Z" to="2012-01-22T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-5.1"/>
+            <windDirection id="dd" deg="21.5" name="N"/>
+            <windSpeed id="ff" mps="2.3" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1007.3"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T06:00:00Z" to="2012-01-22T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.8"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T18:00:00Z" to="2012-01-22T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-7.0"/>
+            <windDirection id="dd" deg="6.3" name="N"/>
+            <windSpeed id="ff" mps="2.7" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1008.0"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T12:00:00Z" to="2012-01-22T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T00:00:00Z" to="2012-01-23T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.1"/>
+            <windDirection id="dd" deg="296.2" name="NW"/>
+            <windSpeed id="ff" mps="2.6" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1009.1"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-22T18:00:00Z" to="2012-01-23T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="CLOUD" number="4"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T06:00:00Z" to="2012-01-23T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-16.4"/>
+            <windDirection id="dd" deg="298.3" name="NW"/>
+            <windSpeed id="ff" mps="2.6" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1011.6"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T00:00:00Z" to="2012-01-23T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T12:00:00Z" to="2012-01-23T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.9"/>
+            <windDirection id="dd" deg="342.9" name="N"/>
+            <windSpeed id="ff" mps="2.1" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1012.8"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T06:00:00Z" to="2012-01-23T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T18:00:00Z" to="2012-01-23T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-16.3"/>
+            <windDirection id="dd" deg="323.4" name="NW"/>
+            <windSpeed id="ff" mps="2.8" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1012.4"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T12:00:00Z" to="2012-01-23T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="SUN" number="1"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T00:00:00Z" to="2012-01-24T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-18.5"/>
+            <windDirection id="dd" deg="296.3" name="NW"/>
+            <windSpeed id="ff" mps="2.8" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1012.4"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-23T18:00:00Z" to="2012-01-24T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="SUN" number="1"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T06:00:00Z" to="2012-01-24T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-17.7"/>
+            <windDirection id="dd" deg="314.2" name="NW"/>
+            <windSpeed id="ff" mps="2.5" beaufort="2" name="Svak vind"/>
+            <pressure id="pr" unit="hPa" value="1011.8"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T00:00:00Z" to="2012-01-24T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="SUN" number="1"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T12:00:00Z" to="2012-01-24T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.7"/>
+            <windDirection id="dd" deg="307.7" name="NW"/>
+            <windSpeed id="ff" mps="1.6" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1013.7"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T06:00:00Z" to="2012-01-24T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="SUN" number="1"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T18:00:00Z" to="2012-01-24T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-15.4"/>
+            <windDirection id="dd" deg="315.2" name="NW"/>
+            <windSpeed id="ff" mps="1.9" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1015.6"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T12:00:00Z" to="2012-01-24T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="SUN" number="1"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T00:00:00Z" to="2012-01-25T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-10.5"/>
+            <windDirection id="dd" deg="278.4" name="W"/>
+            <windSpeed id="ff" mps="1.0" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1009.8"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-24T18:00:00Z" to="2012-01-25T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.0"/>
+<symbol id="PARTLYCLOUD" number="3"/>
+<symbolProbability unit="probabilitycode" value="2"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T06:00:00Z" to="2012-01-25T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-9.8"/>
+            <windDirection id="dd" deg="28.9" name="NE"/>
+            <windSpeed id="ff" mps="1.2" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1010.2"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T00:00:00Z" to="2012-01-25T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.8"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T12:00:00Z" to="2012-01-25T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.9"/>
+            <windDirection id="dd" deg="236.4" name="SW"/>
+            <windSpeed id="ff" mps="1.2" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1008.5"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T06:00:00Z" to="2012-01-25T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.9"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T18:00:00Z" to="2012-01-25T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-6.4"/>
+            <windDirection id="dd" deg="352.2" name="N"/>
+            <windSpeed id="ff" mps="1.5" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1010.6"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T12:00:00Z" to="2012-01-25T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.7"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T00:00:00Z" to="2012-01-26T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-4.2"/>
+            <windDirection id="dd" deg="114.2" name="SE"/>
+            <windSpeed id="ff" mps="1.8" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1010.3"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-25T18:00:00Z" to="2012-01-26T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.4"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T06:00:00Z" to="2012-01-26T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-3.5"/>
+            <windDirection id="dd" deg="146.9" name="SE"/>
+            <windSpeed id="ff" mps="1.7" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1012.1"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T00:00:00Z" to="2012-01-26T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.2"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T12:00:00Z" to="2012-01-26T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-1.3"/>
+            <windDirection id="dd" deg="348.3" name="N"/>
+            <windSpeed id="ff" mps="1.7" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1014.5"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T06:00:00Z" to="2012-01-26T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.1"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T18:00:00Z" to="2012-01-26T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-0.5"/>
+            <windDirection id="dd" deg="140.2" name="SE"/>
+            <windSpeed id="ff" mps="1.8" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1015.5"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T12:00:00Z" to="2012-01-26T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.2"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T00:00:00Z" to="2012-01-27T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-1.5"/>
+            <windDirection id="dd" deg="352.0" name="N"/>
+            <windSpeed id="ff" mps="1.9" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1012.4"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-26T18:00:00Z" to="2012-01-27T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="1.0"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T06:00:00Z" to="2012-01-27T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.0"/>
+            <windDirection id="dd" deg="8.7" name="N"/>
+            <windSpeed id="ff" mps="1.9" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1012.8"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T00:00:00Z" to="2012-01-27T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.7"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T12:00:00Z" to="2012-01-27T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-1.6"/>
+            <windDirection id="dd" deg="5.5" name="N"/>
+            <windSpeed id="ff" mps="1.7" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1017.0"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T06:00:00Z" to="2012-01-27T12:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.9"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T18:00:00Z" to="2012-01-27T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-1.4"/>
+            <windDirection id="dd" deg="91.8" name="E"/>
+            <windSpeed id="ff" mps="1.5" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1015.1"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T12:00:00Z" to="2012-01-27T18:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.6"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-28T00:00:00Z" to="2012-01-28T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-1.5"/>
+            <windDirection id="dd" deg="346.2" name="N"/>
+            <windSpeed id="ff" mps="1.7" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1010.8"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="0"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-27T18:00:00Z" to="2012-01-28T00:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.7"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-28T06:00:00Z" to="2012-01-28T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <temperature id="TTT" unit="celcius" value="-2.1"/>
+            <windDirection id="dd" deg="254.3" name="W"/>
+            <windSpeed id="ff" mps="1.3" beaufort="1" name="Flau vind"/>
+            <pressure id="pr" unit="hPa" value="1010.5"/>
+            <temperatureProbability unit="probabilitycode" value="2"/>
+            <windProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+      <time datatype="forecast" from="2012-01-28T00:00:00Z" to="2012-01-28T06:00:00Z">
+         <location altitude="485" latitude="60.1000" longitude="9.5800">
+            <precipitation unit="mm" value="0.8"/>
+<symbol id="SNOW" number="13"/>
+<symbolProbability unit="probabilitycode" value="1"/>
+         </location>
+      </time>
+   </product>
+</weatherdata>
