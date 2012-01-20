@@ -38,7 +38,7 @@ using locationforecast::Document;
 
 namespace
 {
-const boost::filesystem::path testFiles = "../test/locationforecast";
+const boost::filesystem::path testFiles = "../test/locationforecast/etc";
 }
 
 TEST(DocumentTest, itWorks)

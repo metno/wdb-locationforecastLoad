@@ -39,5 +39,5 @@ public:
 	~DataElement();
 };
 
-} /* namespace locationforecast */
+}
 #endif /* DATAELEMENT_H_ */
