@@ -26,70 +26,43 @@
  MA  02110-1301, USA
  */
 
-#ifndef DATAELEMENT_H_
-#define DATAELEMENT_H_
-
-#include <string>
+#include "SimpleElementHandler.h"
+#include <libxml++/libxml++.h>
+#include <boost/lexical_cast.hpp>
 
 namespace locationforecast
 {
 
-class DataElement
+SimpleElementHandler::SimpleElementHandler(const std::string & parameter) :
+		parameter_(parameter)
 {
-public:
-	DataElement();
-	~DataElement();
-
-	bool complete() const;
-
-
-	void value(float value)
-	{
-		value_ = value;
-	}
-	float value() const
-	{
-		return value_;
-	}
-
-	void parameter(const std::string & parameter)
-	{
-		parameter_ = parameter;
-	}
-	const std::string & parameter() const
-	{
-		return parameter_;
-	}
-
-	void location(const std::string & location)
-	{
-		location_ = location;
-	}
-	const std::string & location() const
-	{
-		return location_;
-	}
-
-	void validFrom(const std::string & time)
-	{
-		validFrom_ = time;
-	}
-	const std::string & validFrom() const;
-
-	void validTo(const std::string & time)
-	{
-		validTo_ = time;
-	}
-	const std::string & validTo() const;
-
-
-private:
-	float value_;
-	std::string parameter_;
-	std::string location_;
-	std::string validFrom_;
-	std::string validTo_;
-};
-
 }
-#endif /* DATAELEMENT_H_ */
+
+SimpleElementHandler::~SimpleElementHandler()
+{
+}
+
+ElementHandler::Data SimpleElementHandler::extract(const xmlpp::Element & element) const
+{
+	Data ret;
+
+	ret.parameter = parameter_;
+	std::string value = element.get_attribute_value("value");
+	if ( value.empty() )
+		throw ExtractionError("Missing value attribute in element");
+	try
+	{
+		ret.value = boost::lexical_cast<float>(value);
+	}
+	catch ( boost::bad_lexical_cast & )
+	{
+		throw ExtractionError("Unable to parse value as float: " + value);
+	}
+	ret.unit = element.get_attribute_value("unit");
+	if ( ret.unit.empty() )
+		throw ExtractionError("Missing unit attribute for parameter " + ret.parameter);
+
+	return ret;
+}
+
+} /* namespace locationforecast */

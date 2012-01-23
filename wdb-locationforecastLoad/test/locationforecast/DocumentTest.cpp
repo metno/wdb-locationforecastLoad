@@ -78,5 +78,13 @@ TEST(DocumentTest, oneElementDocument)
 	Document doc(testFiles/"one_element_document.xml");
 
 	EXPECT_FALSE(doc.empty());
-	EXPECT_EQ(1u, doc.size());
+	ASSERT_EQ(1u, doc.size());
+
+	const locationforecast::DataElement & dataElement = doc.front();
+	EXPECT_FLOAT_EQ(-2.4, dataElement.value());
+	EXPECT_EQ("temperature", dataElement.parameter());
+	EXPECT_EQ("POINT(9.5800 60.1000)", dataElement.location());
+	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validFrom());
+	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validTo());
+
 }

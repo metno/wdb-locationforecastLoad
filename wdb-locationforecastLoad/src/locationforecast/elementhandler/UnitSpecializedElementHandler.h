@@ -26,70 +26,26 @@
  MA  02110-1301, USA
  */
 
-#ifndef DATAELEMENT_H_
-#define DATAELEMENT_H_
+#ifndef UNITSPECIALIZEDELEMENTHANDLER_H_
+#define UNITSPECIALIZEDELEMENTHANDLER_H_
 
-#include <string>
+#include "ElementHandler.h"
 
 namespace locationforecast
 {
 
-class DataElement
+class UnitSpecializedElementHandler: public locationforecast::ElementHandler
 {
 public:
-	DataElement();
-	~DataElement();
+	UnitSpecializedElementHandler(const std::string & parameter, const std::string & unitName);
+	~UnitSpecializedElementHandler();
 
-	bool complete() const;
-
-
-	void value(float value)
-	{
-		value_ = value;
-	}
-	float value() const
-	{
-		return value_;
-	}
-
-	void parameter(const std::string & parameter)
-	{
-		parameter_ = parameter;
-	}
-	const std::string & parameter() const
-	{
-		return parameter_;
-	}
-
-	void location(const std::string & location)
-	{
-		location_ = location;
-	}
-	const std::string & location() const
-	{
-		return location_;
-	}
-
-	void validFrom(const std::string & time)
-	{
-		validFrom_ = time;
-	}
-	const std::string & validFrom() const;
-
-	void validTo(const std::string & time)
-	{
-		validTo_ = time;
-	}
-	const std::string & validTo() const;
-
+	virtual Data extract(const xmlpp::Element & element) const;
 
 private:
-	float value_;
-	std::string parameter_;
-	std::string location_;
-	std::string validFrom_;
-	std::string validTo_;
+	const std::string parameter_;
+	const std::string unitName_;
 };
 
-}
-#endif /* DATAELEMENT_H_ */
+} /* namespace locationforecast */
+#endif /* UNITSPECIALIZEDELEMENTHANDLER_H_ */

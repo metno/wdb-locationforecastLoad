@@ -27,19 +27,37 @@
  */
 
 #include "DataElement.h"
+#include <limits>
 
 namespace locationforecast
 {
 
-DataElement::DataElement()
+DataElement::DataElement() :
+		value_(std::numeric_limits<float>::quiet_NaN())
 {
-	// TODO Auto-generated constructor stub
-
 }
 
 DataElement::~DataElement()
 {
-	// TODO Auto-generated destructor stub
 }
 
-} /* namespace locationforecast */
+bool DataElement::complete() const
+{
+	return value_ == value_ and
+			not parameter_.empty() and
+			not location_.empty() and
+			not validFrom_.empty() and
+			not validTo().empty();
+}
+
+const std::string & DataElement::validFrom() const
+{
+	return validFrom_;
+}
+
+const std::string & DataElement::validTo() const
+{
+	return validTo_;
+}
+
+}

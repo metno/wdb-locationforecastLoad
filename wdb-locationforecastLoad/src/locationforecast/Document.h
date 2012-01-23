@@ -57,10 +57,13 @@ public:
 	~Document();
 
 	typedef DataList::const_iterator const_iterator;
+	typedef DataList::value_type value_type;
 	typedef DataList::size_type size_type;
 
 	const_iterator begin() const { return elements_.begin(); }
 	const_iterator end() const { return elements_.end(); }
+
+	const value_type & front() { return elements_.front(); }
 
 	size_type size() const { return elements_.size(); }
 	bool empty() const { return elements_.empty(); }
