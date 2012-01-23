@@ -63,7 +63,7 @@ ElementHandler::Data getParameterData(const xmlpp::Element & parameterElement)
 		handlers["precipitation"] = ElementHandler::get("precipitation");
 		handlers["symbol"] = ElementHandler::get("symbol", "number");
 	}
-	ElementHandler::Ptr handler = handlers[parameter];
+	ElementHandler::Ptr & handler = handlers[parameter];
 	if ( ! handler )
 	{
 		log.warnStream() << "No handler for parameter <" << parameter << ">. Trying to parse contents anyway.";
