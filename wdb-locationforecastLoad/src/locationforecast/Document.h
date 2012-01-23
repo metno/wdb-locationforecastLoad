@@ -68,8 +68,6 @@ public:
 	size_type size() const { return elements_.size(); }
 	bool empty() const { return elements_.empty(); }
 
-	void print(std::ostream & s) const;
-
 	class Exception : public std::exception
 	{
 	public:

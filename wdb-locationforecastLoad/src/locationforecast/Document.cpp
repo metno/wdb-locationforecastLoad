@@ -56,8 +56,4 @@ Document::~Document()
 {
 }
 
-void Document::print(std::ostream & s) const
-{
-}
-
 }

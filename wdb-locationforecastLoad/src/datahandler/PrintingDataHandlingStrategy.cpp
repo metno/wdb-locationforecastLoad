@@ -28,6 +28,7 @@
 
 #include "PrintingDataHandlingStrategy.h"
 #include <locationforecast/Document.h>
+#include <boost/foreach.hpp>
 #include <iostream>
 
 PrintingDataHandlingStrategy::PrintingDataHandlingStrategy()
@@ -40,5 +41,27 @@ PrintingDataHandlingStrategy::~PrintingDataHandlingStrategy()
 
 void PrintingDataHandlingStrategy::handle(const locationforecast::Document & document)
 {
-	document.print(std::cout);
+	std::string location;
+	std::string validFrom;
+	std::string validTo;
+	std::string parameter;
+
+	BOOST_FOREACH(const locationforecast::Document::value_type & element, document)
+	{
+		if ( location != element.location() )
+		{
+			location = element.location();
+			std::cout << location << ":\n";
+		}
+		if ( validFrom != element.validFrom() or validTo != element.validTo())
+		{
+			validFrom = element.validFrom();
+			validTo = element.validTo();
+			std::cout << "\t" << validFrom;
+			if ( validTo != validFrom )
+				std::cout << " - " << validTo;
+			std::cout << ":\n";
+		}
+		std::cout << "\t\t" << element.parameter() << "\t" << element.value() << std::endl;
+	}
 }

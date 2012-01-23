@@ -47,7 +47,7 @@ bool DataElement::complete() const
 			not parameter_.empty() and
 			not location_.empty() and
 			not validFrom_.empty() and
-			not validTo().empty();
+			not validTo_.empty();
 }
 
 const std::string & DataElement::validFrom() const
