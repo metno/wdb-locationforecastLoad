@@ -26,17 +26,33 @@
  MA  02110-1301, USA
  */
 
-#include "SavingDataHandlingStrategy.h"
+#ifndef SAVINGDATAHANDLINGSTRATEGY_H_
+#define SAVINGDATAHANDLINGSTRATEGY_H_
 
-SavingDataHandlingStrategy::SavingDataHandlingStrategy(const wdb::load::LoaderConfiguration & conf)
+#include "../DataHandlingStrategy.h"
+#include <configuration/WdbSaveSpecificationFactory.h>
+#include <pqxx/connection.hxx>
+
+namespace wdb
 {
+namespace load
+{
+class LoaderConfiguration;
+}
 }
 
-SavingDataHandlingStrategy::~SavingDataHandlingStrategy()
+class SavingDataHandlingStrategy: public DataHandlingStrategy
 {
-}
+public:
+	SavingDataHandlingStrategy(const wdb::load::LoaderConfiguration & conf);
+	virtual ~SavingDataHandlingStrategy();
 
-void SavingDataHandlingStrategy::handle(const locationforecast::Document & document)
-{
+	virtual void handle(const locationforecast::Document & document);
 
-}
+private:
+	pqxx::connection connection_;
+	std::string wciUser_;
+	WdbSaveSpecificationFactory specificationFactory_;
+};
+
+#endif /* SAVINGDATAHANDLINGSTRATEGY_H_ */

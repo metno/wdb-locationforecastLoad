@@ -26,26 +26,18 @@
  MA  02110-1301, USA
  */
 
-#ifndef SAVINGDATAHANDLINGSTRATEGY_H_
-#define SAVINGDATAHANDLINGSTRATEGY_H_
+#ifndef PRINTINGDATAHANDLINGSTRATEGY_H_
+#define PRINTINGDATAHANDLINGSTRATEGY_H_
 
-#include "DataHandlingStrategy.h"
+#include "../DataHandlingStrategy.h"
 
-namespace wdb
-{
-namespace load
-{
-class LoaderConfiguration;
-}
-}
-
-class SavingDataHandlingStrategy: public DataHandlingStrategy
+class PrintingDataHandlingStrategy: public DataHandlingStrategy
 {
 public:
-	SavingDataHandlingStrategy(const wdb::load::LoaderConfiguration & conf);
-	virtual ~SavingDataHandlingStrategy();
+	PrintingDataHandlingStrategy();
+	virtual ~PrintingDataHandlingStrategy();
 
 	virtual void handle(const locationforecast::Document & document);
 };
 
-#endif /* SAVINGDATAHANDLINGSTRATEGY_H_ */
+#endif /* PRINTINGDATAHANDLINGSTRATEGY_H_ */

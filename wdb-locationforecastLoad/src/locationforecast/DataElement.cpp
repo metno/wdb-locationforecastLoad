@@ -50,14 +50,4 @@ bool DataElement::complete() const
 			not validTo_.empty();
 }
 
-const std::string & DataElement::validFrom() const
-{
-	return validFrom_;
-}
-
-const std::string & DataElement::validTo() const
-{
-	return validTo_;
-}
-
 }

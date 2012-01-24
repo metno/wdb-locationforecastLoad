@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<locationforecastLoad>
+	<configuration>
+
+		<data name="temperature">
+			<wdb>
+				<conversion coefficient="1" constant="273.15" />
+				<valueparameter name="air temperature"/>
+				<levelparameter name="height above ground" from="2" to="2"/>
+			</wdb>
+		</data>
+		
+		<data name="windDirection">
+			<wdb specialhandling="true"/>
+		</data>
+		
+		<data name="windSpeed">
+			<wdb specialhandling="true"/>
+		</data>
+		
+		<data name="humidity">
+			<wdb>
+				<valueparameter name="relative humidity"/>
+				<levelparameter name="height above ground" from="2" to="2"/>
+			</wdb>
+		</data>
+		
+		<data name="pressure">
+			<wdb>
+				<valueparameter name="air pressure at sea level"/>
+				<levelparameter name="height above ground"/>
+			</wdb>
+		</data>
+		
+        <data name="cloudiness">
+        	<wdb>
+        	<valueparameter name="cloud area fraction"/>
+        	<levelparameter name="atmosphere sigma coordinate" from="1000" to="1000"/>
+        	</wdb>
+        </data>
+        
+        <data name="fog">
+        	<wdb>
+        	<valueparameter name="cloud area fraction in atmosphere layer"/>
+        	<levelparameter name="atmosphere sigma coordinate" from="1000" to="1000"/>
+        	</wdb>
+        </data>
+        
+        <data name="lowClouds">
+        	<wdb>
+	        	<valueparameter name="cloud area fraction in atmosphere layer"/>
+	        	<levelparameter name="atmosphere sigma coordinate" from="850" to="850"/>
+        	</wdb>
+        </data>
+
+        <data name="mediumClouds">
+        	<wdb>
+	        	<valueparameter name="cloud area fraction in atmosphere layer"/>
+	        	<levelparameter name="atmosphere sigma coordinate" from="500" to="500"/>
+        	</wdb>
+        </data>
+        
+       	<data name="highClouds">
+       		<wdb>
+       			<valueparameter name="cloud area fraction in atmosphere layer"/>
+       			<levelparameter name="atmosphere sigma coordinate" from="300" to="300"/>
+       		</wdb>
+       	</data>
+
+		<data name="precipitation">
+			<wdb>
+				<valueparameter name="lwe thickness of precipitation amount"/>
+				<levelparameter name="height above ground"/>
+			</wdb>
+		</data>
+        
+	</configuration>
+</locationforecastLoad>

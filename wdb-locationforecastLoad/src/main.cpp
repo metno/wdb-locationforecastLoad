@@ -27,9 +27,8 @@
 */
 
 #include <wdb/LoaderConfiguration.h>
-#include "Loader.h"
-#include "datahandler/PrintingDataHandlingStrategy.h"
-#include "datahandler/SavingDataHandlingStrategy.h"
+#include "datahandler/list/PrintingDataHandlingStrategy.h"
+#include "datahandler/save/SavingDataHandlingStrategy.h"
 #include "locationforecast/Document.h"
 #include <wdbLogHandler.h>
 #include <boost/scoped_ptr.hpp>

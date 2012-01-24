@@ -74,13 +74,19 @@ public:
 	{
 		validFrom_ = time;
 	}
-	const std::string & validFrom() const;
+	const std::string & validFrom() const
+	{
+		return validFrom_;
+	}
 
 	void validTo(const std::string & time)
 	{
 		validTo_ = time;
 	}
-	const std::string & validTo() const;
+	const std::string & validTo() const
+	{
+		return validTo_;
+	}
 
 
 private:

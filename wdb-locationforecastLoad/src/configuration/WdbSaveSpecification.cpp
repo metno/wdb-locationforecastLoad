@@ -26,35 +26,39 @@
  MA  02110-1301, USA
  */
 
-#ifndef LOADER_H_
-#define LOADER_H_
+#include "WdbSaveSpecification.h"
+#include <sstream>
 
-#include <wdb/LoaderDatabaseConnection.h>
-
-
-namespace wdb
+WdbSaveSpecification::WdbSaveSpecification()
 {
-namespace load
-{
-class LoaderConfiguration;
-}
-}
-namespace locationforecast
-{
-class Document;
 }
 
-
-class Loader
+WdbSaveSpecification::~WdbSaveSpecification()
 {
-public:
-	explicit Loader(const wdb::load::LoaderConfiguration & config);
-	~Loader();
+}
 
-	void load(const locationforecast::Document & document);
+namespace
+{
+std::string quote(const std::string & s)
+{
+	return '\'' + s + '\'';
+}
+}
 
-private:
-	wdb::load::LoaderDatabaseConnection connection_;
-};
+std::string WdbSaveSpecification::getReadQuery(boost::function<std::string (const std::string &)> escape) const
+{
+	std::ostringstream query;
 
-#endif /* LOADER_H_ */
+	query << "SELECT wci.write(" <<
+			value_ << ", " <<
+			quote(escape(location_)) << ", " <<
+			quote(escape(referenceTime_)) << ", " <<
+			quote(escape(validFrom_)) << ", " <<
+			quote(escape(validTo_)) << ", " <<
+			quote(escape(valueParameter_)) << ", " <<
+			quote(escape(levelParameter_)) << ", " <<
+			levelFrom_ << ", " << levelTo_ <<
+			")";
+
+	return query.str();
+}
