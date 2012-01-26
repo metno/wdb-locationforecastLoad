@@ -30,7 +30,6 @@
 #define SAVINGDATAHANDLINGSTRATEGY_H_
 
 #include "../DataHandlingStrategy.h"
-#include <configuration/WdbSaveSpecificationFactory.h>
 #include <pqxx/connection.hxx>
 
 namespace wdb
@@ -50,9 +49,11 @@ public:
 	virtual void handle(const locationforecast::Document & document);
 
 private:
+
+	std::string getPlaceName_(const std::string & pointDefinition);
+
 	pqxx::connection connection_;
-	std::string wciUser_;
-	WdbSaveSpecificationFactory specificationFactory_;
+	const wdb::load::LoaderConfiguration & conf_;
 };
 
 #endif /* SAVINGDATAHANDLINGSTRATEGY_H_ */

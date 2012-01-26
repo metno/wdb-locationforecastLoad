@@ -27,15 +27,12 @@
  */
 
 #include "SavingDataHandlingStrategy.h"
-#include <locationforecast/Document.h>
+#include "SaveDataTransactor.h"
 #include <wdb/LoaderConfiguration.h>
-#include <pqxx/transactor.hxx>
-#include <boost/foreach.hpp>
-#include <iostream>
 
 SavingDataHandlingStrategy::SavingDataHandlingStrategy(const wdb::load::LoaderConfiguration & conf) :
 		connection_(conf.database().pqDatabaseConnection()),
-		wciUser_(conf.database().user)
+		conf_(conf)
 {
 }
 
@@ -43,43 +40,8 @@ SavingDataHandlingStrategy::~SavingDataHandlingStrategy()
 {
 }
 
-void foo(int i, int j)
-{
-	std::cout << i << ", " << j << std::endl;
-}
-
-namespace
-{
-	class Escaper
-	{
-	public:
-		explicit Escaper(const pqxx::work & transaction) : transaction_(transaction) {}
-
-		std::string operator () (const std::string & s) const
-		{
-			return transaction_.esc(s);
-		}
-
-	private:
-		const pqxx::work & transaction_;
-	};
-}
-
 void SavingDataHandlingStrategy::handle(const locationforecast::Document & document)
 {
-	pqxx::work transaction(connection_);
-	Escaper escape(transaction);
-
-	std::cout << "SELECT wci.begin('" << escape(wciUser_) << "')";
-	std::cout << ";\n";
-
-	BOOST_FOREACH(const locationforecast::Document::value_type & element, document)
-	{
-		if ( specificationFactory_.hasTranslationFor(element) )
-		{
-			const WdbSaveSpecification & spec = specificationFactory_.create(element);
-			std::cout << spec.getReadQuery(escape) << ";\n";
-		}
-	}
-	std::cout << std::flush;
+	SaveDataTransactor t(conf_, document);
+	connection_.perform(t);
 }

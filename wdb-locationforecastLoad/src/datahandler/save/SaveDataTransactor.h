@@ -26,40 +26,43 @@
  MA  02110-1301, USA
  */
 
-#include "WdbSaveSpecification.h"
-#include <sstream>
+#ifndef SAVEDATATRANSACTOR_H_
+#define SAVEDATATRANSACTOR_H_
 
-WdbSaveSpecification::WdbSaveSpecification()
-{
-}
+#include <pqxx/transactor.hxx>
+#include <configuration/WdbSaveSpecificationFactory.h>
+#include <string>
+#include <map>
 
-WdbSaveSpecification::~WdbSaveSpecification()
+namespace wdb
 {
-}
-
-namespace
+namespace load
 {
-std::string quote(const std::string & s)
-{
-	return '\'' + s + '\'';
+class LoaderConfiguration;
 }
 }
-
-std::string WdbSaveSpecification::getReadQuery(boost::function<std::string (const std::string &)> escape,
-		const std::string & placeName) const
+namespace locationforecast
 {
-	std::ostringstream query;
-
-	query << "SELECT wci.write(" <<
-			value_ << ", " <<
-			quote(escape(placeName)) << ", " <<
-			quote(escape(referenceTime_)) << ", " <<
-			quote(escape(validFrom_)) << ", " <<
-			quote(escape(validTo_)) << ", " <<
-			quote(escape(valueParameter_)) << ", " <<
-			quote(escape(levelParameter_)) << ", " <<
-			levelFrom_ << ", " << levelTo_ <<
-			")";
-
-	return query.str();
+class Document;
 }
+
+
+class SaveDataTransactor : public pqxx::transactor<>
+{
+public:
+	SaveDataTransactor(const wdb::load::LoaderConfiguration & conf, const locationforecast::Document & document);
+	~SaveDataTransactor();
+
+	void operator()(pqxx::work & transaction);
+
+private:
+	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
+
+	std::map<std::string, std::string> nameFromGeometry_;
+
+	const wdb::load::LoaderConfiguration & conf_;
+	const locationforecast::Document & document_;
+	WdbSaveSpecificationFactory specificationFactory_;
+};
+
+#endif /* SAVEDATATRANSACTOR_H_ */
