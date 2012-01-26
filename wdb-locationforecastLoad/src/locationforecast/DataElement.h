@@ -70,6 +70,15 @@ public:
 		return location_;
 	}
 
+	void referenceTime(const std::string & time)
+	{
+		referenceTime_ = time;
+	}
+	const std::string & referenceTime() const
+	{
+		return referenceTime_;
+	}
+
 	void validFrom(const std::string & time)
 	{
 		validFrom_ = time;
@@ -93,6 +102,7 @@ private:
 	float value_;
 	std::string parameter_;
 	std::string location_;
+	std::string referenceTime_;
 	std::string validFrom_;
 	std::string validTo_;
 };

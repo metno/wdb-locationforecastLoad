@@ -146,7 +146,7 @@ WdbSaveSpecification WdbSaveSpecificationFactory::create(const locationforecast:
 	WdbSaveSpecification ret;
 	ret.value_ = element.value();
 	ret.location_ = element.location();
-	ret.referenceTime_ = "today";
+	ret.referenceTime_ = element.referenceTime();
 	ret.validFrom_ = element.validFrom();
 	ret.validTo_ = element.validTo();
 	ret.valueParameter_ = find->second.valueParameterName;

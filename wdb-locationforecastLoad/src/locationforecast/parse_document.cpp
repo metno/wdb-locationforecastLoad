@@ -27,6 +27,7 @@
 */
 
 #include "parse_document.h"
+#include "TimeRange.h"
 #include "elementhandler/ElementHandler.h"
 #include <wdbLogHandler.h>
 #include <libxml++/libxml++.h>
@@ -89,10 +90,7 @@ void parseParameter(DataElement workingData, std::vector<DataElement> & out, con
 		{
 			log.warnStream() << "Unable to handle parameter <" << element->get_name() << ": " << e.what();
 		}
-		if ( workingData.complete() )
-			out.push_back(workingData);
-		else // should never happen
-			log.errorStream() << "Internal error: Trying to save data with missing elements";
+		out.push_back(workingData);
 	}
 }
 
@@ -127,6 +125,7 @@ void parseTime(DataElement workingData, std::vector<DataElement> & out, const xm
 	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
 
 	const xmlpp::Element * timeElement = dynamic_cast<const xmlpp::Element *>(node);
+
 	if ( ! timeElement )
 		return;
 
@@ -145,29 +144,49 @@ void parseTime(DataElement workingData, std::vector<DataElement> & out, const xm
 	BOOST_FOREACH(const xmlpp::Node * node, node->get_children() )
 		parseLocation(workingData, out, node);
 }
-
-void parseProduct(std::vector<DataElement> & out, const xmlpp::Node * node)
-{
-	BOOST_FOREACH(const xmlpp::Node * time, node->get_children() )
-	{
-		DataElement workingData;
-		parseTime(workingData, out, time);
-	}
-}
 }
 
 void parse_document(std::istream & s, std::vector<DataElement> & out)
 {
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
 	xmlpp::DomParser parser;
 	parser.parse_stream(s);
 	if ( parser )
 	{
 		const xmlpp::Node * root = parser.get_document()->get_root_node();
 
-		xmlpp::Node::NodeList products = root->get_children("product");
+		typedef std::map<TimeRange, std::string> ReferenceTimesForValidTimes;
+		ReferenceTimesForValidTimes referenceTimes;
+		BOOST_FOREACH(const xmlpp::Node * modelNode, root->find("/weatherdata/meta/model"))
+		{
+			const xmlpp::Element * model = dynamic_cast<const xmlpp::Element *>(modelNode);
+			if ( ! model )
+				continue;
+			std::string from = model->get_attribute_value("from");
+			std::string to = model->get_attribute_value("to");
+			std::string referenceTime = model->get_attribute_value("termin");
 
-		BOOST_FOREACH(const xmlpp::Node * product, products)
-			parseProduct(out, product);
+			referenceTimes[TimeRange(from, to)] = referenceTime;
+		}
+
+		std::vector<DataElement> dataOut;
+		BOOST_FOREACH( const xmlpp::Node * node, root->find("/weatherdata/product/time") )
+		{
+			DataElement workingData;
+			parseTime(workingData, dataOut, node);
+		}
+
+		BOOST_FOREACH(DataElement & element, dataOut)
+			BOOST_FOREACH(const ReferenceTimesForValidTimes::value_type & refFromValid, referenceTimes)
+				if ( refFromValid.first.encloses(element.validTo()) )
+				{
+					element.referenceTime(refFromValid.second);
+					if ( element.complete() )
+						out.push_back(element);
+					else
+						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element.parameter() << '>';
+				}
 	}
 }
 

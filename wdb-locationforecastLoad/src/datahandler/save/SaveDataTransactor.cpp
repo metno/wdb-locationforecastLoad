@@ -73,7 +73,7 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 		{
 			const WdbSaveSpecification & spec = specificationFactory_.create(element);
 			const std::string writeQuery = spec.getReadQuery(escape, getPlaceName_(transaction, spec.location()));
-			std::cout << writeQuery << std::endl;
+			//std::cout << writeQuery << std::endl;
 			transaction.exec(writeQuery);
 		}
 	}

@@ -37,6 +37,7 @@ TEST(DataElementTest, setValues)
 	de.value(0.4);
 	de.parameter("precipitation");
 	de.location("POINT(9 63)");
+	de.referenceTime("2012-01-23T00:00:00Z");
 	de.validFrom("2012-01-23T06:00:00Z");
 	de.validTo("2012-01-23T12:00:00Z");
 
@@ -96,6 +97,18 @@ TEST(DataElement, incompleteOnMissingLocation)
 {
 	DataElement de;
 	de.value(2.9);
+	de.parameter("precipitation");
+	de.validFrom("2012-01-23T06:00:00Z");
+	de.validTo("2012-01-23T12:00:00Z");
+
+	EXPECT_FALSE(de.complete());
+}
+
+TEST(DataElementTest, incompleteOnMissingReferenceTime)
+{
+	DataElement de;
+	de.value(2.9);
+	de.location("POINT(9 63)");
 	de.parameter("precipitation");
 	de.validFrom("2012-01-23T06:00:00Z");
 	de.validTo("2012-01-23T12:00:00Z");

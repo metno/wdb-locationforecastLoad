@@ -46,6 +46,7 @@ bool DataElement::complete() const
 	return value_ == value_ and
 			not parameter_.empty() and
 			not location_.empty() and
+			not referenceTime_.empty() and
 			not validFrom_.empty() and
 			not validTo_.empty();
 }

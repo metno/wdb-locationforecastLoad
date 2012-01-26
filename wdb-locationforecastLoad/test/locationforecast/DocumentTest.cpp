@@ -88,3 +88,21 @@ TEST(DocumentTest, oneElementDocument)
 	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validTo());
 
 }
+
+TEST(DocumentTest, setsReferenceTime)
+{
+	Document doc(testFiles/"real_example.xml");
+
+	Document::size_type expectedSize = 1290;
+	ASSERT_EQ(expectedSize, doc.size());
+
+	Document::const_iterator element = doc.begin();
+	EXPECT_EQ("2012-01-19T00:00:00Z", element->referenceTime());
+
+	std::advance(element, 1200);
+	EXPECT_EQ("2012-01-26T00:00:00Z", element->validFrom());
+	EXPECT_EQ("2012-01-26T00:00:00Z", element->validTo());
+	EXPECT_EQ("2012-01-18T12:00:00Z", element->referenceTime());
+
+
+}
