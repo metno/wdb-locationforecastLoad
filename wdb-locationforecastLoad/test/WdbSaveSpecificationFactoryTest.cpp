@@ -30,19 +30,31 @@
 #include <gtest/gtest.h>
 #include <configuration/WdbSaveSpecificationFactory.h>
 
-TEST(WdbSaveSpecificationFactoryTest, test)
+class WdbSaveSpecificationFactoryTest : public testing::Test
 {
+public:
+	WdbSaveSpecificationFactoryTest() :
+		factory("../test/etc/locationForecastLoad.conf.xml")
+	{
+		// Default dataElement setup
+		dataElement.value(10);
+		dataElement.parameter("precipitation");
+		dataElement.location("POINT(1 2)");
+		dataElement.referenceTime("2012-01-26T00:00:00Z");
+		dataElement.validFrom("2012-01-26T12:00:00Z");
+		dataElement.validTo("2012-01-26T18:00:00Z");
+
+		if ( not dataElement.complete() )
+			throw std::logic_error("Test prerequirement error");
+	}
+
 	locationforecast::DataElement dataElement;
-	dataElement.value(10);
-	dataElement.parameter("precipitation");
-	dataElement.location("POINT(1 2)");
-	dataElement.referenceTime("2012-01-26T00:00:00Z");
-	dataElement.validFrom("2012-01-26T12:00:00Z");
-	dataElement.validTo("2012-01-26T18:00:00Z");
-
-	ASSERT_TRUE(dataElement.complete()) << "Test prerequirement error";
-
 	WdbSaveSpecificationFactory factory;
+};
+
+
+TEST_F(WdbSaveSpecificationFactoryTest, test)
+{
 	WdbSaveSpecification saveSpec = factory.create(dataElement);
 
 	EXPECT_FLOAT_EQ(10, saveSpec.value());
@@ -60,37 +72,21 @@ TEST(WdbSaveSpecificationFactoryTest, test)
 }
 
 
-TEST(WdbSaveSpecificationFactoryTest, convertsValues)
+TEST_F(WdbSaveSpecificationFactoryTest, convertsValues)
 {
-	locationforecast::DataElement dataElement;
 	dataElement.value(-3.5);
 	dataElement.parameter("temperature");
-	dataElement.location("POINT(1 2)");
-	dataElement.referenceTime("2012-01-26T00:00:00Z");
-	dataElement.validFrom("2012-01-26T12:00:00Z");
-	dataElement.validTo("2012-01-26T12:00:00Z");
 
-	ASSERT_TRUE(dataElement.complete()) << "Test prerequirement error";
-
-	WdbSaveSpecificationFactory factory;
 	WdbSaveSpecification saveSpec = factory.create(dataElement);
 
 	EXPECT_FLOAT_EQ(269.65, saveSpec.value());
 }
 
-TEST(WdbSaveSpecificationFactoryTest, setsLevelsFromConfig)
+TEST_F(WdbSaveSpecificationFactoryTest, setsLevelsFromConfig)
 {
-	locationforecast::DataElement dataElement;
 	dataElement.value(50);
 	dataElement.parameter("mediumClouds");
-	dataElement.location("POINT(1 2)");
-	dataElement.referenceTime("2012-01-26T00:00:00Z");
-	dataElement.validFrom("2012-01-26T12:00:00Z");
-	dataElement.validTo("2012-01-26T12:00:00Z");
 
-	ASSERT_TRUE(dataElement.complete()) << "Test prerequirement error";
-
-	WdbSaveSpecificationFactory factory;
 	WdbSaveSpecification saveSpec = factory.create(dataElement);
 
 	EXPECT_EQ("atmosphere sigma coordinate", saveSpec.levelParameter());
