@@ -51,6 +51,8 @@ public:
 
 private:
 	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
+	const std::string & getCustomPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
+	void createPlacePoint(pqxx::work & transaction, const std::string & name, const std::string & geometryPoint);
 
 	std::map<std::string, std::string> nameFromGeometry_;
 

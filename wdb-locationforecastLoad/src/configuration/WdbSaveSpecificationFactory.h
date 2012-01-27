@@ -39,11 +39,15 @@ namespace xmlpp
 {
 class Element;
 }
+namespace locationforecast
+{
+class LoaderConfiguration;
+}
 
 class WdbSaveSpecificationFactory
 {
 public:
-	explicit WdbSaveSpecificationFactory(const boost::filesystem::path & configFile);
+	explicit WdbSaveSpecificationFactory(const locationforecast::LoaderConfiguration & options);
 	~WdbSaveSpecificationFactory();
 
 	bool hasTranslationFor(const locationforecast::DataElement & element) const;
@@ -69,6 +73,7 @@ private:
 	void setup_(const xmlpp::Element & rootNode);
 	void addParameter_(const xmlpp::Element & parameterNode);
 
+	const locationforecast::LoaderConfiguration & options_;
 	typedef std::map<std::string, Configuration> ParameterTranslation;
 	ParameterTranslation translations_;
 };

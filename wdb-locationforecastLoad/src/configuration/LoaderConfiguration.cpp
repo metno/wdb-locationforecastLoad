@@ -32,7 +32,7 @@ namespace locationforecast
 {
 
 LoaderConfiguration::LoaderConfiguration() :
-		::wdb::load::LoaderConfiguration("locationforecast")
+		wdb::load::LoaderConfiguration("locationforecast")
 {
 	using namespace boost::program_options;
 

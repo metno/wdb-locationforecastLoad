@@ -29,13 +29,40 @@
 
 #include <gtest/gtest.h>
 #include <configuration/WdbSaveSpecificationFactory.h>
+#include <configuration/LoaderConfiguration.h>
+
+namespace
+{
+boost::shared_ptr<locationforecast::LoaderConfiguration>  getConfiguration(int argc, const char ** argv)
+{
+	boost::shared_ptr<locationforecast::LoaderConfiguration> ret(new locationforecast::LoaderConfiguration);
+	ret->parse(argc, const_cast<char **>(argv));
+	return ret;
+}
+boost::shared_ptr<locationforecast::LoaderConfiguration>  getConfiguration()
+{
+	const char * options = "program_name";
+	return getConfiguration(1, & options);
+}
+}
 
 class WdbSaveSpecificationFactoryTest : public testing::Test
 {
 public:
-	WdbSaveSpecificationFactoryTest() :
-		factory("../test/etc/locationForecastLoad.conf.xml")
+
+	void setConfiguration(int argc, const char ** argv)
 	{
+		loaderConfiguration = getConfiguration(argc, argv);
+		factory = boost::shared_ptr<WdbSaveSpecificationFactory>(
+				new WdbSaveSpecificationFactory(* loaderConfiguration));
+	}
+
+	WdbSaveSpecificationFactoryTest() :
+		loaderConfiguration(getConfiguration())
+	{
+		factory = boost::shared_ptr<WdbSaveSpecificationFactory>(
+				new WdbSaveSpecificationFactory(* loaderConfiguration));
+
 		// Default dataElement setup
 		dataElement.value(10);
 		dataElement.parameter("precipitation");
@@ -49,13 +76,15 @@ public:
 	}
 
 	locationforecast::DataElement dataElement;
-	WdbSaveSpecificationFactory factory;
+	boost::shared_ptr<WdbSaveSpecificationFactory> factory;
+private:
+	boost::shared_ptr<locationforecast::LoaderConfiguration> loaderConfiguration;
 };
 
 
 TEST_F(WdbSaveSpecificationFactoryTest, test)
 {
-	WdbSaveSpecification saveSpec = factory.create(dataElement);
+	WdbSaveSpecification saveSpec = factory->create(dataElement);
 
 	EXPECT_FLOAT_EQ(10, saveSpec.value());
 	EXPECT_EQ("POINT(1 2)", saveSpec.location());
@@ -77,7 +106,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, convertsValues)
 	dataElement.value(-3.5);
 	dataElement.parameter("temperature");
 
-	WdbSaveSpecification saveSpec = factory.create(dataElement);
+	WdbSaveSpecification saveSpec = factory->create(dataElement);
 
 	EXPECT_FLOAT_EQ(269.65, saveSpec.value());
 }
@@ -87,9 +116,67 @@ TEST_F(WdbSaveSpecificationFactoryTest, setsLevelsFromConfig)
 	dataElement.value(50);
 	dataElement.parameter("mediumClouds");
 
-	WdbSaveSpecification saveSpec = factory.create(dataElement);
+	WdbSaveSpecification saveSpec = factory->create(dataElement);
 
 	EXPECT_EQ("atmosphere sigma coordinate", saveSpec.levelParameter());
 	EXPECT_FLOAT_EQ(500, saveSpec.levelFrom());
 	EXPECT_FLOAT_EQ(500, saveSpec.levelTo());
+}
+
+TEST_F(WdbSaveSpecificationFactoryTest, noEffectOnDataProviderOverride)
+{
+	// Just to have all options
+	const char * options[2] = {"program_name", "--dataprovider=someone"};
+	setConfiguration(2, options);
+	WdbSaveSpecification saveSpec = factory->create(dataElement);
+}
+
+TEST_F(WdbSaveSpecificationFactoryTest, noEffectOnPlaceName)
+{
+	// Just to have all options
+	const char * options[2] = {"program_name", "--placename=somewhere"};
+	setConfiguration(2, options);
+	WdbSaveSpecification saveSpec = factory->create(dataElement);
+}
+
+
+TEST_F(WdbSaveSpecificationFactoryTest, respectsReferenceTimeOverride)
+{
+	const char * options[2] = {"program_name", "--referencetime=today"};
+	setConfiguration(2, options);
+
+	WdbSaveSpecification saveSpec = factory->create(dataElement);
+	EXPECT_EQ("today", saveSpec.referenceTime());
+}
+
+TEST_F(WdbSaveSpecificationFactoryTest, errorOnValueParameterOverride)
+{
+	const char * options[2] = {"program_name", "--valueparameter=rain"};
+	setConfiguration(2, options);
+
+	EXPECT_THROW(factory->create(dataElement), std::runtime_error);
+}
+
+TEST_F(WdbSaveSpecificationFactoryTest, errorOnLevelParameterOverride)
+{
+	const char * options[2] = {"program_name", "--levelparameter=highupsomewhere"};
+	setConfiguration(2, options);
+
+	EXPECT_THROW(factory->create(dataElement), std::runtime_error);
+}
+
+TEST_F(WdbSaveSpecificationFactoryTest, errorOnDataVersionOverride)
+{
+	const char * options[2] = {"program_name", "--dataversion=42"};
+	setConfiguration(2, options);
+
+	EXPECT_THROW(factory->create(dataElement), std::runtime_error);
+}
+
+TEST_F(WdbSaveSpecificationFactoryTest, errorOnconfidenceOverride)
+{
+	const char * options[2] = {"program_name", "--confidencecode=42"};
+	setConfiguration(2, options);
+
+	EXPECT_THROW(factory->create(dataElement), std::runtime_error);
 }

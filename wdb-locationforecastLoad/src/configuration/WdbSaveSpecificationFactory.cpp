@@ -27,6 +27,7 @@
  */
 
 #include "WdbSaveSpecificationFactory.h"
+#include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
 #include <libxml++/libxml++.h>
 #include <boost/lexical_cast.hpp>
@@ -36,8 +37,11 @@
 
 
 
-WdbSaveSpecificationFactory::WdbSaveSpecificationFactory(const boost::filesystem::path & configFile)
+WdbSaveSpecificationFactory::WdbSaveSpecificationFactory(const locationforecast::LoaderConfiguration & options) :
+	options_(options)
 {
+	const boost::filesystem::path & configFile = options.translation().translationConfiguration;
+
 	if ( not exists(configFile) )
 		throw std::runtime_error("Unable to find configuration file: " + configFile.string());
 	if ( is_directory(configFile) )
@@ -136,10 +140,32 @@ bool WdbSaveSpecificationFactory::hasTranslationFor(const locationforecast::Data
 	return translations_.find(element.parameter()) != translations_.end();
 }
 
+
+namespace
+{
+std::string bestValue(const std::string & firstPri, const std::string & secondPri)
+{
+	if ( firstPri.empty() )
+		return secondPri;
+	return firstPri;
+}
+}
+
 WdbSaveSpecification WdbSaveSpecificationFactory::create(const locationforecast::DataElement & element) const
 {
 	if ( not element.complete() )
 		throw std::invalid_argument("incomplete data element");
+
+	const locationforecast::LoaderConfiguration::LoadingOptions & loading = options_.loading();
+
+	if ( not loading.valueParameter.empty() )
+		throw std::runtime_error("valueparameter override is not supported");
+	if ( not loading.levelParameter.empty() )
+		throw std::runtime_error("levelparameter override is not supported");
+	if ( loading.dataVersion != -999 )
+		throw std::runtime_error("dataversion override is not supported");
+	if ( loading.confidenceCode != 0 )
+		throw std::runtime_error("confidencecode override is not supported");
 
 	ParameterTranslation::const_iterator find = translations_.find(element.parameter());
 	if ( find == translations_.end() )
@@ -150,7 +176,7 @@ WdbSaveSpecification WdbSaveSpecificationFactory::create(const locationforecast:
 	WdbSaveSpecification ret;
 	ret.value_ = config.valueConstant + (element.value() * config.valueCoefficient);
 	ret.location_ = element.location();
-	ret.referenceTime_ = element.referenceTime();
+	ret.referenceTime_ = bestValue(loading.referenceTime, element.referenceTime());
 	ret.validFrom_ = element.validFrom();
 	ret.validTo_ = element.validTo();
 	ret.valueParameter_ = config.valueParameterName;

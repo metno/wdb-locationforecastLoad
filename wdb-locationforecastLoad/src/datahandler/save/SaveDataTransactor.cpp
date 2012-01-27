@@ -36,7 +36,7 @@
 SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document) :
 	conf_(conf),
 	document_(document),
-	specificationFactory_(conf.translation().translationConfiguration)
+	specificationFactory_(conf)
 {
 }
 
@@ -66,7 +66,11 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 {
 	Escaper escape(transaction);
 
-	transaction.exec("SELECT wci.begin('" + escape(conf_.database().user) + "')");
+	std::string dataProvider = conf_.loading().dataProvider;
+	if ( dataProvider.empty() )
+		dataProvider = conf_.loading().defaultDataProvider;
+
+	transaction.exec("SELECT wci.begin('" + escape(dataProvider) + "')");
 
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{
@@ -74,7 +78,6 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 		{
 			const WdbSaveSpecification & spec = specificationFactory_.create(element);
 			const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location()));
-			//std::cout << writeQuery << std::endl;
 			transaction.exec(writeQuery);
 		}
 	}
@@ -82,6 +85,9 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 
 const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint)
 {
+	if ( not conf_.loading().placeName.empty() )
+		return getCustomPlaceName_(transaction, geometryPoint);
+
 	std::string & placeName = nameFromGeometry_[geometryPoint];
 	if ( placeName.empty() )
 	{
@@ -93,14 +99,7 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 			if ( conf_.loading().loadPlaceDefinition )
 			{
 				std::string newPlaceName = boost::to_lower_copy(geometryPoint);
-
-				std::ostringstream query;
-				query << "SELECT wci.addPlacePoint('"
-						<< transaction.esc(newPlaceName)
-						<< "', st_geomfromtext('"
-						<< safePoint
-						<<"', 4030))";
-				transaction.exec(query.str());
+				createPlacePoint(transaction, newPlaceName, geometryPoint);
 				placeName = newPlaceName;
 			}
 			else
@@ -112,4 +111,36 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 			placeName = r[0][0].as<std::string>();
 	}
 	return placeName;
+}
+
+const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transaction, const std::string & geometryPoint)
+{
+	std::string & placeName = nameFromGeometry_[geometryPoint];
+	if ( placeName.empty() )
+	{
+		const std::string & ret = conf_.loading().placeName;
+
+		std::ostringstream query;
+		query << "SELECT st_astext(placegeometry) FROM wci.getplacepoint('"<< transaction.esc(ret) << "')";
+		pqxx::result r = transaction.exec(query.str());
+		if ( r.empty() )
+		{
+			if ( not conf_.loading().loadPlaceDefinition )
+				throw std::runtime_error("No existing place definition for the given geometry");
+			createPlacePoint(transaction, ret, geometryPoint);
+			placeName = conf_.loading().placeName;
+		}
+	}
+	return placeName;
+}
+
+void SaveDataTransactor::createPlacePoint(pqxx::work & transaction, const std::string & name, const std::string & geometryPoint)
+{
+	std::ostringstream query;
+	query << "SELECT wci.addPlacePoint('"
+			<< transaction.esc(name)
+			<< "', st_geomfromtext('"
+			<< transaction.esc(geometryPoint)
+			<<"', 4030))";
+	transaction.exec(query.str());
 }
