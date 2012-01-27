@@ -28,9 +28,9 @@
 
 #include "SavingDataHandlingStrategy.h"
 #include "SaveDataTransactor.h"
-#include <wdb/LoaderConfiguration.h>
+#include <configuration/LoaderConfiguration.h>
 
-SavingDataHandlingStrategy::SavingDataHandlingStrategy(const wdb::load::LoaderConfiguration & conf) :
+SavingDataHandlingStrategy::SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf) :
 		connection_(conf.database().pqDatabaseConnection()),
 		conf_(conf)
 {

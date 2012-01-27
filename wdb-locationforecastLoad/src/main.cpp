@@ -26,7 +26,7 @@
     MA  02110-1301, USA
 */
 
-#include <wdb/LoaderConfiguration.h>
+#include <configuration/LoaderConfiguration.h>
 #include "datahandler/list/PrintingDataHandlingStrategy.h"
 #include "datahandler/save/SavingDataHandlingStrategy.h"
 #include "locationforecast/Document.h"
@@ -63,7 +63,7 @@ void help(const boost::program_options::options_description & options, std::ostr
 }
 
 
-DataHandlingStrategy * getHandlingStrategy(const wdb::load::LoaderConfiguration & conf)
+DataHandlingStrategy * getHandlingStrategy(const locationforecast::LoaderConfiguration & conf)
 {
 	if ( conf.output().list )
 		return new PrintingDataHandlingStrategy;
@@ -73,7 +73,7 @@ DataHandlingStrategy * getHandlingStrategy(const wdb::load::LoaderConfiguration 
 
 int main(int argc, char ** argv)
 {
-	wdb::load::LoaderConfiguration conf("locationForecastLoad");
+	locationforecast::LoaderConfiguration conf;
 
 	try
 	{

@@ -26,37 +26,31 @@
  MA  02110-1301, USA
  */
 
-#ifndef SAVEDATATRANSACTOR_H_
-#define SAVEDATATRANSACTOR_H_
+#ifndef LOCATIONFORECAST_LOADERCONFIGURATION_H_
+#define LOCATIONFORECAST_LOADERCONFIGURATION_H_
 
-#include <pqxx/transactor.hxx>
-#include <configuration/WdbSaveSpecificationFactory.h>
-#include <string>
-#include <map>
+#include <wdb/LoaderConfiguration.h>
+
 
 namespace locationforecast
 {
-class LoaderConfiguration;
-class Document;
-}
 
-
-class SaveDataTransactor : public pqxx::transactor<>
+class LoaderConfiguration : public wdb::load::LoaderConfiguration
 {
 public:
-	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document);
-	~SaveDataTransactor();
+	LoaderConfiguration();
+	virtual ~LoaderConfiguration();
 
-	void operator()(pqxx::work & transaction);
+	struct Translation
+	{
+		std::string translationConfiguration;
+	};
+	const Translation & translation() const { return translation_; }
+
 
 private:
-	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
-
-	std::map<std::string, std::string> nameFromGeometry_;
-
-	const locationforecast::LoaderConfiguration & conf_;
-	const locationforecast::Document & document_;
-	WdbSaveSpecificationFactory specificationFactory_;
+	Translation translation_;
 };
 
-#endif /* SAVEDATATRANSACTOR_H_ */
+}
+#endif /* LOCATIONFORECAST_LOADERCONFIGURATION_H_ */

@@ -28,14 +28,15 @@
 
 #include "SaveDataTransactor.h"
 #include <locationforecast/Document.h>
-#include <wdb/LoaderConfiguration.h>
+#include <configuration/LoaderConfiguration.h>
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
 #include <iostream>
 
-SaveDataTransactor::SaveDataTransactor(const wdb::load::LoaderConfiguration & conf, const locationforecast::Document & document) :
+SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document) :
 	conf_(conf),
-	document_(document)
+	document_(document),
+	specificationFactory_(conf.translation().translationConfiguration)
 {
 }
 

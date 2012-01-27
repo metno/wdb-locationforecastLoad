@@ -35,6 +35,7 @@
 #include <stdexcept>
 
 
+
 WdbSaveSpecificationFactory::WdbSaveSpecificationFactory(const boost::filesystem::path & configFile)
 {
 	if ( not exists(configFile) )

@@ -32,18 +32,15 @@
 #include "../DataHandlingStrategy.h"
 #include <pqxx/connection.hxx>
 
-namespace wdb
-{
-namespace load
+namespace locationforecast
 {
 class LoaderConfiguration;
-}
 }
 
 class SavingDataHandlingStrategy: public DataHandlingStrategy
 {
 public:
-	SavingDataHandlingStrategy(const wdb::load::LoaderConfiguration & conf);
+	SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf);
 	virtual ~SavingDataHandlingStrategy();
 
 	virtual void handle(const locationforecast::Document & document);
@@ -53,7 +50,7 @@ private:
 	std::string getPlaceName_(const std::string & pointDefinition);
 
 	pqxx::connection connection_;
-	const wdb::load::LoaderConfiguration & conf_;
+	const locationforecast::LoaderConfiguration & conf_;
 };
 
 #endif /* SAVINGDATAHANDLINGSTRATEGY_H_ */

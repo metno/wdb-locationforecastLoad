@@ -26,37 +26,30 @@
  MA  02110-1301, USA
  */
 
-#ifndef SAVEDATATRANSACTOR_H_
-#define SAVEDATATRANSACTOR_H_
-
-#include <pqxx/transactor.hxx>
-#include <configuration/WdbSaveSpecificationFactory.h>
-#include <string>
-#include <map>
+#include "LoaderConfiguration.h"
 
 namespace locationforecast
 {
-class LoaderConfiguration;
-class Document;
+
+LoaderConfiguration::LoaderConfiguration() :
+		::wdb::load::LoaderConfiguration("locationforecast")
+{
+	using namespace boost::program_options;
+
+	options_description translation("Parameter translation");
+	translation.add_options()
+			("translation",
+			value(& translation_.translationConfiguration)->default_value("../etc/locationForecastLoad.conf.xml"),
+			"Read parameter translation configuration from the given file"
+			);
+
+	cmdOptions().add( translation );
+	configOptions().add( translation );
+	shownOptions().add( translation );
 }
 
-
-class SaveDataTransactor : public pqxx::transactor<>
+LoaderConfiguration::~LoaderConfiguration()
 {
-public:
-	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document);
-	~SaveDataTransactor();
+}
 
-	void operator()(pqxx::work & transaction);
-
-private:
-	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
-
-	std::map<std::string, std::string> nameFromGeometry_;
-
-	const locationforecast::LoaderConfiguration & conf_;
-	const locationforecast::Document & document_;
-	WdbSaveSpecificationFactory specificationFactory_;
-};
-
-#endif /* SAVEDATATRANSACTOR_H_ */
+}
