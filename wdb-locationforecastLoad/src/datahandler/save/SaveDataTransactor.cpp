@@ -77,7 +77,6 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 			transaction.exec(writeQuery);
 		}
 	}
-//#error jeg finner ikke dataen igjen i wci_int.floatvalue, selv om de er i wdb_int.floatvalue
 }
 
 const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint)
