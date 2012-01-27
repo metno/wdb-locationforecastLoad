@@ -86,7 +86,6 @@ TEST(DocumentTest, oneElementDocument)
 	EXPECT_EQ("POINT(9.5800 60.1000)", dataElement.location());
 	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validFrom());
 	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validTo());
-
 }
 
 TEST(DocumentTest, setsReferenceTime)

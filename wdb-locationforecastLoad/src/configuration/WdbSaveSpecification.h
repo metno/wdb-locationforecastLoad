@@ -43,15 +43,15 @@ public:
 	std::string getReadQuery(boost::function<std::string (const std::string &)> escape,
 			const std::string & placeName) const;
 
-//	float value() const { return value_; }
+	float value() const { return value_; }
 	const std::string & location() const { return location_; }
-//	const std::string & referenceTime() const { return referenceTime_; }
-//	const std::string & validFrom() const { return validFrom_; }
-//	const std::string & validTo() const { return validTo_; }
-//	const std::string & valueParameter() const { return valueParameter_; }
-//	const std::string & levelParameter() const { return levelParameter_; }
-//	float levelFrom() const { return levelFrom_; }
-//	float levelTo() const { return levelTo_; }
+	const std::string & referenceTime() const { return referenceTime_; }
+	const std::string & validFrom() const { return validFrom_; }
+	const std::string & validTo() const { return validTo_; }
+	const std::string & valueParameter() const { return valueParameter_; }
+	const std::string & levelParameter() const { return levelParameter_; }
+	float levelFrom() const { return levelFrom_; }
+	float levelTo() const { return levelTo_; }
 
 private:
 	friend class WdbSaveSpecificationFactory;

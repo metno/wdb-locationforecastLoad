@@ -43,19 +43,26 @@ class Element;
 class WdbSaveSpecificationFactory
 {
 public:
-	explicit WdbSaveSpecificationFactory(const boost::filesystem::path & configFile = "etc/locationForecastLoad.conf.xml");
+	explicit WdbSaveSpecificationFactory(const boost::filesystem::path & configFile = "../etc/locationForecastLoad.conf.xml");
 	~WdbSaveSpecificationFactory();
 
 	bool hasTranslationFor(const locationforecast::DataElement & element) const;
 
 	WdbSaveSpecification create(const locationforecast::DataElement & element) const;
 
-	struct Configuration
+	class Configuration
 	{
+	public:
+		Configuration() {}
+		Configuration(const xmlpp::Element & wdb);
+
 		std::string valueParameterName;
 		std::string levelParameterName;
 		float levelFrom;
 		float levelTo;
+
+		float valueCoefficient;
+		float valueConstant;
 	};
 
 private:
