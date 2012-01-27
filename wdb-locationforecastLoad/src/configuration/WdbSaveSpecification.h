@@ -40,7 +40,7 @@ public:
 	WdbSaveSpecification();
 	~WdbSaveSpecification();
 
-	std::string getReadQuery(boost::function<std::string (const std::string &)> escape,
+	std::string getWriteQuery(boost::function<std::string (const std::string &)> escape,
 			const std::string & placeName) const;
 
 	float value() const { return value_; }

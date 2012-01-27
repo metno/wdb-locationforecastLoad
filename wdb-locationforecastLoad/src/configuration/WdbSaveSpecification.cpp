@@ -45,7 +45,7 @@ std::string quote(const std::string & s)
 }
 }
 
-std::string WdbSaveSpecification::getReadQuery(boost::function<std::string (const std::string &)> escape,
+std::string WdbSaveSpecification::getWriteQuery(boost::function<std::string (const std::string &)> escape,
 		const std::string & placeName) const
 {
 	std::ostringstream query;
