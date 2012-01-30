@@ -76,9 +76,13 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 	{
 		if ( specificationFactory_.hasTranslationFor(element) )
 		{
-			const WdbSaveSpecification & spec = specificationFactory_.create(element);
-			const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location()));
-			transaction.exec(writeQuery);
+			std::vector<WdbSaveSpecification> saveSpecs;
+			specificationFactory_.create(saveSpecs, element);
+			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
+			{
+				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location()));
+				transaction.exec(writeQuery);
+			}
 		}
 	}
 }

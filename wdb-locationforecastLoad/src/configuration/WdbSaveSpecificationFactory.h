@@ -30,9 +30,11 @@
 #define WDBSAVESPECIFICATIONFACTORY_H_
 
 #include "WdbSaveSpecification.h"
+#include "element/ConfigurationElement.h"
 #include <locationforecast/DataElement.h>
 #include <boost/filesystem/path.hpp>
 #include <map>
+#include <vector>
 
 
 namespace xmlpp
@@ -51,30 +53,29 @@ public:
 	~WdbSaveSpecificationFactory();
 
 	bool hasTranslationFor(const locationforecast::DataElement & element) const;
-
-	WdbSaveSpecification create(const locationforecast::DataElement & element) const;
+	void  create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
 
 private:
-	class Configuration
-	{
-	public:
-		Configuration() {}
-		Configuration(const xmlpp::Element & wdb);
-
-		std::string valueParameterName;
-		std::string levelParameterName;
-		float levelFrom;
-		float levelTo;
-
-		float valueCoefficient;
-		float valueConstant;
-	};
+//	class Configuration
+//	{
+//	public:
+//		Configuration() {}
+//		Configuration(const xmlpp::Element & wdb);
+//
+//		std::string valueParameterName;
+//		std::string levelParameterName;
+//		float levelFrom;
+//		float levelTo;
+//
+//		float valueCoefficient;
+//		float valueConstant;
+//	};
 
 	void setup_(const xmlpp::Element & rootNode);
 	void addParameter_(const xmlpp::Element & parameterNode);
 
 	const locationforecast::LoaderConfiguration & options_;
-	typedef std::map<std::string, Configuration> ParameterTranslation;
+	typedef std::map<std::string, ConfigurationElement::Ptr> ParameterTranslation;
 	ParameterTranslation translations_;
 };
 

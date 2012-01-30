@@ -43,7 +43,53 @@ public:
 	std::string getWriteQuery(boost::function<std::string (const std::string &)> escape,
 			const std::string & placeName) const;
 
-	float value() const { return value_; }
+
+    void setValue(float value)
+    {
+        value_ = value;
+    }
+
+    void setLocation(const std::string &  location)
+    {
+        location_ = location;
+    }
+
+    void setReferenceTime(const std::string &  referenceTime)
+    {
+        referenceTime_ = referenceTime;
+    }
+
+    void setValidFrom(const std::string &  validFrom)
+    {
+        validFrom_ = validFrom;
+    }
+
+    void setValidTo(const std::string &  validTo)
+    {
+        validTo_ = validTo;
+    }
+
+    void setLevelParameter(const std::string &  levelParameter)
+    {
+        levelParameter_ = levelParameter;
+    }
+
+    void setValueParameter(const std::string & valueParameter)
+    {
+        valueParameter_ = valueParameter;
+    }
+
+    void setLevelFrom(float levelFrom)
+    {
+        levelFrom_ = levelFrom;
+    }
+
+    void setLevelTo(float levelTo)
+    {
+        levelTo_ = levelTo;
+    }
+
+    float value() const { return value_; }
 	const std::string & location() const { return location_; }
 	const std::string & referenceTime() const { return referenceTime_; }
 	const std::string & validFrom() const { return validFrom_; }
@@ -54,8 +100,6 @@ public:
 	float levelTo() const { return levelTo_; }
 
 private:
-	friend class WdbSaveSpecificationFactory;
-
 	float value_;
 	std::string location_;
 	std::string referenceTime_;
