@@ -3,6 +3,14 @@
 <locationforecastLoad>
 	<configuration>
 
+		<data name="symbol" unit="number">
+			<wdb process="ignore"/>
+		</data>
+		
+		<data name="symbolProbability">
+			<wdb process="ignore"/>
+		</data>
+
 		<data name="temperature">
 			<wdb>
 				<conversion coefficient="1" constant="273.15" />
@@ -27,6 +35,10 @@
 				<valueparameter name="wind speed"/>
 				<levelparameter name="height above ground" from="0" to="0"/>
 			</wdb>
+		</data>
+		
+		<data name="windProbability">
+			<wdb process="ignore" />
 		</data>
 		
 		<data name="humidity">

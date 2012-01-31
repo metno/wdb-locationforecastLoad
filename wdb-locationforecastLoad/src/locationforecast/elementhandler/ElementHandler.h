@@ -49,8 +49,7 @@ public:
 
 	typedef boost::shared_ptr<ElementHandler> Ptr;
 
-	static Ptr get(const std::string & parameter);
-	static Ptr get(const std::string & parameter, const std::string & unit);
+	static Ptr get(const std::string & parameter, const std::string & unit = std::string());
 
 
 	struct Data

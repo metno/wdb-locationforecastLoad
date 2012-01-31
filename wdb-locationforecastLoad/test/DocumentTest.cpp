@@ -43,11 +43,12 @@ const boost::filesystem::path testFiles = "../test/etc";
 
 TEST(DocumentTest, itWorks)
 {
-	Document doc(testFiles/"real_example.xml");
+	Document doc(testFiles/"real_example.xml", testFiles/"locationForecastLoad.conf.xml");
 
 	Document::size_type expectedSize = 1290;
 
 	EXPECT_FALSE(doc.empty());
+
 	ASSERT_EQ(expectedSize, doc.size());
 
 	Document::const_iterator it = doc.begin();
@@ -57,17 +58,17 @@ TEST(DocumentTest, itWorks)
 
 TEST(DocumentTest, failOnNonExistingDocument)
 {
-	ASSERT_THROW(Document(testFiles/"no_such_file.xml"), Document::NoSuchFile);
+	ASSERT_THROW(Document(testFiles/"no_such_file.xml", testFiles/"locationForecastLoad.conf.xml"), Document::NoSuchFile);
 }
 
 TEST(DocumentTest, failOnDirectoryAsDocument)
 {
-	ASSERT_THROW(Document("."), Document::FileIsDirectory);
+	ASSERT_THROW(Document(".", testFiles/"locationForecastLoad.conf.xml"), Document::FileIsDirectory);
 }
 
 TEST(DocumentTest, emptyDocument)
 {
-	Document doc(testFiles/"empty_document.xml");
+	Document doc(testFiles/"empty_document.xml", testFiles/"locationForecastLoad.conf.xml");
 
 	EXPECT_TRUE(doc.empty());
 	EXPECT_EQ(0u, doc.size());
@@ -75,7 +76,7 @@ TEST(DocumentTest, emptyDocument)
 }
 TEST(DocumentTest, oneElementDocument)
 {
-	Document doc(testFiles/"one_element_document.xml");
+	Document doc(testFiles/"one_element_document.xml", testFiles/"locationForecastLoad.conf.xml");
 
 	EXPECT_FALSE(doc.empty());
 	ASSERT_EQ(1u, doc.size());
@@ -90,7 +91,7 @@ TEST(DocumentTest, oneElementDocument)
 
 TEST(DocumentTest, setsReferenceTime)
 {
-	Document doc(testFiles/"real_example.xml");
+	Document doc(testFiles/"real_example.xml", testFiles/"locationForecastLoad.conf.xml");
 
 	Document::size_type expectedSize = 1290;
 	ASSERT_EQ(expectedSize, doc.size());

@@ -33,14 +33,12 @@
 namespace locationforecast
 {
 
-ElementHandler::Ptr ElementHandler::get(const std::string & parameter)
-{
-	return Ptr(new SimpleElementHandler(parameter));
-}
-
 ElementHandler::Ptr ElementHandler::get(const std::string & parameter, const std::string & unit)
 {
-	return Ptr(new UnitSpecializedElementHandler(parameter, unit));
+	if ( unit.empty() )
+		return Ptr(new SimpleElementHandler(parameter));
+	else
+		return Ptr(new UnitSpecializedElementHandler(parameter, unit));
 }
 
 }

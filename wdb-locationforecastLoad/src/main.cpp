@@ -103,14 +103,14 @@ int main(int argc, char ** argv)
 
 	if ( conf.input().file.empty() )
 	{
-		locationforecast::Document doc;
+		locationforecast::Document doc(conf.translation().translationConfiguration);
 		dataHandler->handle(doc);
 	}
 	else
 	{
 		BOOST_FOREACH(const std::string & file, conf.input().file)
 		{
-			locationforecast::Document doc(file);
+			locationforecast::Document doc(file, conf.translation().translationConfiguration);
 			dataHandler->handle(doc);
 		}
 	}

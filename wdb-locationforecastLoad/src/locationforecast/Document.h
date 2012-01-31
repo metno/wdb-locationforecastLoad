@@ -30,12 +30,19 @@
 #define DOCUMENT_H_
 
 #include "DataElement.h"
+#include "elementhandler/ElementHandler.h"
 #include <boost/filesystem/path.hpp>
 #include <iosfwd>
 #include <string>
 #include <exception>
 #include <vector>
+#include <map>
 
+
+namespace xmlpp
+{
+class Node;
+}
 
 namespace locationforecast
 {
@@ -52,8 +59,8 @@ class Document
 	typedef std::vector<DataElement> DataList;
 
 public:
-	Document();
-	Document(const boost::filesystem::path & file);
+	explicit Document(const boost::filesystem::path & configuration);
+	Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration);
 	~Document();
 
 	typedef DataList::const_iterator const_iterator;
@@ -89,7 +96,19 @@ public:
 	DOCUMENT_EXCEPTION(ParseException);
 
 private:
+	void parseConfiguration_(const boost::filesystem::path & configuration);
+
+	ElementHandler::Data getParameterData_(const xmlpp::Element & parameterElement);
+	void parseParameter_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
+	void parseLocation_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
+	void parseTime_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
+	void parse_(std::istream & s, std::vector<DataElement> & out);
+
+
 	DataList elements_;
+	std::map<std::string, std::string> parameterUnits_;
+
+	std::map<std::string, ElementHandler::Ptr> handlers_;
 };
 
 

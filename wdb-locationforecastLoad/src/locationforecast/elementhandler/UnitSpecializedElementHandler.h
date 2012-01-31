@@ -43,8 +43,8 @@ public:
 	virtual Data extract(const xmlpp::Element & element) const;
 
 private:
-	const std::string parameter_;
-	const std::string unitName_;
+	std::string parameter_;
+	std::string unitName_;
 };
 
 } /* namespace locationforecast */

@@ -3,6 +3,14 @@
 <locationforecastLoad>
 	<configuration>
 
+		<data name="symbol" unit="number">
+			<wdb process="ignore"/>
+		</data>
+		
+		<data name="symbolProbability">
+			<wdb process="ignore"/>
+		</data>
+
 		<data name="temperature">
 			<wdb>
 				<conversion coefficient="1" constant="273.15" />
@@ -11,12 +19,26 @@
 			</wdb>
 		</data>
 		
-		<data name="windDirection">
-			<wdb specialhandling="true"/>
+		<data name="temperatureProbability">
+			<wdb process="ignore"/>
+		</data>
+				
+		<data name="windDirection" unit="deg">
+			<wdb>
+				<valueparameter name="wind from direction"/>
+				<levelparameter name="height above ground" from="0" to="0"/>
+			</wdb>
 		</data>
 		
-		<data name="windSpeed">
-			<wdb specialhandling="true"/>
+		<data name="windSpeed" unit="mps">
+			<wdb>
+				<valueparameter name="wind speed"/>
+				<levelparameter name="height above ground" from="0" to="0"/>
+			</wdb>
+		</data>
+		
+		<data name="windProbability">
+			<wdb process="ignore" />
 		</data>
 		
 		<data name="humidity">
@@ -33,35 +55,35 @@
 			</wdb>
 		</data>
 		
-        <data name="cloudiness">
+        <data name="cloudiness" unit="percent">
         	<wdb>
         	<valueparameter name="cloud area fraction"/>
         	<levelparameter name="atmosphere sigma coordinate" from="1000" to="1000"/>
         	</wdb>
         </data>
         
-        <data name="fog">
+        <data name="fog" unit="percent">
         	<wdb>
         	<valueparameter name="cloud area fraction in atmosphere layer"/>
         	<levelparameter name="atmosphere sigma coordinate" from="1000" to="1000"/>
         	</wdb>
         </data>
         
-        <data name="lowClouds">
+        <data name="lowClouds" unit="percent">
         	<wdb>
 	        	<valueparameter name="cloud area fraction in atmosphere layer"/>
 	        	<levelparameter name="atmosphere sigma coordinate" from="850" to="850"/>
         	</wdb>
         </data>
 
-        <data name="mediumClouds">
+        <data name="mediumClouds" unit="percent">
         	<wdb>
 	        	<valueparameter name="cloud area fraction in atmosphere layer"/>
 	        	<levelparameter name="atmosphere sigma coordinate" from="500" to="500"/>
         	</wdb>
         </data>
         
-       	<data name="highClouds">
+       	<data name="highClouds" unit="percent">
        		<wdb>
        			<valueparameter name="cloud area fraction in atmosphere layer"/>
        			<levelparameter name="atmosphere sigma coordinate" from="300" to="300"/>

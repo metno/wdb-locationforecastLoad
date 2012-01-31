@@ -27,33 +27,197 @@
  */
 
 #include "Document.h"
-#include "parse_document.h"
+#include "TimeRange.h"
+#include <wdbLogHandler.h>
+#include <libxml++/libxml++.h>
+#include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <iostream>
 
+
 namespace locationforecast
 {
 
-Document::Document()
+Document::Document(const boost::filesystem::path & configuration)
 {
-	parse_document(std::cin, elements_);
+	parseConfiguration_(configuration);
+	parse_(std::cin, elements_);
 }
 
-Document::Document(const boost::filesystem::path & file)
+Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration)
 {
 	if ( ! exists(file) )
 		throw NoSuchFile(file.string() + "does not exist");
 	if ( is_directory(file) )
 		throw FileIsDirectory(file.string() + " is a directory");
 
-	boost::filesystem::ifstream xmlStream(file);
+	parseConfiguration_(configuration);
 
-	parse_document(xmlStream, elements_);
+	boost::filesystem::ifstream xmlStream(file);
+	parse_(xmlStream, elements_);
 }
 
 Document::~Document()
 {
 }
+
+void Document::parseConfiguration_(const boost::filesystem::path & configuration)
+{
+	if ( ! exists(configuration) )
+		throw NoSuchFile("Configuration file " + configuration.string() + "does not exist");
+	if ( is_directory(configuration) )
+		throw FileIsDirectory("Configuration file " + configuration.string() + " is a directory");
+
+	xmlpp::DomParser parser;
+	parser.parse_file(configuration.string());
+	if ( ! parser )
+		throw ParseException("Error when parsing config file");
+
+	const xmlpp::Node * root = parser.get_document()->get_root_node();
+
+	BOOST_FOREACH(const xmlpp::Node * node, root->find("/locationforecastLoad/configuration/data"))
+	{
+		const xmlpp::Element * element = dynamic_cast<const xmlpp::Element *>(node);
+		if ( ! element ) // should never happen
+			continue;
+		std::string name = element->get_attribute_value("name");
+		std::string unit = element->get_attribute_value("unit");
+		parameterUnits_[name] = unit;
+		handlers_[name] = ElementHandler::get(name, unit);
+	}
+}
+
+ElementHandler::Data Document::getParameterData_(const xmlpp::Element & parameterElement)
+{
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
+	const std::string parameter = parameterElement.get_name();
+
+	ElementHandler::Ptr & handler = handlers_[parameter];
+	if ( ! handler )
+	{
+		log.warnStream() << "No handler for parameter <" << parameter << ">. Trying to parse contents anyway.";
+		handler = ElementHandler::get(parameter);
+	}
+	return handler->extract(parameterElement);
+}
+
+void Document::parseParameter_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node)
+{
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
+	const xmlpp::Element * element = dynamic_cast<const xmlpp::Element *>(node);
+	if ( element )
+	{
+		try
+		{
+			ElementHandler::Data parameterData = getParameterData_(* element);
+			workingData.parameter(parameterData.parameter);
+			workingData.value(parameterData.value);
+		}
+		catch ( ElementHandler::ExtractionError & e )
+		{
+			log.warnStream() << "Unable to handle parameter <" << element->get_name() << ": " << e.what();
+		}
+		out.push_back(workingData);
+	}
+}
+
+void Document::parseLocation_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node)
+{
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
+	const xmlpp::Element * locationElement = dynamic_cast<const xmlpp::Element *>(node);
+	if ( ! locationElement )
+		return;
+
+	if ( locationElement->get_name() != "location" )
+	{
+		log.warnStream() << "Unexepected element in data: " << locationElement->get_path();
+		return;
+	}
+
+	std::ostringstream location;
+	location << "POINT(";
+	location << locationElement->get_attribute_value("longitude");
+	location << ' ';
+	location << locationElement->get_attribute_value("latitude");
+	location << ')';
+	workingData.location(location.str());
+
+	BOOST_FOREACH(const xmlpp::Node * node, node->get_children() )
+		parseParameter_(workingData, out, node);
+}
+
+void Document::parseTime_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node)
+{
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
+	const xmlpp::Element * timeElement = dynamic_cast<const xmlpp::Element *>(node);
+
+	if ( ! timeElement )
+		return;
+
+	if ( timeElement->get_name() != "time" )
+	{
+		log.warnStream() << "Unexepected element in data: " << timeElement->get_path();
+		return;
+	}
+
+	std::string validFrom = timeElement->get_attribute_value("from");
+	std::string validTo = timeElement->get_attribute_value("to");
+
+	workingData.validFrom(validFrom);
+	workingData.validTo(validTo);
+
+	BOOST_FOREACH(const xmlpp::Node * node, node->get_children() )
+		parseLocation_(workingData, out, node);
+}
+
+void Document::parse_(std::istream & s, std::vector<DataElement> & out)
+{
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
+	xmlpp::DomParser parser;
+	parser.parse_stream(s);
+	if ( parser )
+	{
+		const xmlpp::Node * root = parser.get_document()->get_root_node();
+
+		typedef std::map<TimeRange, std::string> ReferenceTimesForValidTimes;
+		ReferenceTimesForValidTimes referenceTimes;
+		BOOST_FOREACH(const xmlpp::Node * modelNode, root->find("/weatherdata/meta/model"))
+		{
+			const xmlpp::Element * model = dynamic_cast<const xmlpp::Element *>(modelNode);
+			if ( ! model )
+				continue;
+			std::string from = model->get_attribute_value("from");
+			std::string to = model->get_attribute_value("to");
+			std::string referenceTime = model->get_attribute_value("termin");
+
+			referenceTimes[TimeRange(from, to)] = referenceTime;
+		}
+
+		std::vector<DataElement> dataOut;
+		BOOST_FOREACH( const xmlpp::Node * node, root->find("/weatherdata/product/time") )
+		{
+			DataElement workingData;
+			parseTime_(workingData, dataOut, node);
+		}
+
+		BOOST_FOREACH(DataElement & element, dataOut)
+			BOOST_FOREACH(const ReferenceTimesForValidTimes::value_type & refFromValid, referenceTimes)
+				if ( refFromValid.first.encloses(element.validTo()) )
+				{
+					element.referenceTime(refFromValid.second);
+					if ( element.complete() )
+						out.push_back(element);
+					else
+						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element.parameter() << '>';
+				}
+	}
+}
+
 
 }
