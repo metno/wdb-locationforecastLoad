@@ -34,12 +34,31 @@
 
 class WdbSaveSpecificationFactory;
 
+/**
+ * A specification for a single wci.write query for point data. The object is
+ * supposed to be filled with useful data after construction.
+ */
 class WdbSaveSpecification
 {
 public:
+
+	/**
+	 * Create an unintialized save specification object
+	 */
 	WdbSaveSpecification();
+
 	~WdbSaveSpecification();
 
+	/**
+	 * Create a wci.write query string from this object
+	 *
+	 * @param escape a function to escape user provided strings, so they can
+	 *               safely be used in sql queries
+	 * @param placename Use the given place name in query. It will be escaped
+	 *                  using the given escape function
+	 *
+	 * @return a complete wci.write query string, for storing point data
+	 */
 	std::string getWriteQuery(boost::function<std::string (const std::string &)> escape,
 			const std::string & placeName) const;
 

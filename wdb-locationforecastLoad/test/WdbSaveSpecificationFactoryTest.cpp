@@ -28,7 +28,7 @@
 
 
 #include <gtest/gtest.h>
-#include <configuration/WdbSaveSpecificationFactory.h>
+#include <wdb_access/WdbSaveSpecificationFactory.h>
 #include <configuration/LoaderConfiguration.h>
 
 namespace

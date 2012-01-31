@@ -98,12 +98,11 @@ int main(int argc, char ** argv)
 
 	wdb::WdbLogHandler logHandler( conf.logging().loglevel, conf.logging().logfile );
 
-
 	boost::scoped_ptr<DataHandlingStrategy> dataHandler(getHandlingStrategy(conf));
 
 	if ( conf.input().file.empty() )
 	{
-		locationforecast::Document doc(conf.translation().translationConfiguration);
+		locationforecast::Document doc(std::cin, conf.translation().translationConfiguration);
 		dataHandler->handle(doc);
 	}
 	else

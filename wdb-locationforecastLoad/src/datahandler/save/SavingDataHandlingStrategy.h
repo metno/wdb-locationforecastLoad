@@ -37,10 +37,19 @@ namespace locationforecast
 class LoaderConfiguration;
 }
 
+/**
+ * Saving a Document object to a wdb database.
+ */
 class SavingDataHandlingStrategy: public DataHandlingStrategy
 {
 public:
-	SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf);
+
+	/**
+	 * Initialize strategy.
+	 *
+	 * @param conf specifications for database access and such.
+	 */
+	explicit SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf);
 	virtual ~SavingDataHandlingStrategy();
 
 	virtual void handle(const locationforecast::Document & document);

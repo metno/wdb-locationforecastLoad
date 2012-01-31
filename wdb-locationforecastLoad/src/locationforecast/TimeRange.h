@@ -34,17 +34,46 @@
 namespace locationforecast
 {
 
+/**
+ * A time period, consisting of a start time and an end time.
+ *
+ * Note that since the developer is lazy, and nothing more is needed, this
+ * class has been implemented using strings.
+ */
 class TimeRange
 {
 public:
+	/**
+	 * An instant in time. The time objects are supposed to be of the form
+	 * 2012-01-31T12:00:00Z.
+	 */
 	typedef std::string Time;
 
+	/**
+	 * Create a new time range object.
+	 *
+	 * @see Time
+	 *
+	 * @param from Starting time point for range, inclusive
+	 * @param to Ending time point for range, inclusive.
+	 */
 	TimeRange(const Time & from, const Time & to);
 	~TimeRange();
 
+	/**
+	 * Is the given time instant on or after this->from() and before or on
+	 * this->to()?
+	 */
 	bool encloses(const Time & t) const;
 
+	/**
+	 * Staring time range, inclusive
+	 */
 	const Time & from() const { return from_; }
+
+	/**
+	 * Ending time range, inclusive
+	 */
 	const Time & to() const { return to_; }
 
 private:

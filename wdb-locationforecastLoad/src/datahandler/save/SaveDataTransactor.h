@@ -30,7 +30,7 @@
 #define SAVEDATATRANSACTOR_H_
 
 #include <pqxx/transactor.hxx>
-#include <configuration/WdbSaveSpecificationFactory.h>
+#include <wdb_access/WdbSaveSpecificationFactory.h>
 #include <string>
 #include <map>
 
@@ -41,9 +41,19 @@ class Document;
 }
 
 
+/**
+ * Functor for saving data to a wdb database. See pqxx documentation for details about how this works.
+ */
 class SaveDataTransactor : public pqxx::transactor<>
 {
 public:
+
+	/**
+	 * Initialize transactor.
+	 *
+	 * @param conf configuration for loading
+	 * @param document the document to load
+	 */
 	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document);
 	~SaveDataTransactor();
 

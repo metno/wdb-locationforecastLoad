@@ -36,11 +36,20 @@ namespace locationforecast
 class Document;
 }
 
+/**
+ * A strategy for what to do with a locationforecast document, such as storing
+ * it to a database, or printing it to stdout.
+ */
 class DataHandlingStrategy
 {
 public:
 	virtual ~DataHandlingStrategy() {}
 
+	/**
+	 * Handle data according to the strategy.
+	 *
+	 * @param document The data to process.
+	 */
 	virtual void handle(const locationforecast::Document & document) =0;
 };
 

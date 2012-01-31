@@ -44,6 +44,11 @@ namespace xmlpp
 class Node;
 }
 
+/**
+ * Functionality for reading a locationforecast document. For more information
+ * about these documents and their format, see
+ * http://api.met.no/weatherapi/locationforecast/1.8/documentation
+ */
 namespace locationforecast
 {
 
@@ -54,13 +59,43 @@ public: \
 }
 
 
+/**
+ * A parsed version of a locationforecast document. Its contents may be
+ * traversed via a random-access iterator. Each of this class' element is an
+ * object of the class DataElement.
+ *
+ * Exactly what parameters to read, and how to read them is defined in the
+ * configuration file, which is given to the constructors, along with the xml
+ * document to read.
+ */
 class Document
 {
 	typedef std::vector<DataElement> DataList;
 
 public:
-	explicit Document(const boost::filesystem::path & configuration);
+
+	/**
+	 * Construct document, based on data read from the given stream.
+	 *
+	 * @throw Document::Exception on error when reading document
+	 *
+	 * @param sin A locationforecast document is read from this stream
+	 * @param configuration Path to a configuration file, for defining how to
+	 *                      read what parameters.
+	 */
+	Document(std::istream & sin, const boost::filesystem::path & configuration);
+
+	/**
+	 * Construct document, based on data read from the given file.
+	 *
+	 * @throw Document::Exception on error when reading document
+	 *
+	 * @param sin A locationforecast document is read from this stream
+	 * @param configuration Path to a configuration file, for defining how to
+	 *                      read what parameters.
+	 */
 	Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration);
+
 	~Document();
 
 	typedef DataList::const_iterator const_iterator;
@@ -75,6 +110,9 @@ public:
 	size_type size() const { return elements_.size(); }
 	bool empty() const { return elements_.empty(); }
 
+	/**
+	 * Base class for exceptions thrown by this class
+	 */
 	class Exception : public std::exception
 	{
 	public:

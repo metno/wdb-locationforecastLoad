@@ -35,16 +35,31 @@
 namespace locationforecast
 {
 
+/**
+ * Container for command-line options.
+ */
 class LoaderConfiguration : public wdb::load::LoaderConfiguration
 {
 public:
 	LoaderConfiguration();
 	virtual ~LoaderConfiguration();
 
+	/**
+	 * Options related to translating from locationforecast's xml format to
+	 * wdb write queries.
+	 */
 	struct Translation
 	{
+		/**
+		 * Path to file containing specifications of how to translate from
+		 * locationforecast format to wdb queries
+		 */
 		std::string translationConfiguration;
 	};
+
+	/**
+	 * Get the translation options, as set on command line
+	 */
 	const Translation & translation() const { return translation_; }
 
 

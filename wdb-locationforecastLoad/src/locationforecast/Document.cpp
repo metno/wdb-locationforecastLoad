@@ -39,10 +39,10 @@
 namespace locationforecast
 {
 
-Document::Document(const boost::filesystem::path & configuration)
+Document::Document(std::istream & sin, const boost::filesystem::path & configuration)
 {
 	parseConfiguration_(configuration);
-	parse_(std::cin, elements_);
+	parse_(sin, elements_);
 }
 
 Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration)

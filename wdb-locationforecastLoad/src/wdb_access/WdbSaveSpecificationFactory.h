@@ -46,31 +46,41 @@ namespace locationforecast
 class LoaderConfiguration;
 }
 
+/**
+ * Create WdbSaveSpecification objects, based on locationforecast::DataElement
+ * objects.
+ */
 class WdbSaveSpecificationFactory
 {
 public:
+
+	/**
+	 * Initialize, and read configuration from the given object.
+	 *
+	 * @param options configuration for how to create the data
+	 */
 	explicit WdbSaveSpecificationFactory(const locationforecast::LoaderConfiguration & options);
 	~WdbSaveSpecificationFactory();
 
+	/**
+	 * Do we have any specification for how to convert the given object to a
+	 * WdbSaveSpecification?
+	 *
+	 * @param element to check if we have a translation for
+	 *
+	 * @return true if we have a translation for the given element
+	 */
 	bool hasTranslationFor(const locationforecast::DataElement & element) const;
+
+	/**
+	 * Generate WdbSaveSpecification object(s) from the given element object.
+	 *
+	 * @param out result data goes here, at the back
+	 * @param element The base object for WdbSaveSpecification creation
+	 */
 	void  create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
 
 private:
-//	class Configuration
-//	{
-//	public:
-//		Configuration() {}
-//		Configuration(const xmlpp::Element & wdb);
-//
-//		std::string valueParameterName;
-//		std::string levelParameterName;
-//		float levelFrom;
-//		float levelTo;
-//
-//		float valueCoefficient;
-//		float valueConstant;
-//	};
-
 	void setup_(const xmlpp::Element & rootNode);
 	void addParameter_(const xmlpp::Element & parameterNode);
 

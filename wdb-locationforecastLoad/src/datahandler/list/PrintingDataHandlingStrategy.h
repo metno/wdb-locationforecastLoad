@@ -31,6 +31,11 @@
 
 #include "../DataHandlingStrategy.h"
 
+
+/**
+ * Printing a Document object's contents to stdout, in a
+ * human-readable format.
+ */
 class PrintingDataHandlingStrategy: public DataHandlingStrategy
 {
 public:

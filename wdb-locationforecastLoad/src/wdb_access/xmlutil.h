@@ -35,7 +35,21 @@
 #include <string>
 
 
-
+/**
+ * Read an attribute from an element node, and try to interpret it as the
+ * type T.
+ *
+ * @throw boost::bad_lexical_cast if unable to interpret the value as the
+ *                                given type
+ *
+ * @param element the element node to read an attribute from
+ * @param attributeName The attribute to fetch
+ * @param defaultValue This value is returned if the attribute did not exist,
+ *                     or its value was empty
+ *
+ * @return interpreted value for the given attribute, or defaultValue if the
+ *         attribute value was empty or did not exist.
+ */
 template<typename T>
 T getAttributeValue(const xmlpp::Element & element, const std::string & attributeName, T defaultValue)
 {
@@ -45,8 +59,32 @@ T getAttributeValue(const xmlpp::Element & element, const std::string & attribut
 	return boost::lexical_cast<T>(value);
 }
 
+/**
+ * Get a single element node that is a direct child of the given parent, and
+ * that has the given name. An error is raised if the number of nodes with the
+ * given name is different from 1.
+ *
+ * @throw std::runtime_error if number of nodes with the given name != 1
+ *
+ * @param parent Parent node for the one we want
+ * @param name of the node we want
+ *
+ * @return The requested element node.
+ */
 const xmlpp::Element & getSingleElement(const xmlpp::Element & parent, const std::string & name);
 
+
+/**
+ * Same as getSindleElement, but instead of throwing an exception, return NULL
+ * if the given node did not exist. The returned pointer should not be deleted
+ *
+ * @throw std::runtime_error if number of nodes with the given name > 1
+ *
+ * @param parent Parent node for the one we want
+ * @param name of the node we want
+ *
+ * @return A pointer to the requested element node.
+ */
 const xmlpp::Element * getSingleElementIfExists(const xmlpp::Element & parent, const std::string & name);
 
 
