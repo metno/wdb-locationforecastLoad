@@ -18,3 +18,5 @@ locationforecastLoadTest_LDADD = \
 	$(gtest_LIBS) -lgtest_main
 
 endif
+
+include test/etc/make.mk

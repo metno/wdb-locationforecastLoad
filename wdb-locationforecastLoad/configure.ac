@@ -6,13 +6,18 @@ AC_INIT([locationforecastLoad], [0.2.0], [wdb@met.no])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_SRCDIR([src/locationforecast/Document.cpp])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR ([m4])
 
 
 AC_PROG_CXX
 AC_PROG_CC
-
+AC_PROG_RANLIB
 
 PKG_CHECK_MODULES(libwdbLoad, libwdbLoad)
+PKG_CHECK_MODULES(libxmlpp, libxml++-2.6)
+
+GTEST_CHECK
+
 
 
 AC_HEADER_STDBOOL
