@@ -1,0 +1,5 @@
+A program to load locationforecast data into a wdb database. 
+
+See http://api.met.no/weatherapi/locationforecast/1.8/documentation for more 
+information about locationforecast.
+
