@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 7),
  libwdbload1-dev,
  libboost-dev,
  libxml++2.6-dev
-Standards-Version: 3.8.3
+Standards-Version: 3.9.1
 
 Package: locationforecastload
 Architecture: any

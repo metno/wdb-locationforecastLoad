@@ -22,6 +22,17 @@ noinst_LIBRARIES = liblocationforecastLoad.a
 bin_PROGRAMS = locationforecastLoad
 locationforecastLoad_LDADD = liblocationforecastLoad.a $(AM_LDADD)
 
+man_MANS = locationforecastLoad.1
+locationforecastLoad.1 : locationforecastLoad
+	$(HELP2MAN) \
+	-n"load locationforecast data from api.met.no int a wdb database" \
+	-N \
+	./$< > $@
+
+
+CLEANFILES = $(man_MANS)
+
+
 include src/make.mk
 include etc/make.mk
 include test/make.mk

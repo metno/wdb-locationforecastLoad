@@ -13,7 +13,6 @@ DEBIAN_SOURCE_PACKAGE_NAME = $(DEBIAN_PACKAGE_NAME_BASE).dsc
 
 dist-debian: dist clean-debian
 	tar xvzf $(PKG_DIR).tar.gz
-	cp $(PKG_DIR).tar.gz $(DEBIAN_PACKAGE).orig.tar.gz
 
 prepare-debian:
 	rm -rf $(DEBIAN_DIR)
