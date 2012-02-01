@@ -1,0 +1,20 @@
+Source: locationforecastload
+Section: science
+Priority: extra
+Maintainer: Vegard Bones <vegard.bones@met.no>
+Build-Depends: debhelper (>= 7), 
+ autotools-dev,
+ libwdbload1-dev,
+ libboost-dev,
+ libxml++2.6-dev
+Standards-Version: 3.8.3
+
+Package: locationforecastload
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Load data from api.met.no locationforecast into wdb
+ This is a loading program for parsing data, as provided by api.met.no's 
+ service locationforecast, and storing it into a wdb database.
+ .
+ See http://api.met.no/weatherapi/locationforecast/1.8/documentation for more
+ information about the locationforecast service.

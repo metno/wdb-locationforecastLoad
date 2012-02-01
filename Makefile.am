@@ -25,3 +25,5 @@ locationforecastLoad_LDADD = liblocationforecastLoad.a $(AM_LDADD)
 include src/make.mk
 include etc/make.mk
 include test/make.mk
+include debian.mk
+
