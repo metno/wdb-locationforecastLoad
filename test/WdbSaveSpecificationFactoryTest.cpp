@@ -37,6 +37,7 @@ boost::shared_ptr<locationforecast::LoaderConfiguration>  getConfiguration(int a
 {
 	boost::shared_ptr<locationforecast::LoaderConfiguration> ret(new locationforecast::LoaderConfiguration);
 	ret->parse(argc, const_cast<char **>(argv));
+	ret->translation().translationConfiguration = SRCDIR"/etc/locationForecastLoad.conf.xml";
 	return ret;
 }
 boost::shared_ptr<locationforecast::LoaderConfiguration>  getConfiguration()

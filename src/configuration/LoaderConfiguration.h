@@ -61,7 +61,7 @@ public:
 	 * Get the translation options, as set on command line
 	 */
 	const Translation & translation() const { return translation_; }
-
+	Translation & translation() { return translation_; }
 
 private:
 	Translation translation_;

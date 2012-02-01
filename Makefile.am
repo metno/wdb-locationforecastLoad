@@ -5,7 +5,12 @@ EXTRA_DIST =
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/src \
 	$(libwdbLoad_CFLAGS) \
-	$(libxmlpp_CFLAGS)
+	$(libxmlpp_CFLAGS) \
+	$(gtest_CFLAGS)
+
+AM_CXXFLAGS = \
+	-DSYSCONFDIR=\"$(sysconfdir)\" \
+	-DVERSION=\"$(VERSION)\"
 
 AM_LDADD = \
 	$(libwdbLoad_LIBS) \

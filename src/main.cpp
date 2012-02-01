@@ -37,7 +37,6 @@
 
 
 #define PROGRAM "locationforecastLoad"
-#define VERSION "0.0.1"
 
 void version(std::ostream & out)
 {
