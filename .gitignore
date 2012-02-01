@@ -1,0 +1,13 @@
+.autotools
+.cproject
+.project
+.settings/
+configure
+config.h.in
+install-sh
+depcomp
+build
+missing
+Makefile.in
+autom4te.cache
+aclocal.m4
