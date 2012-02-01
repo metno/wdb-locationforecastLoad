@@ -39,7 +39,7 @@ LoaderConfiguration::LoaderConfiguration() :
 	options_description translation("Parameter translation");
 	translation.add_options()
 			("translation",
-			value(& translation_.translationConfiguration)->default_value(SYSCONFDIR"/locationForecastLoad.conf.xml"),
+			value(& translation_.translationConfiguration)->default_value(SYSCONFDIR"/locationforecastLoad.conf.xml"),
 			"Read parameter translation configuration from the given file"
 			);
 

@@ -1,3 +1,5 @@
-sysconf_DATA = etc/locationForecastLoad.conf.xml
+sysconf_DATA = \
+	etc/locationforecastLoad.conf.xml \
+	etc/locationforecastLoad.conf.xsd
 
-EXTRA_DIST += etc/locationForecastLoad.conf.xml
+EXTRA_DIST += $(sysconf_DATA)

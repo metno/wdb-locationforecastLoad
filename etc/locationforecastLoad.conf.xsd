@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+<xs:complexType name="conversion_type">
+	<xs:attribute name="coefficient" type="xs:float" use="optional" default="1" />
+	<xs:attribute name="constant" type="xs:float" use="optional" default="0" />
+</xs:complexType>
+
+<xs:complexType name="parameter_type">
+	<xs:attribute name="name" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="levelparameter_type">
+	<xs:complexContent>
+		<xs:extension base="parameter_type">
+			<xs:attribute name="from" type="xs:float" use="optional"/>
+			<xs:attribute name="to" type="xs:float" use="optional"/>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+<xs:simpleType name="process_directive">
+	<xs:restriction base="xs:token">
+		<xs:enumeration value="do_process"/>
+		<xs:enumeration value="ignore"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="wdb_type">
+	<xs:sequence>
+		<xs:element name="conversion" type="conversion_type" minOccurs="0"/>
+		<xs:element name="valueparameter" type="parameter_type" minOccurs="0"/>
+		<xs:element name="levelparameter" type="levelparameter_type" minOccurs="0"/>
+	</xs:sequence>
+	<xs:attribute name="process" type="process_directive" use="optional" default="do_process" />
+</xs:complexType>
+
+<xs:complexType name="data_type">
+	<xs:sequence>
+		<xs:element name="wdb" type="wdb_type" />
+	</xs:sequence>
+	<xs:attribute name="name" type="xs:string" use="required" />
+	<xs:attribute name="unit" type="xs:string" use="optional" />
+</xs:complexType>
+
+<xs:complexType name="configuration_type">
+	<xs:sequence>
+		<xs:element name="data" type="data_type" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="locationforecastLoad_type">
+	<xs:sequence>
+		<xs:element name="configuration" type="configuration_type"/>
+	</xs:sequence>
+</xs:complexType>
+
+
+
+<xs:element name="locationforecastLoad" type="locationforecastLoad_type" />
+
+
+
+</xs:schema>
