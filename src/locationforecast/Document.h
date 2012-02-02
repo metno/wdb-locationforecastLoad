@@ -159,6 +159,8 @@ private:
 	void parseFile_(const boost::filesystem::path & file, std::vector<DataElement> & out);
 	void parseUrl_(const std::string & url, std::vector<DataElement> & out);
 
+	std::string baseUrl_;
+
 	DataList elements_;
 	std::map<std::string, std::string> parameterUnits_;
 

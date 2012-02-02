@@ -89,9 +89,9 @@ Document::Document(float longitude, float latitude, const boost::filesystem::pat
 
 	parseConfiguration_(configuration);
 
-	std::string url = "http://api.met.no/weatherapi/locationforecast/1.8/?lat=%LATITUDE%;lon=%LONGITUDE%";
-	boost::replace_all(url, "%LATITUDE%", str(latitude));
-	boost::replace_all(url, "%LONGITUDE%", str(longitude));
+	std::string url = baseUrl_;
+	boost::replace_all(url, "$LATITUDE$", str(latitude));
+	boost::replace_all(url, "$LONGITUDE$", str(longitude));
 
 	log.infoStream() << "Getting data from " << url;
 
@@ -116,6 +116,16 @@ void Document::parseConfiguration_(const boost::filesystem::path & configuration
 		throw ParseException("Error when parsing config file");
 
 	const xmlpp::Node * root = parser.get_document()->get_root_node();
+
+	xmlpp::NodeSet sourceNodes = root->find("/locationforecastLoad/configuration/locationforecast/source");
+	if ( sourceNodes.size() == 1 )
+	{
+		const xmlpp::Element * element = dynamic_cast<const xmlpp::Element *>(sourceNodes.front());
+		baseUrl_ = element->get_attribute_value("url");
+		//baseUrl_ = "http://api.met.no/weatherapi/locationforecast/1.8/?lat=$LATITUDE$;lon=$LONGITUDE$";
+	}
+	else if ( not sourceNodes.empty() )
+		throw ParseException("Many locationforecast/source elements in configuration");
 
 	BOOST_FOREACH(const xmlpp::Node * node, root->find("/locationforecastLoad/configuration/data"))
 	{

@@ -6,6 +6,10 @@
 	xsi:noNamespaceSchemaLocation="locationforecastLoad.conf.xsd">
 	<configuration>
 
+		<locationforecast>
+			<source url="http://api.met.no/weatherapi/locationforecast/1.8/?lat=$LATITUDE$;lon=$LONGITUDE$"/>
+		</locationforecast>
+
 		<data name="symbol" unit="number">
 			<wdb process="ignore"/>
 		</data>
