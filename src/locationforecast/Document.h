@@ -85,6 +85,15 @@ public:
 	 */
 	Document(std::istream & sin, const boost::filesystem::path & configuration);
 
+	/**
+	 * Construct document, based on data read from the given URL.
+	 *
+	 * @throw Document::Exception on error when reading document
+	 *
+	 * @param sin A locationforecast document is read from this stream
+	 * @param configuration Path to a configuration file, for defining how to
+	 *                      read what parameters.
+	 */
 	Document(const std::string & url, const boost::filesystem::path & configuration);
 
 	/**
@@ -134,6 +143,7 @@ public:
 	DOCUMENT_EXCEPTION(NoSuchFile);
 	DOCUMENT_EXCEPTION(FileIsDirectory);
 	DOCUMENT_EXCEPTION(ParseException);
+	DOCUMENT_EXCEPTION(HttpException);
 
 private:
 	void parseConfiguration_(const boost::filesystem::path & configuration);

@@ -57,6 +57,11 @@ TEST(DocumentTest, itWorks)
 	EXPECT_TRUE(it == doc.end());
 }
 
+TEST(DocumentTest, failOnCorruptDocument)
+{
+	ASSERT_THROW(Document(testFiles/"corrupt_document.xml", configFile), Document::ParseException);
+}
+
 TEST(DocumentTest, failOnNonExistingDocument)
 {
 	ASSERT_THROW(Document(testFiles/"no_such_file.xml", configFile), Document::NoSuchFile);

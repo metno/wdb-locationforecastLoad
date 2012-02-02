@@ -61,20 +61,52 @@ size_t writeToStream(char * ptr, size_t size, size_t nmemb, void *userdata)
 
 Document::Document(const std::string & url, const boost::filesystem::path & configuration)
 {
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
+
 	parseConfiguration_(configuration);
 
 	std::stringstream data;
 
-	curl_global_init(CURL_GLOBAL_NOTHING);
+	curl_global_init(CURL_GLOBAL_ALL);
 	CURL * curl = curl_easy_init();
 	if ( ! curl )
-		throw std::runtime_error("Unable to initalize web handler");
+		throw std::runtime_error("Unable to initialize web handler");
+
 	curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *) & data);
+
 	curl_easy_setopt(curl, CURLOPT_USERAGENT, "wdb-locationforecastLoad/"VERSION);
-	CURLcode res = curl_easy_perform(curl);
+
+	char error_buffer[CURL_ERROR_SIZE];
+	error_buffer[0] = '\0';
+	curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);
+
+	CURLcode error = curl_easy_perform(curl);
+
+	long http_response_code;
+	curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, & http_response_code);
+
 	curl_easy_cleanup(curl);
+
+	switch ( http_response_code )
+	{
+	case 404:
+		throw HttpException("404 Not found: " + url);
+	case  403:
+		log.warn("api.met.no version is deprecated");
+		// fallthrough
+	case 200:
+		break;
+	default:
+		std::ostringstream error;
+		error << "Error when fetching document: " << http_response_code;
+		throw HttpException(error.str());
+	}
+
+	if ( error )
+		throw HttpException(error_buffer);
 
 	parse_(data, elements_);
 }
@@ -218,6 +250,9 @@ void Document::parse_(std::istream & s, std::vector<DataElement> & out)
 	if ( parser )
 	{
 		const xmlpp::Node * root = parser.get_document()->get_root_node();
+
+		if ( root->find("/weatherdata").size() != 1 )
+			throw ParseException("Invalid document");
 
 		typedef std::map<TimeRange, std::string> ReferenceTimesForValidTimes;
 		ReferenceTimesForValidTimes referenceTimes;

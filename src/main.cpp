@@ -106,10 +106,17 @@ int main(int argc, char ** argv)
 	}
 	else
 	{
-		BOOST_FOREACH(const std::string & file, conf.input().file)
+		BOOST_FOREACH(const std::string & url, conf.input().file)
 		{
-			locationforecast::Document doc(file, conf.translation().translationConfiguration);
-			dataHandler->handle(doc);
+			try
+			{
+				locationforecast::Document doc(url, conf.translation().translationConfiguration);
+				dataHandler->handle(doc);
+			}
+			catch ( std::exception & e )
+			{
+				std::clog << "ERROR: " << e.what() << std::endl;
+			}
 		}
 	}
 }
