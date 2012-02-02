@@ -48,14 +48,16 @@ void help(const boost::program_options::options_description & options, std::ostr
 	version(out);
 	out << '\n';
 
-	out << "Usage: "PROGRAM" [OPTIONS] [URLs...]\n\n";
+	out << "Usage: "PROGRAM" [OPTIONS] [URL_OR_PLACENAME ...]\n\n";
 
 	out << "Loads a locationforecast xml document, as retrived from api.met.no. See\n"
 			"http://api.yr.no/weatherapi/locationforecast/1.8/documentation for details \n"
 			"about this format.\n\n";
 
-	out << "Input files are xml files. If no files are given, stdin will be read. There is\n"
-			"currently no support for downloading data automatically.\n\n";
+	out << "There are two ways to load data into wdb via this program. Either you provide\n"
+			"a complete URL for reading, or you provide a place name from the wdb database\n"
+			"you are writing to. This last functionality will not work if you have chosen\n"
+			"the --list option.\n\n";
 
 	out << "Options:\n";
 	out << options << std::endl;
@@ -114,8 +116,19 @@ int main(int argc, char ** argv)
 			try
 			{
 				log.infoStream() << "Loading " << url;
-				locationforecast::Document doc(url, conf.translation().translationConfiguration);
-				dataHandler->handle(doc);
+
+				if ( url.find_first_of("://") != std::string::npos )
+				{
+					locationforecast::Document doc(url, conf.translation().translationConfiguration);
+					dataHandler->handle(doc);
+				}
+				else
+				{
+					DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
+					locationforecast::Document doc(pos.longitude, pos.latitude, conf.translation().translationConfiguration);
+					dataHandler->handle(doc);
+				}
+
 				log.info("Loading complete");
 			}
 			catch ( std::exception & e )

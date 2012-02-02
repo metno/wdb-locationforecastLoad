@@ -30,7 +30,7 @@
 #define SAVINGDATAHANDLINGSTRATEGY_H_
 
 #include "../DataHandlingStrategy.h"
-#include <pqxx/connection.hxx>
+#include <pqxx/connection>
 
 namespace locationforecast
 {
@@ -53,6 +53,8 @@ public:
 	virtual ~SavingDataHandlingStrategy();
 
 	virtual void handle(const locationforecast::Document & document);
+
+	virtual Position getPosition(const std::string & placeName);
 
 private:
 

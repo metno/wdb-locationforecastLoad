@@ -29,7 +29,7 @@
 #ifndef SAVEDATATRANSACTOR_H_
 #define SAVEDATATRANSACTOR_H_
 
-#include <pqxx/transactor.hxx>
+#include <pqxx/transactor>
 #include <wdb_data/WdbSaveSpecificationFactory.h>
 #include <string>
 #include <map>

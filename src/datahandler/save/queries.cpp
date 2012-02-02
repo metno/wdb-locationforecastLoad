@@ -27,44 +27,28 @@
 */
 
 
-#ifndef DATAHANDLINGSTRATEGY_H_
-#define DATAHANDLINGSTRATEGY_H_
+#include "queries.h"
+#include <configuration/LoaderConfiguration.h>
+#include <wdbLogHandler.h>
 
-#include <string>
-#include <stdexcept>
 
-namespace locationforecast
+namespace queries
 {
-class Document;
+
+void wciBegin(pqxx::work & transaction, const locationforecast::LoaderConfiguration & conf)
+{
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
+
+	std::string dataProvider = conf.loading().dataProvider;
+	if ( dataProvider.empty() )
+		dataProvider = conf.loading().defaultDataProvider;
+
+	std::string beginQuery = "SELECT wci.begin('" + transaction.esc(dataProvider) + "')";
+	log.debug(beginQuery);
+	transaction.exec(beginQuery);
 }
 
-/**
- * A strategy for what to do with a locationforecast document, such as storing
- * it to a database, or printing it to stdout.
- */
-class DataHandlingStrategy
-{
-public:
-	virtual ~DataHandlingStrategy() {}
-
-	/**
-	 * Handle data according to the strategy.
-	 *
-	 * @param document The data to process.
-	 */
-	virtual void handle(const locationforecast::Document & document) =0;
-
-	struct Position
-	{
-		float longitude;
-		float latitude;
-	};
-
-	virtual Position getPosition(const std::string & placeName)
-	{
-		throw std::logic_error("Getting location is not supported");
-	}
-};
+}
 
 
-#endif /* DATAHANDLINGSTRATEGY_H_ */
+

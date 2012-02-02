@@ -34,6 +34,7 @@
 #include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/algorithm/string.hpp>
 #include <iostream>
 
 
@@ -70,6 +71,33 @@ Document::Document(const boost::filesystem::path & file, const boost::filesystem
 	parseConfiguration_(configuration);
 	parseFile_(file, elements_);
 }
+
+namespace
+{
+std::string str(float f)
+{
+	std::ostringstream s;
+	s.precision(4);
+	s << std::fixed << f;
+	return s.str();
+}
+}
+
+Document::Document(float longitude, float latitude, const boost::filesystem::path & configuration)
+{
+	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
+
+	parseConfiguration_(configuration);
+
+	std::string url = "http://api.met.no/weatherapi/locationforecast/1.8/?lat=%LATITUDE%;lon=%LONGITUDE%";
+	boost::replace_all(url, "%LATITUDE%", str(latitude));
+	boost::replace_all(url, "%LONGITUDE%", str(longitude));
+
+	log.infoStream() << "Getting data from " << url;
+
+	parseUrl_(url, elements_);
+}
+
 
 Document::~Document()
 {

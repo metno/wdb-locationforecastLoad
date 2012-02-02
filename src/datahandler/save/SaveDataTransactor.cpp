@@ -27,6 +27,7 @@
  */
 
 #include "SaveDataTransactor.h"
+#include "queries.h"
 #include <locationforecast/Document.h>
 #include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
@@ -67,16 +68,9 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 {
 	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
 
+	queries::wciBegin(transaction, conf_);
+
 	Escaper escape(transaction);
-
-	std::string dataProvider = conf_.loading().dataProvider;
-	if ( dataProvider.empty() )
-		dataProvider = conf_.loading().defaultDataProvider;
-
-	std::string beginQuery = "SELECT wci.begin('" + escape(dataProvider) + "')";
-	log.debug(beginQuery);
-	transaction.exec(beginQuery);
-
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{
 		if ( specificationFactory_.hasTranslationFor(element) )

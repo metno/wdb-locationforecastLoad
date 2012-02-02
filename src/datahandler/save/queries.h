@@ -27,44 +27,22 @@
 */
 
 
-#ifndef DATAHANDLINGSTRATEGY_H_
-#define DATAHANDLINGSTRATEGY_H_
+#ifndef QUERIES_H_
+#define QUERIES_H_
 
-#include <string>
-#include <stdexcept>
+#include <pqxx/transaction>
 
 namespace locationforecast
 {
-class Document;
+class LoaderConfiguration;
 }
 
-/**
- * A strategy for what to do with a locationforecast document, such as storing
- * it to a database, or printing it to stdout.
- */
-class DataHandlingStrategy
+namespace queries
 {
-public:
-	virtual ~DataHandlingStrategy() {}
 
-	/**
-	 * Handle data according to the strategy.
-	 *
-	 * @param document The data to process.
-	 */
-	virtual void handle(const locationforecast::Document & document) =0;
+void wciBegin(pqxx::work & transaction, const locationforecast::LoaderConfiguration & conf);
 
-	struct Position
-	{
-		float longitude;
-		float latitude;
-	};
-
-	virtual Position getPosition(const std::string & placeName)
-	{
-		throw std::logic_error("Getting location is not supported");
-	}
-};
+}
 
 
-#endif /* DATAHANDLINGSTRATEGY_H_ */
+#endif /* QUERIES_H_ */

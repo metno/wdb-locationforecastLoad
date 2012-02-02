@@ -107,6 +107,8 @@ public:
 	 */
 	Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration);
 
+	Document(float longitude, float latitude, const boost::filesystem::path & configuration);
+
 	~Document();
 
 	typedef DataList::const_iterator const_iterator;

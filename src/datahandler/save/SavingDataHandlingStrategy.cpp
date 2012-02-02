@@ -28,6 +28,7 @@
 
 #include "SavingDataHandlingStrategy.h"
 #include "SaveDataTransactor.h"
+#include "queries.h"
 #include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
 
@@ -50,4 +51,30 @@ void SavingDataHandlingStrategy::handle(const locationforecast::Document & docum
 	connection_.perform(t);
 
 	log.debug("Save complete");
+}
+
+SavingDataHandlingStrategy::Position SavingDataHandlingStrategy::getPosition(const std::string & placeName)
+{
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
+
+	std::ostringstream query;
+
+	pqxx::work w(connection_);
+
+	queries::wciBegin(w, conf_);
+
+	query << "SELECT st_x(placegeometry), st_y(placegeometry) FROM wci.getplacepoint('" << w.esc(placeName) << "')";
+	log.debug(query.str());
+	pqxx::result r = w.exec(query.str());
+
+	if ( r.empty() )
+		throw std::runtime_error(placeName + ": no such place in database");
+	if ( r.size() > 1 ) // should never happen
+		throw std::runtime_error(placeName + " returned many points!");
+
+	Position ret;
+	ret.longitude = r[0][0].as<float>();
+	ret.latitude = r[0][1].as<float>();
+
+	return ret;
 }
