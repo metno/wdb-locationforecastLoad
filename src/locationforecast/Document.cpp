@@ -245,6 +245,8 @@ void Document::parse_(std::istream & s, std::vector<DataElement> & out)
 {
 	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
 
+	log.debug("Starting parse");
+
 	xmlpp::DomParser parser;
 	parser.parse_stream(s);
 	if ( parser )
@@ -286,6 +288,10 @@ void Document::parse_(std::istream & s, std::vector<DataElement> & out)
 						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element.parameter() << '>';
 				}
 	}
+	else
+		throw ParseException("Error when initializing xml parser");
+
+	log.debug("Parsing of document complete");
 }
 
 

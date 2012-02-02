@@ -29,6 +29,7 @@
 #include "SavingDataHandlingStrategy.h"
 #include "SaveDataTransactor.h"
 #include <configuration/LoaderConfiguration.h>
+#include <wdbLogHandler.h>
 
 SavingDataHandlingStrategy::SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf) :
 		connection_(conf.database().pqDatabaseConnection()),
@@ -42,6 +43,11 @@ SavingDataHandlingStrategy::~SavingDataHandlingStrategy()
 
 void SavingDataHandlingStrategy::handle(const locationforecast::Document & document)
 {
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
+	log.debug("Starting to save data in database");
+
 	SaveDataTransactor t(conf_, document);
 	connection_.perform(t);
+
+	log.debug("Save complete");
 }

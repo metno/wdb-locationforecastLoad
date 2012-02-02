@@ -96,13 +96,16 @@ int main(int argc, char ** argv)
 	}
 
 	wdb::WdbLogHandler logHandler( conf.logging().loglevel, conf.logging().logfile );
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
 
 	boost::scoped_ptr<DataHandlingStrategy> dataHandler(getHandlingStrategy(conf));
 
 	if ( conf.input().file.empty() )
 	{
+		log.info("Loading data from stdin");
 		locationforecast::Document doc(std::cin, conf.translation().translationConfiguration);
 		dataHandler->handle(doc);
+		log.info("Loading complete");
 	}
 	else
 	{
@@ -110,14 +113,17 @@ int main(int argc, char ** argv)
 		{
 			try
 			{
+				log.infoStream() << "Loading " << url;
 				locationforecast::Document doc(url, conf.translation().translationConfiguration);
 				dataHandler->handle(doc);
+				log.info("Loading complete");
 			}
 			catch ( std::exception & e )
 			{
-				std::clog << "ERROR: " << e.what() << std::endl;
+				log.error(e.what());
 			}
 		}
 	}
+	log.debug("done");
 }
 

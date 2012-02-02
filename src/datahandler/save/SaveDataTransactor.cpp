@@ -29,6 +29,7 @@
 #include "SaveDataTransactor.h"
 #include <locationforecast/Document.h>
 #include <configuration/LoaderConfiguration.h>
+#include <wdbLogHandler.h>
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
 #include <iostream>
@@ -64,13 +65,17 @@ namespace
 
 void SaveDataTransactor::operator () (pqxx::work & transaction)
 {
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
+
 	Escaper escape(transaction);
 
 	std::string dataProvider = conf_.loading().dataProvider;
 	if ( dataProvider.empty() )
 		dataProvider = conf_.loading().defaultDataProvider;
 
-	transaction.exec("SELECT wci.begin('" + escape(dataProvider) + "')");
+	std::string beginQuery = "SELECT wci.begin('" + escape(dataProvider) + "')";
+	log.debug(beginQuery);
+	transaction.exec(beginQuery);
 
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{
@@ -81,6 +86,7 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
 			{
 				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location()));
+				log.debug(writeQuery);
 				transaction.exec(writeQuery);
 			}
 		}
@@ -92,11 +98,14 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 	if ( not conf_.loading().placeName.empty() )
 		return getCustomPlaceName_(transaction, geometryPoint);
 
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
+
 	std::string & placeName = nameFromGeometry_[geometryPoint];
 	if ( placeName.empty() )
 	{
 		const std::string safePoint = transaction.esc(geometryPoint);
 		std::string query = "SELECT * FROM wci.getNameforGeometry('" + safePoint + "')";
+		log.debug(query);
 		pqxx::result r = transaction.exec(query);
 		if ( r.empty() )
 		{
@@ -119,6 +128,7 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 
 const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transaction, const std::string & geometryPoint)
 {
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
 	std::string & placeName = nameFromGeometry_[geometryPoint];
 	if ( placeName.empty() )
 	{
@@ -126,6 +136,7 @@ const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transac
 
 		std::ostringstream query;
 		query << "SELECT st_astext(placegeometry) FROM wci.getplacepoint('"<< transaction.esc(ret) << "')";
+		log.debug(query.str());
 		pqxx::result r = transaction.exec(query.str());
 		if ( r.empty() )
 		{
@@ -140,11 +151,13 @@ const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transac
 
 void SaveDataTransactor::createPlacePoint(pqxx::work & transaction, const std::string & name, const std::string & geometryPoint)
 {
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
 	std::ostringstream query;
 	query << "SELECT wci.addPlacePoint('"
 			<< transaction.esc(name)
 			<< "', st_geomfromtext('"
 			<< transaction.esc(geometryPoint)
 			<<"', 4030))";
+	log.debug(query.str());
 	transaction.exec(query.str());
 }
