@@ -61,69 +61,14 @@ size_t writeToStream(char * ptr, size_t size, size_t nmemb, void *userdata)
 
 Document::Document(const std::string & url, const boost::filesystem::path & configuration)
 {
-	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
-
 	parseConfiguration_(configuration);
-
-	std::stringstream data;
-
-	curl_global_init(CURL_GLOBAL_ALL);
-	CURL * curl = curl_easy_init();
-	if ( ! curl )
-		throw std::runtime_error("Unable to initialize web handler");
-
-	curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-
-	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
-	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *) & data);
-
-	curl_easy_setopt(curl, CURLOPT_USERAGENT, "wdb-locationforecastLoad/"VERSION);
-
-	char error_buffer[CURL_ERROR_SIZE];
-	error_buffer[0] = '\0';
-	curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);
-
-	CURLcode error = curl_easy_perform(curl);
-
-	long http_response_code;
-	curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, & http_response_code);
-
-	curl_easy_cleanup(curl);
-
-	switch ( http_response_code )
-	{
-	case 400:
-		throw HttpException("400 Bad Request: " + url);
-	case 404:
-		throw HttpException("404 Not found: " + url);
-	case  203:
-		log.warn("api.met.no version is deprecated");
-		break;
-	case 200:
-		break;
-	default:
-		std::ostringstream error;
-		error << "Error when fetching document: " << http_response_code;
-		throw HttpException(error.str());
-	}
-
-	if ( error )
-		throw HttpException(error_buffer);
-
-	parse_(data, elements_);
+	parseUrl_(url, elements_);
 }
 
 Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration)
 {
-	if ( ! exists(file) )
-		throw NoSuchFile(file.string() + "does not exist");
-	if ( is_directory(file) )
-		throw FileIsDirectory(file.string() + " is a directory");
-
 	parseConfiguration_(configuration);
-
-	boost::filesystem::ifstream xmlStream(file);
-	parse_(xmlStream, elements_);
+	parseFile_(file, elements_);
 }
 
 Document::~Document()
@@ -296,5 +241,68 @@ void Document::parse_(std::istream & s, std::vector<DataElement> & out)
 	log.debug("Parsing of document complete");
 }
 
+
+void Document::parseFile_(const boost::filesystem::path & file, std::vector<DataElement> & out)
+{
+	if ( ! exists(file) )
+		throw NoSuchFile(file.string() + "does not exist");
+	if ( is_directory(file) )
+		throw FileIsDirectory(file.string() + " is a directory");
+
+	boost::filesystem::ifstream xmlStream(file);
+	parse_(xmlStream, elements_);
+}
+
+void Document::parseUrl_(const std::string & url, std::vector<DataElement> & out)
+{
+	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
+
+	std::stringstream data;
+
+	curl_global_init(CURL_GLOBAL_ALL);
+	CURL * curl = curl_easy_init();
+	if ( ! curl )
+		throw std::runtime_error("Unable to initialize web handler");
+
+	curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
+	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *) & data);
+
+	curl_easy_setopt(curl, CURLOPT_USERAGENT, "wdb-locationforecastLoad/"VERSION);
+
+	char error_buffer[CURL_ERROR_SIZE];
+	error_buffer[0] = '\0';
+	curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buffer);
+
+	CURLcode error = curl_easy_perform(curl);
+
+	long http_response_code;
+	curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, & http_response_code);
+
+	curl_easy_cleanup(curl);
+
+	switch ( http_response_code )
+	{
+	case 400:
+		throw HttpException("400 Bad Request: " + url);
+	case 404:
+		throw HttpException("404 Not found: " + url);
+	case  203:
+		log.warn("api.met.no version is deprecated");
+		break;
+	case 200:
+		break;
+	default:
+		std::ostringstream error;
+		error << "Error when fetching document: " << http_response_code;
+		throw HttpException(error.str());
+	}
+
+	if ( error )
+		throw HttpException(error_buffer);
+
+	parse_(data, elements_);
+}
 
 }

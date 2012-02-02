@@ -154,6 +154,8 @@ private:
 	void parseTime_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
 	void parse_(std::istream & s, std::vector<DataElement> & out);
 
+	void parseFile_(const boost::filesystem::path & file, std::vector<DataElement> & out);
+	void parseUrl_(const std::string & url, std::vector<DataElement> & out);
 
 	DataList elements_;
 	std::map<std::string, std::string> parameterUnits_;
