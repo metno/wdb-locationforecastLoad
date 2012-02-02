@@ -92,11 +92,13 @@ Document::Document(const std::string & url, const boost::filesystem::path & conf
 
 	switch ( http_response_code )
 	{
+	case 400:
+		throw HttpException("400 Bad Request: " + url);
 	case 404:
 		throw HttpException("404 Not found: " + url);
-	case  403:
+	case  203:
 		log.warn("api.met.no version is deprecated");
-		// fallthrough
+		break;
 	case 200:
 		break;
 	default:
