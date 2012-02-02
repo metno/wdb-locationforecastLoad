@@ -30,6 +30,7 @@
 #include "TimeRange.h"
 #include <wdbLogHandler.h>
 #include <libxml++/libxml++.h>
+#include <curl/curl.h>
 #include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -43,6 +44,39 @@ Document::Document(std::istream & sin, const boost::filesystem::path & configura
 {
 	parseConfiguration_(configuration);
 	parse_(sin, elements_);
+}
+
+namespace
+{
+size_t writeToStream(char * ptr, size_t size, size_t nmemb, void *userdata)
+{
+	std::ostream * s = (std::ostream *) userdata;
+
+	for ( int i = 0; i < size * nmemb; ++ i )
+		(*s) << ptr[i];
+
+	return size * nmemb;
+}
+}
+
+Document::Document(const std::string & url, const boost::filesystem::path & configuration)
+{
+	parseConfiguration_(configuration);
+
+	std::stringstream data;
+
+	curl_global_init(CURL_GLOBAL_NOTHING);
+	CURL * curl = curl_easy_init();
+	if ( ! curl )
+		throw std::runtime_error("Unable to initalize web handler");
+	curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
+	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *) & data);
+	curl_easy_setopt(curl, CURLOPT_USERAGENT, "wdb-locationforecastLoad/"VERSION);
+	CURLcode res = curl_easy_perform(curl);
+	curl_easy_cleanup(curl);
+
+	parse_(data, elements_);
 }
 
 Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration)

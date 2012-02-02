@@ -6,7 +6,7 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/src \
 	$(libwdbLoad_CFLAGS) \
 	$(libxmlpp_CFLAGS) \
-	$(gtest_CFLAGS)
+	$(libcurl_CFLAGS)
 
 AM_CXXFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
@@ -14,7 +14,8 @@ AM_CXXFLAGS = \
 
 AM_LDADD = \
 	$(libwdbLoad_LIBS) \
-	$(libxmlpp_LIBS)
+	$(libxmlpp_LIBS) \
+	$(libcurl_LIBS)
 
 
 noinst_LIBRARIES = liblocationforecastLoad.a

@@ -15,6 +15,7 @@ AC_PROG_RANLIB
 
 PKG_CHECK_MODULES(libwdbLoad, libwdbLoad)
 PKG_CHECK_MODULES(libxmlpp, libxml++-2.6)
+PKG_CHECK_MODULES(libcurl, libcurl)
 
 GTEST_CHECK
 

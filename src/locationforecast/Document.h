@@ -85,6 +85,8 @@ public:
 	 */
 	Document(std::istream & sin, const boost::filesystem::path & configuration);
 
+	Document(const std::string & url, const boost::filesystem::path & configuration);
+
 	/**
 	 * Construct document, based on data read from the given file.
 	 *

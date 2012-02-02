@@ -48,7 +48,7 @@ void help(const boost::program_options::options_description & options, std::ostr
 	version(out);
 	out << '\n';
 
-	out << "Usage: "PROGRAM" [OPTIONS] [FILES...]\n\n";
+	out << "Usage: "PROGRAM" [OPTIONS] [URLs...]\n\n";
 
 	out << "Loads a locationforecast xml document, as retrived from api.met.no. See\n"
 			"http://api.yr.no/weatherapi/locationforecast/1.8/documentation for details \n"

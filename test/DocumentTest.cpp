@@ -64,7 +64,7 @@ TEST(DocumentTest, failOnNonExistingDocument)
 
 TEST(DocumentTest, failOnDirectoryAsDocument)
 {
-	ASSERT_THROW(Document(".", configFile), Document::FileIsDirectory);
+	ASSERT_THROW(Document(boost::filesystem::path("."), configFile), Document::FileIsDirectory);
 }
 
 TEST(DocumentTest, emptyDocument)
