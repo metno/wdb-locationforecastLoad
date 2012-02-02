@@ -1,3 +1,9 @@
+locationforecastload (0.3.0) lucid; urgency=low
+
+  * Input methods update
+
+ -- Vegard Bønes <vegard.bones@met.no>  Thu, 02 Feb 2012 13:45:52 +0000
+
 locationforecastload (0.2.0) unstable; urgency=low
 
   * Initial Release.
