@@ -32,6 +32,7 @@
 				
 		<data name="windDirection" unit="deg">
 			<wdb>
+				<conversion coefficient="0.0174532925" constant="0"/>
 				<valueparameter name="wind from direction"/>
 				<levelparameter name="height above ground" from="0" to="0"/>
 			</wdb>
@@ -57,6 +58,7 @@
 		
 		<data name="pressure">
 			<wdb>
+				<conversion coefficient="100"/>
 				<valueparameter name="air pressure at sea level"/>
 				<levelparameter name="height above ground"/>
 			</wdb>
