@@ -1,3 +1,9 @@
+locationforecastload (0.3.1) lucid; urgency=low
+
+  * default configuration update
+
+ -- Vegard Bønes <vegardb@wdb-dev3.met.no>  Mon, 06 Feb 2012 06:47:55 +0000
+
 locationforecastload (0.3.0) lucid; urgency=low
 
   * Input methods update
