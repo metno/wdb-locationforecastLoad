@@ -60,7 +60,7 @@ public:
 	void operator()(pqxx::work & transaction);
 
 private:
-	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
+	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint, const std::string & referencetime);
 	const std::string & getCustomPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
 	void createPlacePoint(pqxx::work & transaction, const std::string & name, const std::string & geometryPoint);
 

@@ -79,7 +79,7 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 			specificationFactory_.create(saveSpecs, element);
 			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
 			{
-				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location()));
+				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
 				log.debug(writeQuery);
 				transaction.exec(writeQuery);
 			}
@@ -87,7 +87,7 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 	}
 }
 
-const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint)
+const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint, const std::string & referencetime)
 {
 	if ( not conf_.loading().placeName.empty() )
 		return getCustomPlaceName_(transaction, geometryPoint);
@@ -98,7 +98,9 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 	if ( placeName.empty() )
 	{
 		const std::string safePoint = transaction.esc(geometryPoint);
-		std::string query = "SELECT * FROM wci.getNameforGeometry('" + safePoint + "')";
+		const std::string rtime = transaction.esc(referencetime);
+		// some code is commented out because there are lots of errors regarding place valid times in test databases
+		std::string query = "SELECT * FROM wci.getNameforGeometry('" + safePoint + /*"', '" + rtime + */"')";
 		log.debug(query);
 		pqxx::result r = transaction.exec(query);
 		if ( r.empty() )
@@ -110,10 +112,10 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 				placeName = newPlaceName;
 			}
 			else
-				throw std::runtime_error("No existing place definition for the given geometry");
+				throw std::runtime_error("No existing place definition for the given geometry: - " + geometryPoint);
 		}
 		else if ( r.size() > 1 )
-			throw std::runtime_error("Many names for same geometry!");
+			throw std::runtime_error("Many names for same geometry: " + geometryPoint);
 		else
 			placeName = r[0][0].as<std::string>();
 	}

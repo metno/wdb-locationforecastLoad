@@ -30,10 +30,18 @@
 #include "queries.h"
 #include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
-
+#include <boost/algorithm/string.hpp>
+#include <boost/foreach.hpp>
 
 namespace queries
 {
+namespace
+{
+int getInt(const std::string & s)
+{
+	return boost::lexical_cast<int>(boost::algorithm::trim_copy(s));
+}
+}
 
 void wciBegin(pqxx::work & transaction, const locationforecast::LoaderConfiguration & conf)
 {
@@ -43,7 +51,25 @@ void wciBegin(pqxx::work & transaction, const locationforecast::LoaderConfigurat
 	if ( dataProvider.empty() )
 		dataProvider = conf.loading().defaultDataProvider;
 
-	std::string beginQuery = "SELECT wci.begin('" + transaction.esc(dataProvider) + "')";
+
+	std::ostringstream query;
+	query << "SELECT wci.begin('" + transaction.esc(dataProvider) + '\'';
+	if ( not conf.loading().nameSpace.empty() )
+	{
+		std::vector<std::string> namespaceElements;
+		boost::algorithm::split(namespaceElements, conf.loading().nameSpace, boost::algorithm::is_any_of(","));
+
+		if ( namespaceElements.size() == 1 )
+			for ( int i = 0; i < 3; ++ i )
+				query << ", " << getInt(namespaceElements.front());
+		else if ( namespaceElements.size() == 3 )
+			BOOST_FOREACH(const std::string & s, namespaceElements)
+				query << ", " << getInt(s);
+	}
+	query << ')';
+
+	std::string beginQuery = query.str();
+
 	log.debug(beginQuery);
 	transaction.exec(beginQuery);
 }
