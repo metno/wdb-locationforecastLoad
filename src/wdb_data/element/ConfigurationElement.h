@@ -30,8 +30,8 @@
 #ifndef CONFIGURATIONELEMENT_H_
 #define CONFIGURATIONELEMENT_H_
 
-#include "../WdbSaveSpecification.h"
 #include <locationforecast/DataElement.h>
+#include <wdb/FloatDataEntry.h>
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
@@ -45,7 +45,7 @@ class ConfigurationElement
 public:
 	virtual ~ConfigurationElement() {}
 
-	virtual void create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const =0;
+	virtual void create(std::vector<wdb::load::FloatDataEntry> & out, const locationforecast::DataElement & element) const =0;
 
 	typedef boost::shared_ptr<ConfigurationElement> Ptr;
 

@@ -29,9 +29,9 @@
 #ifndef WDBSAVESPECIFICATIONFACTORY_H_
 #define WDBSAVESPECIFICATIONFACTORY_H_
 
-#include "WdbSaveSpecification.h"
 #include "element/ConfigurationElement.h"
 #include <locationforecast/DataElement.h>
+#include <wdb/FloatDataEntry.h>
 #include <boost/filesystem/path.hpp>
 #include <map>
 #include <vector>
@@ -78,7 +78,7 @@ public:
 	 * @param out result data goes here, at the back
 	 * @param element The base object for WdbSaveSpecification creation
 	 */
-	void  create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
+	void  create(std::vector<wdb::load::FloatDataEntry> & out, const locationforecast::DataElement & element) const;
 
 private:
 	void setup_(const xmlpp::Element & rootNode);

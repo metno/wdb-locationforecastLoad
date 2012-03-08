@@ -27,14 +27,16 @@
  */
 
 #include "SavingDataHandlingStrategy.h"
-#include "SaveDataTransactor.h"
 #include "queries.h"
+#include <locationforecast/Document.h>
 #include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
+#include <boost/foreach.hpp>
 
 SavingDataHandlingStrategy::SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf) :
-		connection_(conf.database().pqDatabaseConnection()),
-		conf_(conf)
+		connection_(conf),
+		conf_(conf),
+		factory_(conf)
 {
 }
 
@@ -42,13 +44,26 @@ SavingDataHandlingStrategy::~SavingDataHandlingStrategy()
 {
 }
 
+
 void SavingDataHandlingStrategy::handle(const locationforecast::Document & document)
 {
 	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
 	log.debug("Starting to save data in database");
 
-	SaveDataTransactor t(conf_, document);
-	connection_.perform(t);
+	std::vector<wdb::load::FloatDataEntry> toSave;
+
+	BOOST_FOREACH(const locationforecast::Document::value_type & data, document)
+		if ( factory_.hasTranslationFor(data) )
+			factory_.create(toSave, data);
+
+	if ( not document.placeName().empty() )
+		BOOST_FOREACH ( wdb::load::FloatDataEntry & entry, toSave )
+			entry.placeName(document.placeName());
+
+	connection_.write(toSave);
+
+//	SaveDataTransactor t(conf_, document);
+//	connection_.perform(t);
 
 	log.debug("Save complete");
 }

@@ -113,8 +113,8 @@ int main(int argc, char ** argv)
 	{
 		BOOST_FOREACH(const std::string & url, conf.input().file)
 		{
-			try
-			{
+//			try
+//			{
 				log.infoStream() << "Loading " << url;
 
 				if ( url.find_first_of("://") != std::string::npos )
@@ -124,17 +124,24 @@ int main(int argc, char ** argv)
 				}
 				else
 				{
-					DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
-					locationforecast::Document doc(pos.longitude, pos.latitude, conf.translation().translationConfiguration);
-					dataHandler->handle(doc);
+					try
+					{
+						DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
+						locationforecast::Document doc(pos.longitude, pos.latitude, conf.translation().translationConfiguration, url);
+						dataHandler->handle(doc);
+					}
+					catch ( std::runtime_error & e )
+					{
+						log.warn(e.what());
+					}
 				}
 
 				log.info("Loading complete");
-			}
-			catch ( std::exception & e )
-			{
-				log.error(e.what());
-			}
+//			}
+//			catch ( std::exception & e )
+//			{
+//				log.error(e.what());
+//			}
 		}
 	}
 	log.debug("done");

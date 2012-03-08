@@ -41,7 +41,8 @@
 namespace locationforecast
 {
 
-Document::Document(std::istream & sin, const boost::filesystem::path & configuration)
+Document::Document(std::istream & sin, const boost::filesystem::path & configuration, const std::string & placeName) :
+		placeName_(placeName)
 {
 	parseConfiguration_(configuration);
 	parse_(sin, elements_);
@@ -60,13 +61,15 @@ size_t writeToStream(char * ptr, size_t size, size_t nmemb, void *userdata)
 }
 }
 
-Document::Document(const std::string & url, const boost::filesystem::path & configuration)
+Document::Document(const std::string & url, const boost::filesystem::path & configuration, const std::string & placeName) :
+		placeName_(placeName)
 {
 	parseConfiguration_(configuration);
 	parseUrl_(url, elements_);
 }
 
-Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration)
+Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration, const std::string & placeName) :
+		placeName_(placeName)
 {
 	parseConfiguration_(configuration);
 	parseFile_(file, elements_);
@@ -83,7 +86,8 @@ std::string str(float f)
 }
 }
 
-Document::Document(float longitude, float latitude, const boost::filesystem::path & configuration)
+Document::Document(float longitude, float latitude, const boost::filesystem::path & configuration, const std::string & placeName) :
+		placeName_(placeName)
 {
 	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
 

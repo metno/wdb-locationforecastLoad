@@ -45,7 +45,7 @@ class NormalConfigurationElement : public ConfigurationElement
 public:
 	explicit NormalConfigurationElement(const xmlpp::Element & wdb);
 
-	virtual void create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
+	virtual void create(std::vector<wdb::load::FloatDataEntry> & out, const locationforecast::DataElement & element) const;
 
 private:
 	std::string valueParameterName;

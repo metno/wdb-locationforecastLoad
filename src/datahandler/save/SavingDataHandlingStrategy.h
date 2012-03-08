@@ -30,7 +30,8 @@
 #define SAVINGDATAHANDLINGSTRATEGY_H_
 
 #include "../DataHandlingStrategy.h"
-#include <pqxx/connection>
+#include <wdb_data/WdbSaveSpecificationFactory.h>
+#include <wdb/LoaderDatabaseConnection.h>
 
 namespace locationforecast
 {
@@ -60,8 +61,9 @@ private:
 
 	std::string getPlaceName_(const std::string & pointDefinition);
 
-	pqxx::connection connection_;
+	wdb::load::LoaderDatabaseConnection connection_;
 	const locationforecast::LoaderConfiguration & conf_;
+	WdbSaveSpecificationFactory factory_;
 };
 
 #endif /* SAVINGDATAHANDLINGSTRATEGY_H_ */

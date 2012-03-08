@@ -83,7 +83,7 @@ public:
 	 * @param configuration Path to a configuration file, for defining how to
 	 *                      read what parameters.
 	 */
-	Document(std::istream & sin, const boost::filesystem::path & configuration);
+	Document(std::istream & sin, const boost::filesystem::path & configuration, const std::string & placeName = std::string());
 
 	/**
 	 * Construct document, based on data read from the given URL.
@@ -94,7 +94,7 @@ public:
 	 * @param configuration Path to a configuration file, for defining how to
 	 *                      read what parameters.
 	 */
-	Document(const std::string & url, const boost::filesystem::path & configuration);
+	Document(const std::string & url, const boost::filesystem::path & configuration, const std::string & placeName = std::string());
 
 	/**
 	 * Construct document, based on data read from the given file.
@@ -105,9 +105,9 @@ public:
 	 * @param configuration Path to a configuration file, for defining how to
 	 *                      read what parameters.
 	 */
-	Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration);
+	Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration, const std::string & placeName = std::string());
 
-	Document(float longitude, float latitude, const boost::filesystem::path & configuration);
+	Document(float longitude, float latitude, const boost::filesystem::path & configuration, const std::string & placeName = std::string());
 
 	~Document();
 
@@ -122,6 +122,8 @@ public:
 
 	size_type size() const { return elements_.size(); }
 	bool empty() const { return elements_.empty(); }
+
+	const std::string & placeName() const { return placeName_; }
 
 	/**
 	 * Base class for exceptions thrown by this class
@@ -159,6 +161,7 @@ private:
 	void parseFile_(const boost::filesystem::path & file, std::vector<DataElement> & out);
 	void parseUrl_(const std::string & url, std::vector<DataElement> & out);
 
+	std::string placeName_;
 	std::string baseUrl_;
 
 	DataList elements_;

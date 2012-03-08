@@ -97,7 +97,7 @@ bool WdbSaveSpecificationFactory::hasTranslationFor(const locationforecast::Data
 }
 
 
-void WdbSaveSpecificationFactory::create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const
+void WdbSaveSpecificationFactory::create(std::vector<wdb::load::FloatDataEntry> & out, const locationforecast::DataElement & element) const
 {
 	if ( not element.complete() )
 		throw std::invalid_argument("incomplete data element");
@@ -122,7 +122,13 @@ void WdbSaveSpecificationFactory::create(std::vector<WdbSaveSpecification> & out
 
 	if ( not options_.loading().referenceTime.empty() )
 	{
-		BOOST_FOREACH(WdbSaveSpecification & spec, out)
-			spec.setReferenceTime(options_.loading().referenceTime);
+		BOOST_FOREACH(wdb::load::FloatDataEntry & entry, out)
+			entry.referenceTime(options_.loading().referenceTime);
 	}
+
+	std::string dataProvider = "locationforecast";
+	if ( not options_.loading().dataProvider.empty() )
+		dataProvider = options_.loading().dataProvider;
+	BOOST_FOREACH(wdb::load::FloatDataEntry & entry, out)
+		entry.dataProviderName(dataProvider);
 }

@@ -53,19 +53,19 @@ NormalConfigurationElement::NormalConfigurationElement(const xmlpp::Element & wd
 }
 
 
-void NormalConfigurationElement::create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const
+void NormalConfigurationElement::create(std::vector<wdb::load::FloatDataEntry> & out, const locationforecast::DataElement & element) const
 {
-	WdbSaveSpecification ret;
+	wdb::load::FloatDataEntry ret;
 
-	ret.setValue(valueConstant + (element.value() * valueCoefficient));
-	ret.setLocation(element.location());
-	ret.setReferenceTime(element.referenceTime());
-	ret.setValidFrom(element.validFrom());
-	ret.setValidTo(element.validTo());
-	ret.setValueParameter(valueParameterName);
-	ret.setLevelParameter(levelParameterName);
-	ret.setLevelFrom(levelFrom);
-	ret.setLevelTo(levelTo);
+	ret.value(valueConstant + (element.value() * valueCoefficient));
+	ret.placeName(element.location());
+	ret.referenceTime(element.referenceTime());
+	ret.validTimeFrom(element.validFrom());
+	ret.validTimeTo(element.validTo());
+	ret.valueParameterName(valueParameterName);
+	ret.levelParameterName(levelParameterName);
+	ret.levelFrom(levelFrom);
+	ret.levelTo(levelTo);
 
 	out.push_back(ret);
 }
