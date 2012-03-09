@@ -29,6 +29,7 @@
 #ifndef SAVEDATATRANSACTOR_H_
 #define SAVEDATATRANSACTOR_H_
 
+#include "OutputMode.h"
 #include <pqxx/transactor>
 #include <wdb_data/WdbSaveSpecificationFactory.h>
 #include <string>
@@ -48,14 +49,20 @@ class SaveDataTransactor : public pqxx::transactor<>
 {
 public:
 
+
 	/**
 	 * Initialize transactor.
 	 *
 	 * @param conf configuration for loading
 	 * @param document the document to load
 	 */
-	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document);
+	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document, OutputMode outputMode);
 	~SaveDataTransactor();
+
+	void setOutputMode(OutputMode mode)
+	{
+		outputMode_ = mode;
+	}
 
 	void operator()(pqxx::work & transaction);
 
@@ -69,6 +76,8 @@ private:
 	const locationforecast::LoaderConfiguration & conf_;
 	const locationforecast::Document & document_;
 	WdbSaveSpecificationFactory specificationFactory_;
+
+	OutputMode outputMode_;
 };
 
 #endif /* SAVEDATATRANSACTOR_H_ */

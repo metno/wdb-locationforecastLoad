@@ -33,6 +33,7 @@
 #include <wdbLogHandler.h>
 #include <boost/scoped_ptr.hpp>
 #include <boost/foreach.hpp>
+#include <boost/thread/thread.hpp>
 #include <iostream>
 
 
@@ -59,6 +60,9 @@ void help(const boost::program_options::options_description & options, std::ostr
 			"you are writing to. This last functionality will not work if you have chosen\n"
 			"the --list option.\n\n";
 
+	out << "Note that the output from the --list option is suitable for sunning with wdb's\n"
+			"fastload program.\n\n";
+
 	out << "Options:\n";
 	out << options << std::endl;
 }
@@ -67,9 +71,10 @@ void help(const boost::program_options::options_description & options, std::ostr
 DataHandlingStrategy * getHandlingStrategy(const locationforecast::LoaderConfiguration & conf)
 {
 	if ( conf.output().list )
-		return new PrintingDataHandlingStrategy;
+		return new SavingDataHandlingStrategy(conf, FastLoad);
+		//return new PrintingDataHandlingStrategy;
 	else
-		return new SavingDataHandlingStrategy(conf);
+		return new SavingDataHandlingStrategy(conf, WciWrite);
 }
 
 int main(int argc, char ** argv)
@@ -111,6 +116,7 @@ int main(int argc, char ** argv)
 	}
 	else
 	{
+
 		BOOST_FOREACH(const std::string & url, conf.input().file)
 		{
 			try
@@ -135,6 +141,9 @@ int main(int argc, char ** argv)
 			{
 				log.error(e.what());
 			}
+
+			// in order not to kill api.met.no:
+			boost::this_thread::sleep(boost::posix_time::milliseconds(250));
 		}
 	}
 	log.debug("done");

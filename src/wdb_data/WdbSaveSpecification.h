@@ -62,6 +62,7 @@ public:
 	std::string getWriteQuery(boost::function<std::string (const std::string &)> escape,
 			const std::string & placeName) const;
 
+	std::ostream & getFastloadText(std::ostream & out, const std::string & placeName) const;
 
     void setValue(float value)
     {

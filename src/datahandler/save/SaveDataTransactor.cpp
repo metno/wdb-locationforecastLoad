@@ -35,10 +35,11 @@
 #include <boost/algorithm/string.hpp>
 #include <iostream>
 
-SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document) :
+SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document, OutputMode outputMode) :
 	conf_(conf),
 	document_(document),
-	specificationFactory_(conf)
+	specificationFactory_(conf),
+	outputMode_(outputMode)
 {
 }
 
@@ -71,6 +72,9 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 	queries::wciBegin(transaction, conf_);
 
 	Escaper escape(transaction);
+
+	if ( outputMode_ == FastLoad )
+		std::cout << "locationforecast\n";
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{
 		if ( specificationFactory_.hasTranslationFor(element) )
@@ -79,12 +83,21 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 			specificationFactory_.create(saveSpecs, element);
 			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
 			{
-				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
-				log.debug(writeQuery);
-				transaction.exec(writeQuery);
+				if ( outputMode_ == WciWrite )
+				{
+					const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
+					log.debug(writeQuery);
+					transaction.exec(writeQuery);
+				}
+				else //if ( outputMode_ == Fastload )
+				{
+					spec.getFastloadText(std::cout, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
+				}
 			}
 		}
 	}
+	if ( outputMode_ == FastLoad )
+		std::cout << std::endl;
 }
 
 const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint, const std::string & referencetime)
