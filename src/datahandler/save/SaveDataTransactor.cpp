@@ -33,6 +33,7 @@
 #include <wdbLogHandler.h>
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <iostream>
 
 SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document, OutputMode outputMode) :
@@ -64,6 +65,17 @@ namespace
 	};
 }
 
+struct DataproviderIndicator
+{
+	DataproviderIndicator()
+	{
+		std::cout << "locationforecast\n";
+	}
+	~DataproviderIndicator()
+	{
+		std::cout << std::endl;
+	}
+};
 
 void SaveDataTransactor::operator () (pqxx::work & transaction)
 {
@@ -73,8 +85,8 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 
 	Escaper escape(transaction);
 
-	if ( outputMode_ == FastLoad )
-		std::cout << "locationforecast\n";
+	boost::scoped_ptr<DataproviderIndicator> indicator(outputMode_ == FastLoad ? new DataproviderIndicator : 0);
+
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{
 		if ( specificationFactory_.hasTranslationFor(element) )
@@ -96,8 +108,6 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 			}
 		}
 	}
-	if ( outputMode_ == FastLoad )
-		std::cout << std::endl;
 }
 
 const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint, const std::string & referencetime)
