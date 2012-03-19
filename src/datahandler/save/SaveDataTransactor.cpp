@@ -65,17 +65,23 @@ namespace
 	};
 }
 
+namespace
+{
 struct DataproviderIndicator
 {
-	DataproviderIndicator()
+	explicit DataproviderIndicator(const std::string & nameSpace)
 	{
-		std::cout << "locationforecast\n";
+		std::cout << "locationforecast";
+		if ( not nameSpace.empty() )
+			std::cout << '\t' << nameSpace;
+		std::cout << '\n';
 	}
 	~DataproviderIndicator()
 	{
 		std::cout << std::endl;
 	}
 };
+}
 
 void SaveDataTransactor::operator () (pqxx::work & transaction)
 {
@@ -85,7 +91,7 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 
 	Escaper escape(transaction);
 
-	boost::scoped_ptr<DataproviderIndicator> indicator(outputMode_ == FastLoad ? new DataproviderIndicator : 0);
+	boost::scoped_ptr<DataproviderIndicator> indicator(outputMode_ == FastLoad ? new DataproviderIndicator(conf_.loading().nameSpace) : 0);
 
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{

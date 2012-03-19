@@ -136,14 +136,15 @@ int main(int argc, char ** argv)
 				}
 
 				log.info("Loading complete");
+
+				timespec s = {0, 200000000};
+				timespec remaining;
+				nanosleep(& s, & remaining);
 			}
 			catch ( std::exception & e )
 			{
 				log.error(e.what());
 			}
-
-			// in order not to kill api.met.no:
-			boost::this_thread::sleep(boost::posix_time::milliseconds(250));
 		}
 	}
 	log.debug("done");
