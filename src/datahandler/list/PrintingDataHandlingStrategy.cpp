@@ -41,7 +41,7 @@ PrintingDataHandlingStrategy::~PrintingDataHandlingStrategy()
 
 void PrintingDataHandlingStrategy::handle(const locationforecast::Document & document)
 {
-	std::string location;
+	type::Point location;
 	std::string validFrom;
 	std::string validTo;
 	std::string parameter;
@@ -51,7 +51,7 @@ void PrintingDataHandlingStrategy::handle(const locationforecast::Document & doc
 		if ( location != element.location() )
 		{
 			location = element.location();
-			std::cout << location << ":\n";
+			std::cout << location.wkt() << ":\n";
 		}
 		if ( validFrom != element.validFrom() or validTo != element.validTo())
 		{

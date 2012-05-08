@@ -29,7 +29,6 @@
 #ifndef SAVEDATATRANSACTOR_H_
 #define SAVEDATATRANSACTOR_H_
 
-#include "OutputMode.h"
 #include <pqxx/transactor>
 #include <wdb_data/WdbSaveSpecificationFactory.h>
 #include <string>
@@ -56,28 +55,21 @@ public:
 	 * @param conf configuration for loading
 	 * @param document the document to load
 	 */
-	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document, OutputMode outputMode);
+	SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document);
 	~SaveDataTransactor();
-
-	void setOutputMode(OutputMode mode)
-	{
-		outputMode_ = mode;
-	}
 
 	void operator()(pqxx::work & transaction);
 
 private:
-	const std::string & getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint, const std::string & referencetime);
-	const std::string & getCustomPlaceName_(pqxx::work & transaction, const std::string & geometryPoint);
-	void createPlacePoint(pqxx::work & transaction, const std::string & name, const std::string & geometryPoint);
+	const std::string & getPlaceName_(pqxx::work & transaction, const type::Point & geometryPoint, const std::string & referencetime);
+	const std::string & getCustomPlaceName_(pqxx::work & transaction, const type::Point & geometryPoint);
+	void createPlacePoint(pqxx::work & transaction, const std::string & name, const type::Point & geometryPoint);
 
-	std::map<std::string, std::string> nameFromGeometry_;
+	std::map<type::Point, std::string> nameFromGeometry_;
 
 	const locationforecast::LoaderConfiguration & conf_;
 	const locationforecast::Document & document_;
 	WdbSaveSpecificationFactory specificationFactory_;
-
-	OutputMode outputMode_;
 };
 
 #endif /* SAVEDATATRANSACTOR_H_ */

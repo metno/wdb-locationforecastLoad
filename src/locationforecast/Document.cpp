@@ -28,9 +28,11 @@
 
 #include "Document.h"
 #include "TimeRange.h"
+#include <types/Point.h>
 #include <wdbLogHandler.h>
 #include <libxml++/libxml++.h>
 #include <curl/curl.h>
+#include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -189,13 +191,9 @@ void Document::parseLocation_(DataElement workingData, std::vector<DataElement> 
 		return;
 	}
 
-	std::ostringstream location;
-	location << "POINT(";
-	location << locationElement->get_attribute_value("longitude");
-	location << ' ';
-	location << locationElement->get_attribute_value("latitude");
-	location << ')';
-	workingData.location(location.str());
+	type::Point point(boost::lexical_cast<double>(locationElement->get_attribute_value("longitude")),
+			boost::lexical_cast<double>(locationElement->get_attribute_value("latitude")));
+	workingData.location(point);
 
 	BOOST_FOREACH(const xmlpp::Node * node, node->get_children() )
 		parseParameter_(workingData, out, node);

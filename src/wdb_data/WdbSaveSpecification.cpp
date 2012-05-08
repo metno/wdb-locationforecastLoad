@@ -64,9 +64,9 @@ std::string WdbSaveSpecification::getWriteQuery(boost::function<std::string (con
 	return query.str();
 }
 
-std::ostream & WdbSaveSpecification::getFastloadText(std::ostream & out, const std::string & placeName) const
+std::ostream & WdbSaveSpecification::getFastloadText(std::ostream & out) const
 {
 	const char sep = '\t';
-	out << value_ <<sep<< placeName <<sep<< referenceTime_ <<sep<< validFrom_ <<sep<< validTo_ <<sep<< valueParameter_ <<sep<< levelParameter_ <<sep<< levelFrom_ <<sep<< levelTo_ << '\n';
+	out << value_ <<sep<< location_.wdbCanonicalName() <<sep<< referenceTime_ <<sep<< validFrom_ <<sep<< validTo_ <<sep<< valueParameter_ <<sep<< levelParameter_ <<sep<< levelFrom_ <<sep<< levelTo_ << '\n';
 	return out;
 }

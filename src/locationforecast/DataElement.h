@@ -29,6 +29,7 @@
 #ifndef DATAELEMENT_H_
 #define DATAELEMENT_H_
 
+#include <types/Point.h>
 #include <string>
 
 namespace locationforecast
@@ -100,18 +101,17 @@ public:
 	}
 
 	/**
-	 * Set the location. This is supposed to be a WKT POINT, such as this:
-	 * POINT(10.7461 59.9127), which points to Oslo.
+	 * Set the location.
 	 */
-	void location(const std::string & location)
+	void location(const type::Point & location)
 	{
 		location_ = location;
 	}
 
 	/**
-	 * Get the location, as a WKT POINT string
+	 * Get the location
 	 */
-	const std::string & location() const
+	const type::Point & location() const
 	{
 		return location_;
 	}
@@ -180,7 +180,7 @@ public:
 private:
 	float value_;
 	std::string parameter_;
-	std::string location_;
+	type::Point location_;
 	std::string referenceTime_;
 	std::string validFrom_;
 	std::string validTo_;

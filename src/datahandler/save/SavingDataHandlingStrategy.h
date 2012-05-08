@@ -29,7 +29,6 @@
 #ifndef SAVINGDATAHANDLINGSTRATEGY_H_
 #define SAVINGDATAHANDLINGSTRATEGY_H_
 
-#include "OutputMode.h"
 #include "../DataHandlingStrategy.h"
 #include "SaveDataTransactor.h"
 #include <pqxx/connection>
@@ -51,7 +50,7 @@ public:
 	 *
 	 * @param conf specifications for database access and such.
 	 */
-	explicit SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf, OutputMode outputMode = WciWrite);
+	explicit SavingDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf);
 	virtual ~SavingDataHandlingStrategy();
 
 	virtual void handle(const locationforecast::Document & document);
@@ -59,9 +58,8 @@ public:
 	virtual Position getPosition(const std::string & placeName);
 
 private:
-	pqxx::connection connection_;
+	pqxx::lazyconnection connection_;
 	const locationforecast::LoaderConfiguration & conf_;
-	OutputMode outputMode_;
 };
 
 #endif /* SAVINGDATAHANDLINGSTRATEGY_H_ */

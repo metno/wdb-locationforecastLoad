@@ -29,6 +29,7 @@
 #include <configuration/LoaderConfiguration.h>
 #include "datahandler/list/PrintingDataHandlingStrategy.h"
 #include "datahandler/save/SavingDataHandlingStrategy.h"
+#include "datahandler/FastLoadDataHandlingStrategy.h"
 #include "locationforecast/Document.h"
 #include <wdbLogHandler.h>
 #include <boost/scoped_ptr.hpp>
@@ -71,10 +72,9 @@ void help(const boost::program_options::options_description & options, std::ostr
 DataHandlingStrategy * getHandlingStrategy(const locationforecast::LoaderConfiguration & conf)
 {
 	if ( conf.output().list )
-		return new SavingDataHandlingStrategy(conf, FastLoad);
-		//return new PrintingDataHandlingStrategy;
+		return new FastLoadDataHandlingStrategy(conf);
 	else
-		return new SavingDataHandlingStrategy(conf, WciWrite);
+		return new SavingDataHandlingStrategy(conf);
 }
 
 int main(int argc, char ** argv)

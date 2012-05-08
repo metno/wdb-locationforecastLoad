@@ -29,8 +29,9 @@
 #ifndef WDBSAVESPECIFICATION_H_
 #define WDBSAVESPECIFICATION_H_
 
-#include <string>
+#include <types/Point.h>
 #include <boost/function.hpp>
+#include <string>
 
 class WdbSaveSpecificationFactory;
 
@@ -62,14 +63,14 @@ public:
 	std::string getWriteQuery(boost::function<std::string (const std::string &)> escape,
 			const std::string & placeName) const;
 
-	std::ostream & getFastloadText(std::ostream & out, const std::string & placeName) const;
+	std::ostream & getFastloadText(std::ostream & out) const;
 
     void setValue(float value)
     {
         value_ = value;
     }
 
-    void setLocation(const std::string &  location)
+    void setLocation(const type::Point & location)
     {
         location_ = location;
     }
@@ -110,7 +111,7 @@ public:
     }
 
     float value() const { return value_; }
-	const std::string & location() const { return location_; }
+	const type::Point & location() const { return location_; }
 	const std::string & referenceTime() const { return referenceTime_; }
 	const std::string & validFrom() const { return validFrom_; }
 	const std::string & validTo() const { return validTo_; }
@@ -121,7 +122,7 @@ public:
 
 private:
 	float value_;
-	std::string location_;
+	type::Point location_;
 	std::string referenceTime_;
 	std::string validFrom_;
 	std::string validTo_;

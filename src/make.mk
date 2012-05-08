@@ -7,3 +7,4 @@ include src/locationforecast/make.mk
 include src/wdb_data/make.mk
 include src/datahandler/make.mk
 include src/configuration/make.mk
+include src/types/make.mk

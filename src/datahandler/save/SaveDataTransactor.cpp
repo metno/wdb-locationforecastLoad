@@ -36,11 +36,10 @@
 #include <boost/scoped_ptr.hpp>
 #include <iostream>
 
-SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document, OutputMode outputMode) :
+SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document) :
 	conf_(conf),
 	document_(document),
-	specificationFactory_(conf),
-	outputMode_(outputMode)
+	specificationFactory_(conf)
 {
 }
 
@@ -65,24 +64,6 @@ namespace
 	};
 }
 
-namespace
-{
-struct DataproviderIndicator
-{
-	explicit DataproviderIndicator(const std::string & nameSpace)
-	{
-		std::cout << "locationforecast";
-		if ( not nameSpace.empty() )
-			std::cout << '\t' << nameSpace;
-		std::cout << '\n';
-	}
-	~DataproviderIndicator()
-	{
-		std::cout << std::endl;
-	}
-};
-}
-
 void SaveDataTransactor::operator () (pqxx::work & transaction)
 {
 	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
@@ -90,8 +71,6 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 	queries::wciBegin(transaction, conf_);
 
 	Escaper escape(transaction);
-
-	boost::scoped_ptr<DataproviderIndicator> indicator(outputMode_ == FastLoad ? new DataproviderIndicator(conf_.loading().nameSpace) : 0);
 
 	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
 	{
@@ -101,22 +80,15 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 			specificationFactory_.create(saveSpecs, element);
 			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
 			{
-				if ( outputMode_ == WciWrite )
-				{
-					const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
-					log.debug(writeQuery);
-					transaction.exec(writeQuery);
-				}
-				else //if ( outputMode_ == Fastload )
-				{
-					spec.getFastloadText(std::cout, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
-				}
+				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
+				log.debug(writeQuery);
+				transaction.exec(writeQuery);
 			}
 		}
 	}
 }
 
-const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const std::string & geometryPoint, const std::string & referencetime)
+const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, const type::Point & geometryPoint, const std::string & referencetime)
 {
 	if ( not conf_.loading().placeName.empty() )
 		return getCustomPlaceName_(transaction, geometryPoint);
@@ -126,7 +98,7 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 	std::string & placeName = nameFromGeometry_[geometryPoint];
 	if ( placeName.empty() )
 	{
-		const std::string safePoint = transaction.esc(geometryPoint);
+		const std::string safePoint = transaction.esc(geometryPoint.wkt());
 		const std::string rtime = transaction.esc(referencetime);
 		// some code is commented out because there are lots of errors regarding place valid times in test databases
 		std::string query = "SELECT * FROM wci.getNameforGeometry('" + safePoint + /*"', '" + rtime + */"')";
@@ -136,22 +108,22 @@ const std::string & SaveDataTransactor::getPlaceName_(pqxx::work & transaction, 
 		{
 			if ( conf_.loading().loadPlaceDefinition )
 			{
-				std::string newPlaceName = boost::to_lower_copy(geometryPoint);
+				std::string newPlaceName = geometryPoint.wdbCanonicalName();
 				createPlacePoint(transaction, newPlaceName, geometryPoint);
 				placeName = newPlaceName;
 			}
 			else
-				throw std::runtime_error("No existing place definition for the given geometry: - " + geometryPoint);
+				throw std::runtime_error("No existing place definition for the given geometry: - " + geometryPoint.wkt());
 		}
 		else if ( r.size() > 1 )
-			throw std::runtime_error("Many names for same geometry: " + geometryPoint);
+			throw std::runtime_error("Many names for same geometry: " + geometryPoint.wkt());
 		else
 			placeName = r[0][0].as<std::string>();
 	}
 	return placeName;
 }
 
-const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transaction, const std::string & geometryPoint)
+const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transaction, const type::Point & geometryPoint)
 {
 	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
 	std::string & placeName = nameFromGeometry_[geometryPoint];
@@ -174,14 +146,14 @@ const std::string & SaveDataTransactor::getCustomPlaceName_(pqxx::work & transac
 	return placeName;
 }
 
-void SaveDataTransactor::createPlacePoint(pqxx::work & transaction, const std::string & name, const std::string & geometryPoint)
+void SaveDataTransactor::createPlacePoint(pqxx::work & transaction, const std::string & name, const type::Point & geometryPoint)
 {
 	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad.query");
 	std::ostringstream query;
 	query << "SELECT wci.addPlacePoint('"
 			<< transaction.esc(name)
 			<< "', st_geomfromtext('"
-			<< transaction.esc(geometryPoint)
+			<< transaction.esc(geometryPoint.wkt())
 			<<"', 4030))";
 	log.debug(query.str());
 	transaction.exec(query.str());

@@ -90,7 +90,7 @@ TEST(DocumentTest, oneElementDocument)
 	const locationforecast::DataElement & dataElement = doc.front();
 	EXPECT_FLOAT_EQ(-2.4, dataElement.value());
 	EXPECT_EQ("temperature", dataElement.parameter());
-	EXPECT_EQ("POINT(9.5800 60.1000)", dataElement.location());
+	EXPECT_EQ(type::Point(9.58, 60.1), dataElement.location());
 	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validFrom());
 	EXPECT_EQ("2012-01-19T10:00:00Z", dataElement.validTo());
 }
