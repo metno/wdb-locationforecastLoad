@@ -1,3 +1,9 @@
+locationforecastload (0.6.0) lucid; urgency=low
+
+  * fastload output from --list
+
+ -- Vegard Bones <vegard.bones@met.no>  Fri, 09 Mar 2012 11:38:59 +0000
+
 locationforecastload (0.5.0) lucid; urgency=low
 
   * specifying namespace works now
