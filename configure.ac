@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.65])
-AC_INIT([locationforecastLoad], [0.6.0], [wdb@met.no])
+AC_INIT([locationforecastLoad], [0.7.0], [wdb@met.no])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_SRCDIR([src/locationforecast/Document.cpp])
 AC_CONFIG_HEADERS([config.h])
