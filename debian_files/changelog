@@ -1,3 +1,9 @@
+locationforecastload (0.7.1-1) precise; urgency=low
+
+  * new version
+
+ -- Vegard Bønes <vegardb@wdb-dev3.met.no>  Tue, 31 Jul 2012 13:40:41 +0200
+
 locationforecastload (0.7.0) lucid; urgency=low
 
   * --list output no longer dependent on database access
