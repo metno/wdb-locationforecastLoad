@@ -33,7 +33,6 @@
 #include "locationforecast/Document.h"
 #include <wdbLogHandler.h>
 #include <boost/scoped_ptr.hpp>
-#include <boost/foreach.hpp>
 #include <boost/thread/thread.hpp>
 #include <iostream>
 
@@ -116,8 +115,7 @@ int main(int argc, char ** argv)
 	}
 	else
 	{
-
-		BOOST_FOREACH(const std::string & url, conf.input().file)
+		for ( const std::string & url : conf.input().file )
 		{
 			try
 			{

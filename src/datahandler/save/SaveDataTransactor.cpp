@@ -31,7 +31,6 @@
 #include <locationforecast/Document.h>
 #include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
-#include <boost/foreach.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <iostream>
@@ -72,13 +71,13 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 
 	Escaper escape(transaction);
 
-	BOOST_FOREACH(const locationforecast::Document::value_type & element, document_)
+	for (const locationforecast::Document::value_type & element : document_)
 	{
 		if ( specificationFactory_.hasTranslationFor(element) )
 		{
 			std::vector<WdbSaveSpecification> saveSpecs;
 			specificationFactory_.create(saveSpecs, element);
-			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
+			for ( const WdbSaveSpecification & spec : saveSpecs )
 			{
 				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
 				log.debug(writeQuery);

@@ -28,7 +28,6 @@
 
 #include "FastLoadDataHandlingStrategy.h"
 #include <locationforecast/Document.h>
-#include <boost/foreach.hpp>
 #include <iostream>
 
 FastLoadDataHandlingStrategy::FastLoadDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf) :
@@ -45,13 +44,13 @@ void FastLoadDataHandlingStrategy::handle(const locationforecast::Document & doc
 {
 	out_ << "locationforecast\t88,0,88\n";
 
-	BOOST_FOREACH(const locationforecast::Document::value_type & element, document)
+	for ( const locationforecast::Document::value_type & element : document)
 	{
 		if ( specificationFactory_.hasTranslationFor(element) )
 		{
 			std::vector<WdbSaveSpecification> saveSpecs;
 			specificationFactory_.create(saveSpecs, element);
-			BOOST_FOREACH(const WdbSaveSpecification & spec, saveSpecs)
+			for ( const WdbSaveSpecification & spec : saveSpecs )
 				spec.getFastloadText(out_);
 		}
 	}

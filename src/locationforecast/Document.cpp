@@ -33,7 +33,6 @@
 #include <libxml++/libxml++.h>
 #include <curl/curl.h>
 #include <boost/lexical_cast.hpp>
-#include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/algorithm/string.hpp>
@@ -129,7 +128,7 @@ void Document::parseConfiguration_(const boost::filesystem::path & configuration
 	else if ( not sourceNodes.empty() )
 		throw ParseException("Many locationforecast/source elements in configuration");
 
-	BOOST_FOREACH(const xmlpp::Node * node, root->find("/locationforecastLoad/configuration/data"))
+	for ( const xmlpp::Node * node : root->find("/locationforecastLoad/configuration/data"))
 	{
 		const xmlpp::Element * element = dynamic_cast<const xmlpp::Element *>(node);
 		if ( ! element ) // should never happen
@@ -195,7 +194,8 @@ void Document::parseLocation_(DataElement workingData, std::vector<DataElement> 
 			boost::lexical_cast<double>(locationElement->get_attribute_value("latitude")));
 	workingData.location(point);
 
-	BOOST_FOREACH(const xmlpp::Node * node, node->get_children() )
+	auto children = node->get_children();
+	for ( const xmlpp::Node * node : children )
 		parseParameter_(workingData, out, node);
 }
 
@@ -220,7 +220,8 @@ void Document::parseTime_(DataElement workingData, std::vector<DataElement> & ou
 	workingData.validFrom(validFrom);
 	workingData.validTo(validTo);
 
-	BOOST_FOREACH(const xmlpp::Node * node, node->get_children() )
+	auto children = node->get_children();
+	for ( const xmlpp::Node * node : children )
 		parseLocation_(workingData, out, node);
 }
 
@@ -241,7 +242,7 @@ void Document::parse_(std::istream & s, std::vector<DataElement> & out)
 
 		typedef std::map<TimeRange, std::string> ReferenceTimesForValidTimes;
 		ReferenceTimesForValidTimes referenceTimes;
-		BOOST_FOREACH(const xmlpp::Node * modelNode, root->find("/weatherdata/meta/model"))
+		for ( const xmlpp::Node * modelNode : root->find("/weatherdata/meta/model"))
 		{
 			const xmlpp::Element * model = dynamic_cast<const xmlpp::Element *>(modelNode);
 			if ( ! model )
@@ -254,14 +255,14 @@ void Document::parse_(std::istream & s, std::vector<DataElement> & out)
 		}
 
 		std::vector<DataElement> dataOut;
-		BOOST_FOREACH( const xmlpp::Node * node, root->find("/weatherdata/product/time") )
+		for ( const xmlpp::Node * node : root->find("/weatherdata/product/time") )
 		{
 			DataElement workingData;
 			parseTime_(workingData, dataOut, node);
 		}
 
-		BOOST_FOREACH(DataElement & element, dataOut)
-			BOOST_FOREACH(const ReferenceTimesForValidTimes::value_type & refFromValid, referenceTimes)
+		for ( DataElement & element : dataOut )
+			for ( const ReferenceTimesForValidTimes::value_type & refFromValid : referenceTimes)
 				if ( refFromValid.first.encloses(element.validTo()) )
 				{
 					element.referenceTime(refFromValid.second);

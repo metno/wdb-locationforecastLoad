@@ -1,51 +1,91 @@
 AC_DEFUN([GTEST_CHECK],
 [
-AC_ARG_WITH(
-	[gtest],
-	AS_HELP_STRING([--with-gtest=PATH],
-	[Specify install location for googletest.]),
-	[GTEST_CONFIG_PATH="${with_gtest}/bin"}],
-	[GTEST_CONFIG_PATH="${PATH}"]
-)
-AC_PATH_PROG(GTEST_CONFIG, [gtest-config], [no], ${GTEST_CONFIG_PATH})
+AC_ARG_WITH([gtest],
+    [AS_HELP_STRING([--with-gtest], [Specify google test directory])],
+    [gtest_base=${with_gtest}],
+    [gtest_base=/usr])
 
-if test -x ${GTEST_CONFIG}; then
-   gtest_CFLAGS=`${GTEST_CONFIG} --cppflags`
-   gtest_LIBS="`${GTEST_CONFIG} --ldflags` `${GTEST_CONFIG} --libs`"
-fi
+AC_LANG_PUSH(C++)
 
-AM_CONDITIONAL([HAVE_GTEST], [test -x ${GTEST_CONFIG}])
+includes_old="${INCLUDES}"
+AS_IF([test "x$gtest_base" = "x/usr"],
+    [],
+    [gtest_includes="-I${gtest_base}/include"])
 
-AC_SUBST(gtest_CFLAGS)
-AC_SUBST(gtest_LIBS)
+INCLUDES="${INCLUDES} ${gtest_includes}"
+AC_CHECK_HEADER([gtest/gtest.h],
+    [],
+    [AC_MSG_ERROR([Unable to find header gtest/gtest.h])])
+
+INCLUDES="${includes_old}"
+
+have_compiled_gtest=no
+ldflags_old="${LDFLAGS}"
+AS_IF([test "x$gtest_base" = "x/usr"],
+    [],
+    [gtest_ldflags="-L${gtest_base}/lib"])
+
+LDFLAGS="${LDFLAGS} ${gtest_ldflags}"
+AC_CHECK_LIB([gtest_main],
+    [main],
+    [have_compiled_gtest=yes],
+    [AC_CHECK_FILE([${gtest_base}/src/gtest/src/gtest-all.cc],[],
+        [AC_MSG_ERROR([Unable to find precompiled gtest_main or gtest-all.cc])])])
+
+LDFLAGS="${ldflags_old}"
+AS_IF([test "x${have_compiled_gtest}" = "xyes"],
+    [gtest_libs="-lgtest"],
+    [gtest_ldflags=""])
+
+AC_LANG_POP(C++)
+
+AC_SUBST([gtest_BASE],[${gtest_base}])
+AC_SUBST([gtest_CFLAGS], [${gtest_includes}])
+AC_SUBST([gtest_LDFLAGS], [${gtest_ldflags}])
+AC_SUBST([gtest_LIBS], [${gtest_libs}])
+AM_CONDITIONAL([HAVE_COMPILED_GTEST],[test "x${have_compiled_gtest}" = "xyes"])
+AM_CONDITIONAL([HAVE_GTEST],[test "x${have_compiled_gtest}" = "xyes"])
 ])
-
 
 
 AC_DEFUN([GMOCK_CHECK],
 [
-AC_ARG_WITH(
-	[gmock],
-	AS_HELP_STRING([--with-gmock=PATH],
-	[Specify install location for googlemock.]),
-	[GMOCK_CONFIG_PATH="${with_gmock}/bin"}],
-	[GMOCK_CONFIG_PATH="${PATH}"]
-)
-AC_PATH_PROG(GMOCK_CONFIG, [gmock-config], [no], ${GMOCK_CONFIG_PATH})
+AC_ARG_WITH([gmock],
+    [AS_HELP_STRING([--with-gmock], [Specify google mock directory])],
+    [gtest_base=${with_gmock}],
+    [gmock_base=/usr])
 
-if test -x ${GMOCK_CONFIG}; then
-   gmock_CFLAGS=`${GMOCK_CONFIG} --cppflags`
+AC_LANG_PUSH(C++)
 
-   GMOCK_LIBRARY_DIR=`${GMOCK_CONFIG} --libdir`
-   if test x != x$GMOCK_LIBRARY_DIR; then
-   	gmock_LIBS="-L${GMOCK_LIBRARY_DIR} `${GMOCK_CONFIG} --libs`"
-   else
-    gmock_LIBS="`${GMOCK_CONFIG} --libs`"
-   fi
-fi
+includes_old="${INCLUDES}"
+AS_IF([test "x$gmock_base" = "x/usr"],
+    [],
+    [gmock_includes="-I${gmock_base}/include"])
 
-AM_CONDITIONAL([HAVE_GMOCK], [test -x ${GMOCK_CONFIG}])
+INCLUDES="${INCLUDES} ${gmock_includes}"
+AC_CHECK_HEADER([gmock/gmock.h],
+    [],
+    [AC_MSG_ERROR([Unable to find header gmock/gmock.h])])
 
-AC_SUBST(gmock_CFLAGS)
-AC_SUBST(gmock_LIBS)
+INCLUDES="${includes_old}"
+
+ldflags_old="${LDFLAGS}"
+AS_IF([test "x$gmock_base" = "x/usr"],
+    [],
+    [gmock_ldflags="-L${gmock_base}/lib"])
+
+LDFLAGS="${LDFLAGS} ${gmock_ldflags}"
+#AC_CHECK_LIB([gmock], [], [gmock_libs=-lgmock])
+gmock_libs=-lgmock
+
+LDFLAGS="${ldflags_old}"
+
+AC_LANG_POP(C++)
+
+AC_SUBST([gmock_BASE],[${gmock_base}])
+AC_SUBST([gmock_CXXFLAGS], [${gmock_includes}])
+AC_SUBST([gmock_LDFLAGS], [${gmock_ldflags}])
+AC_SUBST([gmock_LIBS], [${gmock_libs}])
+AM_CONDITIONAL([HAVE_GMOCK],[true])
+
 ])

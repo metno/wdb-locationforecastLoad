@@ -17,6 +17,11 @@ PKG_CHECK_MODULES(libwdbLoad, libwdbLoad)
 PKG_CHECK_MODULES(libxmlpp, libxml++-2.6)
 PKG_CHECK_MODULES(libcurl, libcurl)
 
+AX_CHECK_COMPILE_FLAG([-std=c++0x], [CXXFLAGS="$CXXFLAGS -std=c++0x"])
+AX_CHECK_COMPILE_FLAG([-std=c++0x], [CXXFLAGS="$CXXFLAGS -g"])
+AX_CHECK_COMPILE_FLAG([-std=c++0x], [CXXFLAGS="$CXXFLAGS -O0"])
+
+
 GTEST_CHECK
 
 AC_PATH_PROG([HELP2MAN], [help2man])

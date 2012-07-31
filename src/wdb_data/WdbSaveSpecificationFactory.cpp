@@ -33,7 +33,6 @@
 #include <libxml++/libxml++.h>
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
-#include <boost/foreach.hpp>
 #include <stdexcept>
 
 
@@ -51,23 +50,39 @@ WdbSaveSpecificationFactory::WdbSaveSpecificationFactory(const locationforecast:
 	xmlpp::DomParser parser;
 	parser.parse_file(configFile.string());
 
-	setup_(* parser.get_document()->get_root_node());
+	if ( ! parser )
+		throw std::runtime_error("Unable to parse configuration file " + configFile.string());
+
+	xmlpp::Document * document = parser.get_document();
+	xmlpp::Element * rootElement = document->get_root_node();
+	setup_(* rootElement);
+
+	//setup_(* parser.get_document()->get_root_node());
 }
 
 void WdbSaveSpecificationFactory::setup_(const xmlpp::Element & rootNode)
 {
-	BOOST_FOREACH(const xmlpp::Node * configuration, rootNode.get_children("configuration"))
+	xmlpp::Node::NodeList nodes = rootNode.get_children("configuration");
+	for ( xmlpp::Node::NodeList::const_iterator configuration = nodes.begin(); configuration != nodes.end(); ++ configuration )
 	{
-		const xmlpp::Element * configurationElement = dynamic_cast<const xmlpp::Element *>(configuration);
+		const xmlpp::Element * configurationElement = dynamic_cast<const xmlpp::Element *>(* configuration);
 		if ( ! configurationElement )
 			continue;
-		BOOST_FOREACH( const xmlpp::Node * node, configurationElement->get_children("data") )
-		{
-			const xmlpp::Element * parameter = dynamic_cast<const xmlpp::Element *>(node);
-			if ( ! parameter )
-				continue;
 
-			addParameter_(* parameter);
+		xmlpp::Node::NodeList dataElements = configurationElement->get_children("data");
+		for ( xmlpp::Node::NodeList::const_iterator node = dataElements.begin(); node != dataElements.end(); ++ node )
+		{
+			try
+			{
+				const xmlpp::Element * parameter = dynamic_cast<const xmlpp::Element *>(* node);
+				if ( ! parameter )
+					continue;
+				addParameter_(* parameter);
+			}
+			catch ( std::bad_cast & )
+			{
+				continue;
+			}
 		}
 	}
 }
@@ -122,7 +137,7 @@ void WdbSaveSpecificationFactory::create(std::vector<WdbSaveSpecification> & out
 
 	if ( not options_.loading().referenceTime.empty() )
 	{
-		BOOST_FOREACH(WdbSaveSpecification & spec, out)
-			spec.setReferenceTime(options_.loading().referenceTime);
+		for ( std::vector<WdbSaveSpecification>::iterator spec = out.begin(); spec != out.end(); ++ spec )
+			spec->setReferenceTime(options_.loading().referenceTime);
 	}
 }

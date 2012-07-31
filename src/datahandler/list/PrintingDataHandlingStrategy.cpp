@@ -28,7 +28,6 @@
 
 #include "PrintingDataHandlingStrategy.h"
 #include <locationforecast/Document.h>
-#include <boost/foreach.hpp>
 #include <iostream>
 
 PrintingDataHandlingStrategy::PrintingDataHandlingStrategy()
@@ -46,7 +45,7 @@ void PrintingDataHandlingStrategy::handle(const locationforecast::Document & doc
 	std::string validTo;
 	std::string parameter;
 
-	BOOST_FOREACH(const locationforecast::Document::value_type & element, document)
+	for (const locationforecast::Document::value_type & element : document)
 	{
 		if ( location != element.location() )
 		{

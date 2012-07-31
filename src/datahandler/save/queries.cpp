@@ -31,7 +31,6 @@
 #include <configuration/LoaderConfiguration.h>
 #include <wdbLogHandler.h>
 #include <boost/algorithm/string.hpp>
-#include <boost/foreach.hpp>
 
 namespace queries
 {
@@ -63,7 +62,7 @@ void wciBegin(pqxx::work & transaction, const locationforecast::LoaderConfigurat
 			for ( int i = 0; i < 3; ++ i )
 				query << ", " << getInt(namespaceElements.front());
 		else if ( namespaceElements.size() == 3 )
-			BOOST_FOREACH(const std::string & s, namespaceElements)
+			for ( const std::string & s : namespaceElements )
 				query << ", " << getInt(s);
 	}
 	query << ')';
