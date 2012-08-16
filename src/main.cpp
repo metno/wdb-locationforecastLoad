@@ -104,47 +104,54 @@ int main(int argc, char ** argv)
 	wdb::WdbLogHandler logHandler( conf.logging().loglevel, conf.logging().logfile );
 	WDB_LOG & log = WDB_LOG::getInstance("wdb.locationforecastLoad");
 
-	boost::scoped_ptr<DataHandlingStrategy> dataHandler(getHandlingStrategy(conf));
+	try
+	{
+		boost::scoped_ptr<DataHandlingStrategy> dataHandler(getHandlingStrategy(conf));
 
-	if ( conf.input().file.empty() )
-	{
-		log.info("Loading data from stdin");
-		locationforecast::Document doc(std::cin, conf.translation().translationConfiguration);
-		dataHandler->handle(doc);
-		log.info("Loading complete");
-	}
-	else
-	{
-		for ( const std::string & url : conf.input().file )
+		if ( conf.input().file.empty() )
 		{
-			try
+			log.info("Loading data from stdin");
+			locationforecast::Document doc(std::cin, conf.translation().translationConfiguration);
+			dataHandler->handle(doc);
+			log.info("Loading complete");
+		}
+		else
+		{
+			for ( const std::string & url : conf.input().file )
 			{
-				log.infoStream() << "Loading " << url;
-
-				if ( url.find_first_of("://") != std::string::npos )
+				try
 				{
-					locationforecast::Document doc(url, conf.translation().translationConfiguration);
-					dataHandler->handle(doc);
+					log.infoStream() << "Loading " << url;
+
+					if ( url.find_first_of("://") != std::string::npos )
+					{
+						locationforecast::Document doc(url, conf.translation().translationConfiguration);
+						dataHandler->handle(doc);
+					}
+					else
+					{
+						DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
+						locationforecast::Document doc(pos.longitude, pos.latitude, conf.translation().translationConfiguration);
+						dataHandler->handle(doc);
+					}
+
+					log.info("Loading complete");
+
+					timespec s = {0, 200000000};
+					timespec remaining;
+					nanosleep(& s, & remaining);
 				}
-				else
+				catch ( std::exception & e )
 				{
-					DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
-					locationforecast::Document doc(pos.longitude, pos.latitude, conf.translation().translationConfiguration);
-					dataHandler->handle(doc);
+					log.error(e.what());
 				}
-
-				log.info("Loading complete");
-
-				timespec s = {0, 200000000};
-				timespec remaining;
-				nanosleep(& s, & remaining);
-			}
-			catch ( std::exception & e )
-			{
-				log.error(e.what());
 			}
 		}
+		log.debug("done");
 	}
-	log.debug("done");
+	catch ( std::exception & e )
+	{
+		log.fatal(e.what());
+	}
 }
 
