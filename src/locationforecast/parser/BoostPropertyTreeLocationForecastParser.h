@@ -26,44 +26,31 @@
  MA  02110-1301, USA
  */
 
-#ifndef LIBXMLLOCATIONFORECASTPARSER_H_
-#define LIBXMLLOCATIONFORECASTPARSER_H_
+#ifndef BOOSTPROPERTYTREELOCATIONFORECASTPARSER_H_
+#define BOOSTPROPERTYTREELOCATIONFORECASTPARSER_H_
 
 #include "LocationForecastParser.h"
-#include "LocationforecastConfiguration.h"
-#include "../elementhandler/ElementHandler.h"
-#include <boost/filesystem/path.hpp>
-#include <iosfwd>
-#include <map>
-
-
-namespace xmlpp
-{
-class Node;
-class Element;
-}
+#include <boost/property_tree/ptree_fwd.hpp>
 
 namespace locationforecast
 {
+class LocationforecastConfiguration;
 
-class LibxmlLocationForecastParser : public LocationForecastParser
+class BoostPropertyTreeLocationForecastParser: public LocationForecastParser
 {
 public:
-	explicit LibxmlLocationForecastParser(LocationforecastConfiguration & configuration);
-	virtual ~LibxmlLocationForecastParser();
+	BoostPropertyTreeLocationForecastParser(LocationforecastConfiguration & configuration);
+	virtual ~BoostPropertyTreeLocationForecastParser();
 
 	virtual DataList parse(std::istream & document) const;
 
 private:
-
-	ElementHandler::Data getParameterData_(const xmlpp::Element & parameterElement) const;
-	void parseParameter_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node) const;
-	void parseLocation_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node) const;
-	void parseTime_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node) const;
+	void parseTime_(DataElement workingData, std::vector<DataElement> & out, const boost::property_tree::ptree & node) const;
+	void parseLocation_(DataElement workingData, std::vector<DataElement> & out, const boost::property_tree::ptree & node) const;
+	void parseParameter_(DataElement workingData, std::vector<DataElement> & out, const std::string & parameter, const boost::property_tree::ptree & node) const;
 
 	LocationforecastConfiguration & configuration_;
-	mutable std::map<std::string, ElementHandler::Ptr> handlers_;
 };
 
 } /* namespace locationforecast */
-#endif /* LIBXMLLOCATIONFORECASTPARSER_H_ */
+#endif /* BOOSTPROPERTYTREELOCATIONFORECASTPARSER_H_ */

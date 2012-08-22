@@ -8,6 +8,10 @@ AM_CPPFLAGS = \
 	$(libxmlpp_CFLAGS) \
 	$(libcurl_CFLAGS)
 
+if BOOST_XML_PARSE
+AM_CPPFLAGS += -DBOOST_XML_PARSE
+endif
+
 AM_CXXFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DVERSION=\"$(VERSION)\"

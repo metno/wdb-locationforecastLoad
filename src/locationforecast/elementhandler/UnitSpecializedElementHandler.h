@@ -40,7 +40,11 @@ public:
 	UnitSpecializedElementHandler(const std::string & parameter, const std::string & unitName);
 	~UnitSpecializedElementHandler();
 
+#ifdef BOOST_XML_PARSE
+	virtual Data extract(const boost::property_tree::ptree & element) const;
+#else
 	virtual Data extract(const xmlpp::Element & element) const;
+#endif
 
 private:
 	std::string parameter_;

@@ -28,7 +28,11 @@
 
 #include "Document.h"
 #include "TimeRange.h"
+#ifdef BOOST_XML_PARSE
+#include "parser/BoostPropertyTreeLocationForecastParser.h"
+#else
 #include "parser/LibxmlLocationForecastParser.h"
+#endif
 #include <types/Point.h>
 #include <wdbLogHandler.h>
 #include <libxml++/libxml++.h>
@@ -92,7 +96,11 @@ Document::~Document()
 
 void Document::parse_(std::istream & s)
 {
+#ifdef BOOST_XML_PARSE
+	BoostPropertyTreeLocationForecastParser parser(configuration_);
+#else
 	LibxmlLocationForecastParser parser(configuration_);
+#endif
 	elements_ = parser.parse(s);
 
 	std::cout << "size: " << elements_.size() << std::endl;

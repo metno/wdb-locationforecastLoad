@@ -27,8 +27,12 @@
  */
 
 #include "UnitSpecializedElementHandler.h"
-#include <libxml++/libxml++.h>
 #include <boost/lexical_cast.hpp>
+#ifdef BOOST_XML_PARSE
+#include <boost/property_tree/ptree.hpp>
+#else
+#include <libxml++/libxml++.h>
+#endif
 
 
 namespace locationforecast
@@ -43,6 +47,25 @@ UnitSpecializedElementHandler::~UnitSpecializedElementHandler()
 {
 }
 
+#ifdef BOOST_XML_PARSE
+ElementHandler::Data UnitSpecializedElementHandler::extract(const boost::property_tree::ptree & element) const
+{
+	Data ret;
+
+	ret.parameter = parameter_;
+	ret.unit = unitName_;
+	try
+	{
+		ret.value = element.get<float>("<xmlattr>." + ret.unit);
+	}
+	catch ( std::exception & e )
+	{
+		throw ExtractionError(e.what());
+	}
+
+	return ret;
+}
+#else
 ElementHandler::Data UnitSpecializedElementHandler::extract(const xmlpp::Element & element) const
 {
 	Data ret;
@@ -63,5 +86,6 @@ ElementHandler::Data UnitSpecializedElementHandler::extract(const xmlpp::Element
 	}
 	return ret;
 }
+#endif
 
 } /* namespace locationforecast */

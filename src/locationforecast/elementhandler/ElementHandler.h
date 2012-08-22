@@ -34,10 +34,14 @@
 #include <string>
 #include <stdexcept>
 
+#ifdef BOOST_XML_PARSE
+#include <boost/property_tree/ptree_fwd.hpp>
+#else
 namespace xmlpp
 {
 class Element;
 }
+#endif
 
 namespace locationforecast
 {
@@ -59,10 +63,17 @@ public:
 		std::string unit;
 	};
 
+#ifdef BOOST_XML_PARSE
+	/**
+	 * may throw ExtractionError if unable to parse element
+	 */
+	virtual Data extract(const boost::property_tree::ptree & element) const =0;
+#else
 	/**
 	 * may throw ExtractionError if unable to parse element
 	 */
 	virtual Data extract(const xmlpp::Element & element) const =0;
+#endif
 
 	class ExtractionError : public std::runtime_error
 	{
