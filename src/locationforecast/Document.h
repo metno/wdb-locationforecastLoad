@@ -30,6 +30,8 @@
 #define DOCUMENT_H_
 
 #include "DataElement.h"
+#include "LocationForecastException.h"
+#include "parser/LocationforecastConfiguration.h"
 #include "elementhandler/ElementHandler.h"
 #include <boost/filesystem/path.hpp>
 #include <iosfwd>
@@ -51,13 +53,6 @@ class Node;
  */
 namespace locationforecast
 {
-
-#define DOCUMENT_EXCEPTION(ExceptionName) \
-class ExceptionName : public Exception { \
-public: \
-	ExceptionName(const std::string & msg) : 	Document::Exception(msg) {} \
-}
-
 
 /**
  * A parsed version of a locationforecast document. Its contents may be
@@ -123,48 +118,14 @@ public:
 	size_type size() const { return elements_.size(); }
 	bool empty() const { return elements_.empty(); }
 
-	/**
-	 * Base class for exceptions thrown by this class
-	 */
-	class Exception : public std::exception
-	{
-	public:
-		Exception(const std::string & reason) :
-			reason_(reason)
-		{}
-		virtual ~Exception() throw()
-		{}
-		virtual const char * what() const throw()
-		{
-			return reason_.c_str();
-		}
-	private:
-		std::string reason_;
-	};
-
-	DOCUMENT_EXCEPTION(NoSuchFile);
-	DOCUMENT_EXCEPTION(FileIsDirectory);
-	DOCUMENT_EXCEPTION(ParseException);
-	DOCUMENT_EXCEPTION(HttpException);
-
 private:
-	void parseConfiguration_(const boost::filesystem::path & configuration);
+	void parse_(std::istream & s);
 
-	ElementHandler::Data getParameterData_(const xmlpp::Element & parameterElement);
-	void parseParameter_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
-	void parseLocation_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
-	void parseTime_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node);
-	void parse_(std::istream & s, std::vector<DataElement> & out);
+	void parseFile_(const boost::filesystem::path & file);
+	void parseUrl_(const std::string & url);
 
-	void parseFile_(const boost::filesystem::path & file, std::vector<DataElement> & out);
-	void parseUrl_(const std::string & url, std::vector<DataElement> & out);
-
-	std::string baseUrl_;
-
+	LocationforecastConfiguration configuration_;
 	DataList elements_;
-	std::map<std::string, std::string> parameterUnits_;
-
-	std::map<std::string, ElementHandler::Ptr> handlers_;
 };
 
 

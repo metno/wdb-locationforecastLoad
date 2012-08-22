@@ -33,7 +33,7 @@
 #include <iterator>
 
 
-using locationforecast::Document;
+using namespace locationforecast;
 
 
 namespace
@@ -50,6 +50,12 @@ TEST(DocumentTest, itWorks)
 
 	EXPECT_FALSE(doc.empty());
 
+	std::map<std::string, unsigned> parameters;
+	for ( auto & element : doc )
+		parameters[element.parameter()] ++;
+	for ( auto s : parameters )
+		std::cout << s.first << "\t= " << s.second << std::endl;
+
 	ASSERT_EQ(expectedSize, doc.size());
 
 	Document::const_iterator it = doc.begin();
@@ -59,17 +65,17 @@ TEST(DocumentTest, itWorks)
 
 TEST(DocumentTest, failOnCorruptDocument)
 {
-	ASSERT_THROW(Document(testFiles/"corrupt_document.xml", configFile), Document::ParseException);
+	ASSERT_THROW(Document(testFiles/"corrupt_document.xml", configFile), ParseException);
 }
 
 TEST(DocumentTest, failOnNonExistingDocument)
 {
-	ASSERT_THROW(Document(testFiles/"no_such_file.xml", configFile), Document::NoSuchFile);
+	ASSERT_THROW(Document(testFiles/"no_such_file.xml", configFile), NoSuchFile);
 }
 
 TEST(DocumentTest, failOnDirectoryAsDocument)
 {
-	ASSERT_THROW(Document(boost::filesystem::path("."), configFile), Document::FileIsDirectory);
+	ASSERT_THROW(Document(boost::filesystem::path("."), configFile), FileIsDirectory);
 }
 
 TEST(DocumentTest, emptyDocument)

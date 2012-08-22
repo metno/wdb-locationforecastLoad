@@ -10,4 +10,7 @@ liblocationforecastLoad_a_SOURCES += \
 	src/locationforecast/elementhandler/ElementHandler.cpp \
 	src/locationforecast/elementhandler/SimpleElementHandler.h \
 	src/locationforecast/TimeRange.cpp \
-	src/locationforecast/DataElement.cpp
+	src/locationforecast/DataElement.cpp \
+	src/locationforecast/LocationForecastException.h
+
+include src/locationforecast/parser/make.mk
