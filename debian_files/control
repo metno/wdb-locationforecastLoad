@@ -2,13 +2,14 @@ Source: locationforecastload
 Section: science
 Priority: extra
 Maintainer: Vegard Bones <vegard.bones@met.no>
-Build-Depends: debhelper (>= 7), 
+Build-Depends: cdbs,
+ debhelper (>= 7), 
  autotools-dev,
- libwdbload1-dev,
+ libwdbload1-dev | libwdbload2-dev ,
  libboost-dev,
  libxml++2.6-dev,
  libcurl4-openssl-dev
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 
 Package: locationforecastload
 Architecture: any
