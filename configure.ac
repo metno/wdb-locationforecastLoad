@@ -21,7 +21,16 @@ AX_CHECK_COMPILE_FLAG([-std=c++0x], [CXXFLAGS="$CXXFLAGS -std=c++0x"])
 AX_CHECK_COMPILE_FLAG([-std=c++0x], [CXXFLAGS="$CXXFLAGS -g"])
 AX_CHECK_COMPILE_FLAG([-std=c++0x], [CXXFLAGS="$CXXFLAGS -O0"])
 
-AM_CONDITIONAL(BOOST_XML_PARSE, true)
+AC_ARG_WITH([xml_parser],
+    [AS_HELP_STRING([--with-xml-parser], [Specify xml parser (libxml (default) or boost) ])],
+    [xmlparser=${with_xml_parser}],
+    [xmlparser=libxml])
+AM_CONDITIONAL(BOOST_XML_PARSE, [test x${xmlparser} = xboost])
+if test x${xmlparser} != xboost -a x${xmlparser} != xlibxml; then
+   AC_MSG_ERROR([Value for --with-xml-parser must be libxml or boost])
+fi
+
+forbedre sjekk av libxml, så det bare gjres når det trengs
 
 GTEST_CHECK
 
