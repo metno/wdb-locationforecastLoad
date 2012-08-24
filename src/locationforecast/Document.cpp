@@ -102,8 +102,6 @@ void Document::parse_(std::istream & s)
 	LibxmlLocationForecastParser parser(configuration_);
 #endif
 	elements_ = parser.parse(s);
-
-	std::cout << "size: " << elements_.size() << std::endl;
 }
 
 

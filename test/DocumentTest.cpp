@@ -50,12 +50,6 @@ TEST(DocumentTest, itWorks)
 
 	EXPECT_FALSE(doc.empty());
 
-	std::map<std::string, unsigned> parameters;
-	for ( auto & element : doc )
-		parameters[element.parameter()] ++;
-	for ( auto s : parameters )
-		std::cout << s.first << "\t= " << s.second << std::endl;
-
 	ASSERT_EQ(expectedSize, doc.size());
 
 	Document::const_iterator it = doc.begin();
