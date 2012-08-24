@@ -108,8 +108,6 @@ LocationforecastConfiguration::LocationforecastConfiguration(const boost::filesy
 		std::string unit = element->get_attribute_value("unit");
 		parameterUnits_[name] = unit;
 		handlers_[name] = ElementHandler::get(name, unit);
-
-		std::cout << name << "\t= " << unit << std::endl;
 	}
 #endif
 }
@@ -120,7 +118,7 @@ LocationforecastConfiguration::~LocationforecastConfiguration()
 
 const ElementHandler::Ptr & LocationforecastConfiguration::getHandler(const std::string & parameter)
 {
-	ElementHandler::Ptr handler = handlers_[parameter];
+	ElementHandler::Ptr & handler = handlers_[parameter];
 	if ( ! handler )
 	{
 		WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );
