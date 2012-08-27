@@ -28,7 +28,7 @@
 
 
 #include <gtest/gtest.h>
-#include <wdb_data/WdbSaveSpecificationFactory.h>
+#include <configuration/LocationforecastConfiguration.h>
 #include <configuration/LoaderConfiguration.h>
 
 namespace
@@ -54,15 +54,15 @@ public:
 	void setConfiguration(int argc, const char ** argv)
 	{
 		loaderConfiguration = getConfiguration(argc, argv);
-		factory = boost::shared_ptr<WdbSaveSpecificationFactory>(
-				new WdbSaveSpecificationFactory(* loaderConfiguration));
+		factory = boost::shared_ptr<locationforecast::LocationforecastConfiguration>(
+				new locationforecast::LocationforecastConfiguration(* loaderConfiguration));
 	}
 
 	WdbSaveSpecificationFactoryTest() :
 		loaderConfiguration(getConfiguration())
 	{
-		factory = boost::shared_ptr<WdbSaveSpecificationFactory>(
-				new WdbSaveSpecificationFactory(* loaderConfiguration));
+		factory = boost::shared_ptr<locationforecast::LocationforecastConfiguration>(
+				new locationforecast::LocationforecastConfiguration(* loaderConfiguration));
 
 		// Default dataElement setup
 		dataElement.value(10);
@@ -77,7 +77,7 @@ public:
 	}
 
 	locationforecast::DataElement dataElement;
-	boost::shared_ptr<WdbSaveSpecificationFactory> factory;
+	boost::shared_ptr<locationforecast::LocationforecastConfiguration> factory;
 private:
 	boost::shared_ptr<locationforecast::LoaderConfiguration> loaderConfiguration;
 };
@@ -86,7 +86,7 @@ private:
 TEST_F(WdbSaveSpecificationFactoryTest, test)
 {
 	std::vector<WdbSaveSpecification> saveElements;
-	factory->create(saveElements, dataElement);
+	factory->createSaveSpecification(saveElements, dataElement);
 	ASSERT_EQ(1, saveElements.size());
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 
@@ -111,7 +111,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, convertsValues)
 	dataElement.parameter("temperature");
 
 	std::vector<WdbSaveSpecification> saveElements;
-	factory->create(saveElements, dataElement);
+	factory->createSaveSpecification(saveElements, dataElement);
 	ASSERT_EQ(1, saveElements.size());
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 
@@ -124,7 +124,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, setsLevelsFromConfig)
 	dataElement.parameter("mediumClouds");
 
 	std::vector<WdbSaveSpecification> saveElements;
-	factory->create(saveElements, dataElement);
+	factory->createSaveSpecification(saveElements, dataElement);
 	ASSERT_EQ(1, saveElements.size());
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 
@@ -139,7 +139,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, noEffectOnDataProviderOverride)
 	const char * options[2] = {"program_name", "--dataprovider=someone"};
 	setConfiguration(2, options);
 	std::vector<WdbSaveSpecification> saveElements;
-	factory->create(saveElements, dataElement);
+	factory->createSaveSpecification(saveElements, dataElement);
 	ASSERT_EQ(1, saveElements.size());
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 }
@@ -150,7 +150,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, noEffectOnPlaceName)
 	const char * options[2] = {"program_name", "--placename=somewhere"};
 	setConfiguration(2, options);
 	std::vector<WdbSaveSpecification> saveElements;
-	factory->create(saveElements, dataElement);
+	factory->createSaveSpecification(saveElements, dataElement);
 	ASSERT_EQ(1, saveElements.size());
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 }
@@ -162,7 +162,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, respectsReferenceTimeOverride)
 	setConfiguration(2, options);
 
 	std::vector<WdbSaveSpecification> saveElements;
-	factory->create(saveElements, dataElement);
+	factory->createSaveSpecification(saveElements, dataElement);
 	ASSERT_EQ(1, saveElements.size());
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 	EXPECT_EQ("today", saveSpec.referenceTime());
@@ -174,7 +174,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, errorOnValueParameterOverride)
 	setConfiguration(2, options);
 
 	std::vector<WdbSaveSpecification> saveElements;
-	EXPECT_THROW(factory->create(saveElements, dataElement), std::runtime_error);
+	EXPECT_THROW(factory->createSaveSpecification(saveElements, dataElement), std::runtime_error);
 }
 
 TEST_F(WdbSaveSpecificationFactoryTest, errorOnLevelParameterOverride)
@@ -183,7 +183,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, errorOnLevelParameterOverride)
 	setConfiguration(2, options);
 
 	std::vector<WdbSaveSpecification> saveElements;
-	EXPECT_THROW(factory->create(saveElements, dataElement), std::runtime_error);
+	EXPECT_THROW(factory->createSaveSpecification(saveElements, dataElement), std::runtime_error);
 }
 
 TEST_F(WdbSaveSpecificationFactoryTest, errorOnDataVersionOverride)
@@ -192,7 +192,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, errorOnDataVersionOverride)
 	setConfiguration(2, options);
 
 	std::vector<WdbSaveSpecification> saveElements;
-	EXPECT_THROW(factory->create(saveElements, dataElement), std::runtime_error);
+	EXPECT_THROW(factory->createSaveSpecification(saveElements, dataElement), std::runtime_error);
 }
 
 TEST_F(WdbSaveSpecificationFactoryTest, errorOnconfidenceOverride)
@@ -201,5 +201,5 @@ TEST_F(WdbSaveSpecificationFactoryTest, errorOnconfidenceOverride)
 	setConfiguration(2, options);
 
 	std::vector<WdbSaveSpecification> saveElements;
-	EXPECT_THROW(factory->create(saveElements, dataElement), std::runtime_error);
+	EXPECT_THROW(factory->createSaveSpecification(saveElements, dataElement), std::runtime_error);
 }

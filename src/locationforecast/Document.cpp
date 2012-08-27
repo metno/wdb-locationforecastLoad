@@ -32,10 +32,11 @@
 #include "parser/BoostPropertyTreeLocationForecastParser.h"
 #else
 #include "parser/LibxmlLocationForecastParser.h"
+#include <libxml++/libxml++.h>
 #endif
+#include <configuration/LocationforecastConfiguration.h>
 #include <types/Point.h>
 #include <wdbLogHandler.h>
-#include <libxml++/libxml++.h>
 #include <curl/curl.h>
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
@@ -46,19 +47,19 @@
 namespace locationforecast
 {
 
-Document::Document(std::istream & sin, const boost::filesystem::path & configuration) :
+Document::Document(std::istream & sin, LocationforecastConfiguration & configuration) :
 		configuration_(configuration)
 {
 	parse_(sin);
 }
 
-Document::Document(const std::string & url, const boost::filesystem::path & configuration) :
+Document::Document(const std::string & url, LocationforecastConfiguration & configuration) :
 		configuration_(configuration)
 {
 	parseUrl_(url);
 }
 
-Document::Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration) :
+Document::Document(const boost::filesystem::path & file, LocationforecastConfiguration & configuration) :
 		configuration_(configuration)
 {
 	parseFile_(file);
@@ -75,7 +76,7 @@ std::string str(float f)
 }
 }
 
-Document::Document(float longitude, float latitude, const boost::filesystem::path & configuration) :
+Document::Document(float longitude, float latitude, LocationforecastConfiguration & configuration) :
 		configuration_(configuration)
 {
 	WDB_LOG & log = WDB_LOG::getInstance( "wdb.locationforecastLoad.xmlparse" );

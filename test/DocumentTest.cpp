@@ -29,6 +29,7 @@
 
 #include <gtest/gtest.h>
 #include <locationforecast/Document.h>
+#include <configuration/LocationforecastConfiguration.h>
 #include <boost/filesystem/path.hpp>
 #include <iterator>
 
@@ -39,12 +40,19 @@ using namespace locationforecast;
 namespace
 {
 const boost::filesystem::path testFiles = SRCDIR"/test/etc";
-const boost::filesystem::path configFile = SRCDIR"/etc/locationforecastLoad.conf.xml";
+//const boost::filesystem::path configuration = SRCDIR"/etc/locationforecastLoad.conf.xml";
+LoaderConfiguration configuration()
+{
+	LoaderConfiguration ret;
+	ret.translation().translationConfiguration = SRCDIR"/etc/locationforecastLoad.conf.xml";
+	return ret;
+}
 }
 
 TEST(DocumentTest, itWorks)
 {
-	Document doc(testFiles/"real_example.xml", configFile);
+	LocationforecastConfiguration conf(configuration());
+	Document doc(testFiles/"real_example.xml", conf);
 
 	Document::size_type expectedSize = 1290;
 
@@ -59,22 +67,26 @@ TEST(DocumentTest, itWorks)
 
 TEST(DocumentTest, failOnCorruptDocument)
 {
-	ASSERT_THROW(Document(testFiles/"corrupt_document.xml", configFile), ParseException);
+	LocationforecastConfiguration conf(configuration());
+	ASSERT_THROW(Document(testFiles/"corrupt_document.xml", conf), ParseException);
 }
 
 TEST(DocumentTest, failOnNonExistingDocument)
 {
-	ASSERT_THROW(Document(testFiles/"no_such_file.xml", configFile), NoSuchFile);
+	LocationforecastConfiguration conf(configuration());
+	ASSERT_THROW(Document(testFiles/"no_such_file.xml", conf), NoSuchFile);
 }
 
 TEST(DocumentTest, failOnDirectoryAsDocument)
 {
-	ASSERT_THROW(Document(boost::filesystem::path("."), configFile), FileIsDirectory);
+	LocationforecastConfiguration conf(configuration());
+	ASSERT_THROW(Document(boost::filesystem::path("."), conf), FileIsDirectory);
 }
 
 TEST(DocumentTest, emptyDocument)
 {
-	Document doc(testFiles/"empty_document.xml", configFile);
+	LocationforecastConfiguration conf(configuration());
+	Document doc(testFiles/"empty_document.xml", conf);
 
 	EXPECT_TRUE(doc.empty());
 	EXPECT_EQ(0u, doc.size());
@@ -82,7 +94,8 @@ TEST(DocumentTest, emptyDocument)
 }
 TEST(DocumentTest, oneElementDocument)
 {
-	Document doc(testFiles/"one_element_document.xml", configFile);
+	LocationforecastConfiguration conf(configuration());
+	Document doc(testFiles/"one_element_document.xml", conf);
 
 	EXPECT_FALSE(doc.empty());
 	ASSERT_EQ(1u, doc.size());
@@ -97,7 +110,8 @@ TEST(DocumentTest, oneElementDocument)
 
 TEST(DocumentTest, setsReferenceTime)
 {
-	Document doc(testFiles/"real_example.xml", configFile);
+	LocationforecastConfiguration conf(configuration());
+	Document doc(testFiles/"real_example.xml", conf);
 
 	Document::size_type expectedSize = 1290;
 	ASSERT_EQ(expectedSize, doc.size());
@@ -109,6 +123,4 @@ TEST(DocumentTest, setsReferenceTime)
 	EXPECT_EQ("2012-01-26T00:00:00Z", element->validFrom());
 	EXPECT_EQ("2012-01-26T00:00:00Z", element->validTo());
 	EXPECT_EQ("2012-01-18T12:00:00Z", element->referenceTime());
-
-
 }

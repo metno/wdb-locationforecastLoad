@@ -31,7 +31,6 @@
 
 #include "DataElement.h"
 #include "LocationForecastException.h"
-#include "parser/LocationforecastConfiguration.h"
 #include "elementhandler/ElementHandler.h"
 #include <boost/filesystem/path.hpp>
 #include <iosfwd>
@@ -53,6 +52,7 @@ class Node;
  */
 namespace locationforecast
 {
+class LocationforecastConfiguration;
 
 /**
  * A parsed version of a locationforecast document. Its contents may be
@@ -78,7 +78,7 @@ public:
 	 * @param configuration Path to a configuration file, for defining how to
 	 *                      read what parameters.
 	 */
-	Document(std::istream & sin, const boost::filesystem::path & configuration);
+	Document(std::istream & sin, LocationforecastConfiguration & configuration);
 
 	/**
 	 * Construct document, based on data read from the given URL.
@@ -89,7 +89,7 @@ public:
 	 * @param configuration Path to a configuration file, for defining how to
 	 *                      read what parameters.
 	 */
-	Document(const std::string & url, const boost::filesystem::path & configuration);
+	Document(const std::string & url, LocationforecastConfiguration & configuration);
 
 	/**
 	 * Construct document, based on data read from the given file.
@@ -100,9 +100,9 @@ public:
 	 * @param configuration Path to a configuration file, for defining how to
 	 *                      read what parameters.
 	 */
-	Document(const boost::filesystem::path & file, const boost::filesystem::path & configuration);
+	Document(const boost::filesystem::path & file, LocationforecastConfiguration & configuration);
 
-	Document(float longitude, float latitude, const boost::filesystem::path & configuration);
+	Document(float longitude, float latitude, LocationforecastConfiguration & configuration);
 
 	~Document();
 
@@ -124,7 +124,7 @@ private:
 	void parseFile_(const boost::filesystem::path & file);
 	void parseUrl_(const std::string & url);
 
-	LocationforecastConfiguration configuration_;
+	LocationforecastConfiguration & configuration_;
 	DataList elements_;
 };
 

@@ -27,12 +27,14 @@
  */
 
 #include "LoaderConfiguration.h"
+#include "LocationforecastConfiguration.h"
 
 namespace locationforecast
 {
 
 LoaderConfiguration::LoaderConfiguration() :
-		wdb::load::LoaderConfiguration("locationforecast")
+		wdb::load::LoaderConfiguration("locationforecast"),
+		locationforecastConfiguration_(0)
 {
 	using namespace boost::program_options;
 
@@ -50,6 +52,14 @@ LoaderConfiguration::LoaderConfiguration() :
 
 LoaderConfiguration::~LoaderConfiguration()
 {
+	delete locationforecastConfiguration_;
+}
+
+LocationforecastConfiguration & LoaderConfiguration::locationforecastConfiguration() const
+{
+	if ( ! locationforecastConfiguration_ )
+		locationforecastConfiguration_ = new LocationforecastConfiguration(* this);
+	return * locationforecastConfiguration_;
 }
 
 }

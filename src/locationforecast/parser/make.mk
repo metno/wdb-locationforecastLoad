@@ -1,8 +1,6 @@
 liblocationforecastLoad_a_SOURCES += \
-	src/locationforecast/parser/LocationForecastParser.h \
-	src/locationforecast/parser/LocationforecastConfiguration.h \
-	src/locationforecast/parser/LocationforecastConfiguration.cpp
-
+	src/locationforecast/parser/LocationForecastParser.h
+	
 if BOOST_XML_PARSE
 liblocationforecastLoad_a_SOURCES += \
 	src/locationforecast/parser/BoostPropertyTreeLocationForecastParser.h \

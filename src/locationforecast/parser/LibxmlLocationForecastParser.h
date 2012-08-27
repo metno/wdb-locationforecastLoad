@@ -30,7 +30,7 @@
 #define LIBXMLLOCATIONFORECASTPARSER_H_
 
 #include "LocationForecastParser.h"
-#include "LocationforecastConfiguration.h"
+#include <configuration/LocationforecastConfiguration.h>
 #include "../elementhandler/ElementHandler.h"
 #include <boost/filesystem/path.hpp>
 #include <iosfwd>

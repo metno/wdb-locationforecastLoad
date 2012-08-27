@@ -3,3 +3,14 @@ A program to load locationforecast data into a wdb database.
 See http://api.met.no/weatherapi/locationforecast/1.8/documentation for more 
 information about locationforecast.
 
+Compilation
+===========
+
+You may choose between two ways of parsing xml files when compiling
+this program. Either, you may use libxml++, or you may use boost's
+property tree library. The default is libxml++.
+
+You may want to switch to boost when using ubuntu precise with amd64
+architecture, since this has caused some memory problems. The switch
+is done by providing the --with-xml-parser=boost switch to configure.
+

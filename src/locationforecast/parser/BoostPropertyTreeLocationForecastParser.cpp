@@ -27,7 +27,7 @@
  */
 
 #include "BoostPropertyTreeLocationForecastParser.h"
-#include "LocationforecastConfiguration.h"
+#include <configuration/LocationforecastConfiguration.h>
 #include "../LocationForecastException.h"
 #include "../TimeRange.h"
 #include <wdbLogHandler.h>

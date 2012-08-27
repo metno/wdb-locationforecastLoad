@@ -30,6 +30,7 @@
 #include "queries.h"
 #include <locationforecast/Document.h>
 #include <configuration/LoaderConfiguration.h>
+#include <configuration/LocationforecastConfiguration.h>
 #include <wdbLogHandler.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -37,8 +38,7 @@
 
 SaveDataTransactor::SaveDataTransactor(const locationforecast::LoaderConfiguration & conf, const locationforecast::Document & document) :
 	conf_(conf),
-	document_(document),
-	specificationFactory_(conf)
+	document_(document)
 {
 }
 
@@ -73,10 +73,10 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 
 	for (const locationforecast::Document::value_type & element : document_)
 	{
-		if ( specificationFactory_.hasTranslationFor(element) )
+		if ( conf_.locationforecastConfiguration().canCreateSaveSpecificationFor(element) )
 		{
 			std::vector<WdbSaveSpecification> saveSpecs;
-			specificationFactory_.create(saveSpecs, element);
+			conf_.locationforecastConfiguration().createSaveSpecification(saveSpecs, element);
 			for ( const WdbSaveSpecification & spec : saveSpecs )
 			{
 				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));

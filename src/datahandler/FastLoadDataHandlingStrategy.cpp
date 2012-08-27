@@ -28,11 +28,13 @@
 
 #include "FastLoadDataHandlingStrategy.h"
 #include <locationforecast/Document.h>
+#include <configuration/LoaderConfiguration.h>
+#include <configuration/LocationforecastConfiguration.h>
 #include <iostream>
 
 FastLoadDataHandlingStrategy::FastLoadDataHandlingStrategy(const locationforecast::LoaderConfiguration & conf) :
 	out_(std::cout),
-	specificationFactory_(conf)
+	conf_(conf)
 {
 }
 
@@ -46,10 +48,10 @@ void FastLoadDataHandlingStrategy::handle(const locationforecast::Document & doc
 
 	for ( const locationforecast::Document::value_type & element : document)
 	{
-		if ( specificationFactory_.hasTranslationFor(element) )
+		if ( conf_.locationforecastConfiguration().canCreateSaveSpecificationFor(element) )
 		{
 			std::vector<WdbSaveSpecification> saveSpecs;
-			specificationFactory_.create(saveSpecs, element);
+			conf_.locationforecastConfiguration().createSaveSpecification(saveSpecs, element);
 			for ( const WdbSaveSpecification & spec : saveSpecs )
 				spec.getFastloadText(out_);
 		}

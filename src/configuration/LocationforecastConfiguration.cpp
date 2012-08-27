@@ -27,7 +27,7 @@
  */
 
 #include "LocationforecastConfiguration.h"
-#include "../LocationForecastException.h"
+#include <locationforecast/LocationForecastException.h>
 #include <wdbLogHandler.h>
 #include <boost/filesystem.hpp>
 #ifdef BOOST_XML_PARSE
@@ -35,25 +35,28 @@
 #include <boost/property_tree/xml_parser.hpp>
 #else
 #include <libxml++/libxml++.h>
+#include <wdb_data/xmlutil.h>
 #endif
 
 
 namespace locationforecast
 {
 
-LocationforecastConfiguration::LocationforecastConfiguration(const boost::filesystem::path & configuration)
+LocationforecastConfiguration::LocationforecastConfiguration(const LoaderConfiguration & configuration) :
+		conf_(configuration)
 {
+	boost::filesystem::path configFile(configuration.translation().translationConfiguration);
 #ifdef BOOST_XML_PARSE
-	if ( ! exists(configuration) )
-		throw NoSuchFile("Configuration file " + configuration.string() + "does not exist");
-	if ( is_directory(configuration) )
-		throw FileIsDirectory("Configuration file " + configuration.string() + " is a directory");
+	if ( ! exists(configFile) )
+		throw NoSuchFile("Configuration file " + configFile.string() + "does not exist");
+	if ( is_directory(configFile) )
+		throw FileIsDirectory("Configuration file " + configFile.string() + " is a directory");
 
 	try
 	{
 		using boost::property_tree::ptree;
 		ptree pt;
-		read_xml(configuration.string(), pt);
+		read_xml(configFile.string(), pt);
 
 		auto baseUrl = pt.get_child("locationforecastLoad.configuration.locationforecast.source");
 		if ( baseUrl.size() == 1 )
@@ -61,14 +64,23 @@ LocationforecastConfiguration::LocationforecastConfiguration(const boost::filesy
 		if ( baseUrl.size() > 1 )
 			throw ParseException("Many locationforecast/source elements in configuration");
 
-		for ( const ptree::value_type & data : pt.get_child("locationforecastLoad.configuration") )
+		for ( const ptree::value_type & dataElement : pt.get_child("locationforecastLoad.configuration") )
 		{
-			if ( data.first == "data" )
+			if ( dataElement.first == "data" )
 			{
-				std::string name = data.second.get<std::string>("<xmlattr>.name");
-				std::string unit = data.second.get("<xmlattr>.unit", std::string());
+				const ptree & data = dataElement.second;
+
+				std::string name = data.get<std::string>("<xmlattr>.name");
+				std::string unit = data.get("<xmlattr>.unit", std::string());
 				parameterUnits_[name] = unit;
 				handlers_[name] = ElementHandler::get(name, unit);
+
+
+				const ptree & wdb = data.get_child("wdb");
+				translations_[name] = ConfigurationElement::get(wdb);
+
+//				const xmlpp::Element & wdb = getSingleElement(* element, "wdb");
+//				translations_[name] = ConfigurationElement::get(wdb);
 			}
 		}
 	}
@@ -77,13 +89,13 @@ LocationforecastConfiguration::LocationforecastConfiguration(const boost::filesy
 		throw ParseException(e.what());
 	}
 #else
-	if ( ! exists(configuration) )
-		throw NoSuchFile("Configuration file " + configuration.string() + "does not exist");
-	if ( is_directory(configuration) )
-		throw FileIsDirectory("Configuration file " + configuration.string() + " is a directory");
+	if ( ! exists(configFile) )
+		throw NoSuchFile("Configuration file " + configFile.string() + "does not exist");
+	if ( is_directory(configFile) )
+		throw FileIsDirectory("Configuration file " + configFile.string() + " is a directory");
 
 	xmlpp::DomParser parser;
-	parser.parse_file(configuration.string());
+	parser.parse_file(configFile.string());
 	if ( ! parser )
 		throw ParseException("Error when parsing config file");
 
@@ -108,6 +120,9 @@ LocationforecastConfiguration::LocationforecastConfiguration(const boost::filesy
 		std::string unit = element->get_attribute_value("unit");
 		parameterUnits_[name] = unit;
 		handlers_[name] = ElementHandler::get(name, unit);
+
+		const xmlpp::Element & wdb = getSingleElement(* element, "wdb");
+		translations_[name] = ConfigurationElement::get(wdb);
 	}
 #endif
 }
@@ -126,6 +141,41 @@ const ElementHandler::Ptr & LocationforecastConfiguration::getHandler(const std:
 		handler = ElementHandler::get(parameter);
 	}
 	return handler;
+}
+
+bool LocationforecastConfiguration::canCreateSaveSpecificationFor(const locationforecast::DataElement & element) const
+{
+	return translations_.find(element.parameter()) != translations_.end();
+}
+
+void LocationforecastConfiguration::createSaveSpecification(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const
+{
+	if ( not element.complete() )
+		throw std::invalid_argument("incomplete data element");
+
+	const locationforecast::LoaderConfiguration::LoadingOptions & loading = conf_.loading();
+
+	if ( not loading.valueParameter.empty() )
+		throw std::runtime_error("valueparameter override is not supported");
+	if ( not loading.levelParameter.empty() )
+		throw std::runtime_error("levelparameter override is not supported");
+	if ( loading.dataVersion != -999 )
+		throw std::runtime_error("dataversion override is not supported");
+	if ( loading.confidenceCode != 0 )
+		throw std::runtime_error("confidencecode override is not supported");
+
+	ParameterTranslation::const_iterator find = translations_.find(element.parameter());
+	if ( find == translations_.end() )
+		throw std::runtime_error("Missing translation for parameter " + element.parameter());
+
+	const ConfigurationElement::Ptr & config = find->second;
+	config->create(out, element);
+
+	if ( not conf_.loading().referenceTime.empty() )
+	{
+		for ( std::vector<WdbSaveSpecification>::iterator spec = out.begin(); spec != out.end(); ++ spec )
+			spec->setReferenceTime(conf_.loading().referenceTime);
+	}
 }
 
 } /* namespace locationforecast */

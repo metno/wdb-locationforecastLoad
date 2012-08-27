@@ -27,9 +27,27 @@
  */
 
 #include "NormalConfigurationElement.h"
+#ifdef BOOST_XML_PARSE
+#include <boost/property_tree/ptree.hpp>
+#else
 #include "../xmlutil.h"
 #include <libxml++/libxml++.h>
+#endif
 
+
+#ifdef BOOST_XML_PARSE
+
+	NormalConfigurationElement::NormalConfigurationElement(const boost::property_tree::ptree & wdb)
+	{
+		valueParameterName = wdb.get<std::string>("valueparameter.<xmlattr>.name");
+		levelParameterName = wdb.get<std::string>("levelparameter.<xmlattr>.name");
+		levelFrom = wdb.get<float>("levelparameter.<xmlattr>.from", 0);
+		levelTo = wdb.get<float>("levelparameter.<xmlattr>.to", 0);
+		valueCoefficient = wdb.get<float>("conversion.<xmlattr>.coefficient", 1);
+		valueConstant = wdb.get<float>("conversion.<xmlattr>.constant", 0);
+	}
+
+#else
 
 NormalConfigurationElement::NormalConfigurationElement(const xmlpp::Element & wdb) :
 		valueCoefficient(1), valueConstant(0)
@@ -52,6 +70,7 @@ NormalConfigurationElement::NormalConfigurationElement(const xmlpp::Element & wd
 	}
 }
 
+#endif
 
 void NormalConfigurationElement::create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const
 {

@@ -43,7 +43,11 @@ class Element;
 class NormalConfigurationElement : public ConfigurationElement
 {
 public:
+#ifdef BOOST_XML_PARSE
+	explicit NormalConfigurationElement(const boost::property_tree::ptree & wdb);
+#else
 	explicit NormalConfigurationElement(const xmlpp::Element & wdb);
+#endif
 
 	virtual void create(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
 

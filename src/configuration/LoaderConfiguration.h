@@ -34,6 +34,7 @@
 
 namespace locationforecast
 {
+class LocationforecastConfiguration;
 
 /**
  * Container for command-line options.
@@ -63,8 +64,11 @@ public:
 	const Translation & translation() const { return translation_; }
 	Translation & translation() { return translation_; }
 
+	LocationforecastConfiguration & locationforecastConfiguration() const;
+
 private:
 	Translation translation_;
+	mutable LocationforecastConfiguration * locationforecastConfiguration_;
 };
 
 }

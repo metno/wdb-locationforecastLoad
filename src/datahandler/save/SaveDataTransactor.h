@@ -29,8 +29,8 @@
 #ifndef SAVEDATATRANSACTOR_H_
 #define SAVEDATATRANSACTOR_H_
 
+#include "types/Point.h"
 #include <pqxx/transactor>
-#include <wdb_data/WdbSaveSpecificationFactory.h>
 #include <string>
 #include <map>
 
@@ -39,7 +39,6 @@ namespace locationforecast
 class LoaderConfiguration;
 class Document;
 }
-
 
 /**
  * Functor for saving data to a wdb database. See pqxx documentation for details about how this works.
@@ -69,7 +68,6 @@ private:
 
 	const locationforecast::LoaderConfiguration & conf_;
 	const locationforecast::Document & document_;
-	WdbSaveSpecificationFactory specificationFactory_;
 };
 
 #endif /* SAVEDATATRANSACTOR_H_ */

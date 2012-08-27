@@ -111,7 +111,7 @@ int main(int argc, char ** argv)
 		if ( conf.input().file.empty() )
 		{
 			log.info("Loading data from stdin");
-			locationforecast::Document doc(std::cin, conf.translation().translationConfiguration);
+			locationforecast::Document doc(std::cin, conf.locationforecastConfiguration());
 			dataHandler->handle(doc);
 			log.info("Loading complete");
 		}
@@ -125,13 +125,13 @@ int main(int argc, char ** argv)
 
 					if ( url.find_first_of("://") != std::string::npos )
 					{
-						locationforecast::Document doc(url, conf.translation().translationConfiguration);
+						locationforecast::Document doc(url, conf.locationforecastConfiguration());
 						dataHandler->handle(doc);
 					}
 					else
 					{
 						DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
-						locationforecast::Document doc(pos.longitude, pos.latitude, conf.translation().translationConfiguration);
+						locationforecast::Document doc(pos.longitude, pos.latitude, conf.locationforecastConfiguration());
 						dataHandler->handle(doc);
 					}
 

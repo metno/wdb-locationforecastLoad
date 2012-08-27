@@ -5,11 +5,12 @@ EXTRA_DIST =
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/src \
 	$(libwdbLoad_CFLAGS) \
-	$(libxmlpp_CFLAGS) \
 	$(libcurl_CFLAGS)
 
 if BOOST_XML_PARSE
 AM_CPPFLAGS += -DBOOST_XML_PARSE
+else
+AM_CPPFLAGS += $(libxmlpp_CFLAGS)
 endif
 
 AM_CXXFLAGS = \
@@ -18,9 +19,12 @@ AM_CXXFLAGS = \
 
 AM_LDADD = \
 	$(libwdbLoad_LIBS) \
-	$(libxmlpp_LIBS) \
 	$(libcurl_LIBS)
 
+if BOOST_XML_PARSE
+else
+AM_LDADD += $(libxmlpp_LIBS)
+endif
 
 noinst_LIBRARIES = liblocationforecastLoad.a
 

@@ -30,9 +30,12 @@
 #define FASTLOADDATAHANDLINGSTRATEGY_H_
 
 #include "DataHandlingStrategy.h"
-#include <wdb_data/WdbSaveSpecificationFactory.h>
 #include <iosfwd>
 
+namespace locationforecast
+{
+class LoaderConfiguration;
+}
 
 class FastLoadDataHandlingStrategy: public DataHandlingStrategy
 {
@@ -44,7 +47,7 @@ public:
 
 private:
 	std::ostream & out_;
-	WdbSaveSpecificationFactory specificationFactory_;
+	const locationforecast::LoaderConfiguration & conf_;
 };
 
 

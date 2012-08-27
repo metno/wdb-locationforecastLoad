@@ -29,27 +29,40 @@
 #ifndef LIBXMLCONFIGURATIONPARSER_H_
 #define LIBXMLCONFIGURATIONPARSER_H_
 
-#include "../elementhandler/ElementHandler.h"
+#include "LoaderConfiguration.h"
+#include <locationforecast/elementhandler/ElementHandler.h>
+#include <wdb_data/WdbSaveSpecification.h>
+#include <wdb_data/element/ConfigurationElement.h>
 #include <boost/filesystem/path.hpp>
+#include <boost/noncopyable.hpp>
 #include <map>
 #include <string>
 
 namespace locationforecast
 {
 
-class LocationforecastConfiguration
+class LocationforecastConfiguration : boost::noncopyable
 {
 public:
-	LocationforecastConfiguration(const boost::filesystem::path & configurationFile);
+	LocationforecastConfiguration(const LoaderConfiguration & configuration);
 	~LocationforecastConfiguration();
 
 	std::string baseUrl() const { return baseUrl_; }
 	const ElementHandler::Ptr & getHandler(const std::string & parameter);
 
+	bool canCreateSaveSpecificationFor(const locationforecast::DataElement & element) const;
+
+	void createSaveSpecification(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
+
 private:
 	std::string baseUrl_;
 	std::map<std::string, std::string> parameterUnits_;
 	std::map<std::string, ElementHandler::Ptr> handlers_;
+
+	const LoaderConfiguration & conf_;
+
+	typedef std::map<std::string, ConfigurationElement::Ptr> ParameterTranslation;
+	ParameterTranslation translations_;
 };
 
 } /* namespace locationforecast */

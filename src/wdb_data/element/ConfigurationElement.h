@@ -35,10 +35,14 @@
 #include <boost/shared_ptr.hpp>
 #include <vector>
 
+#ifdef BOOST_XML_PARSE
+#include <boost/property_tree/ptree_fwd.hpp>
+#else
 namespace xmlpp
 {
 class Element;
 }
+#endif
 
 class ConfigurationElement
 {
@@ -49,7 +53,11 @@ public:
 
 	typedef boost::shared_ptr<ConfigurationElement> Ptr;
 
+#ifdef BOOST_XML_PARSE
+	static Ptr get(const boost::property_tree::ptree & wdb);
+#else
 	static Ptr get(const xmlpp::Element & wdb);
+#endif
 };
 
 

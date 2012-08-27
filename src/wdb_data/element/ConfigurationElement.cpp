@@ -30,8 +30,22 @@
 #include "ConfigurationElement.h"
 #include "NormalConfigurationElement.h"
 #include "IgnoreConfigurationElement.h"
+#ifdef BOOST_XML_PARSE
+#include <boost/property_tree/ptree.hpp>
+#else
 #include <libxml++/libxml++.h>
-#include <iostream>
+#endif
+
+#ifdef BOOST_XML_PARSE
+
+ConfigurationElement::Ptr ConfigurationElement::get(const boost::property_tree::ptree & wdb)
+{
+	if ( wdb.get<std::string>("<xmlattr>.process", std::string()) == "ignore" )
+		return Ptr(new IgnoreConfigurationElement);
+	return Ptr(new NormalConfigurationElement(wdb));
+}
+
+#else
 
 ConfigurationElement::Ptr ConfigurationElement::get(const xmlpp::Element & wdb)
 {
@@ -41,3 +55,5 @@ ConfigurationElement::Ptr ConfigurationElement::get(const xmlpp::Element & wdb)
 
 	return Ptr(new NormalConfigurationElement(wdb));
 }
+
+#endif
