@@ -1,3 +1,9 @@
+locationforecastload (0.7.2-1) precise; urgency=low
+
+  * new release
+
+ -- Vegard Bønes <vegardb@wdb-dev3.met.no>  Mon, 03 Sep 2012 12:10:04 +0200
+
 locationforecastload (0.7.1-1) precise; urgency=low
 
   * new version
