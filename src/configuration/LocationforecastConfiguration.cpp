@@ -48,7 +48,7 @@ LocationforecastConfiguration::LocationforecastConfiguration(const LoaderConfigu
 	boost::filesystem::path configFile(configuration.translation().translationConfiguration);
 #ifdef BOOST_XML_PARSE
 	if ( ! exists(configFile) )
-		throw NoSuchFile("Configuration file " + configFile.string() + "does not exist");
+		throw NoSuchFile("Configuration file " + configFile.string() + " does not exist");
 	if ( is_directory(configFile) )
 		throw FileIsDirectory("Configuration file " + configFile.string() + " is a directory");
 

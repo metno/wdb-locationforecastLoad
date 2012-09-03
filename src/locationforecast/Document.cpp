@@ -109,7 +109,7 @@ void Document::parse_(std::istream & s)
 void Document::parseFile_(const boost::filesystem::path & file)
 {
 	if ( ! exists(file) )
-		throw NoSuchFile(file.string() + "does not exist");
+		throw NoSuchFile(file.string() + " does not exist");
 	if ( is_directory(file) )
 		throw FileIsDirectory(file.string() + " is a directory");
 

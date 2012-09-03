@@ -45,7 +45,6 @@ LoaderConfiguration::LoaderConfiguration() :
 			"Read parameter translation configuration from the given file"
 			);
 
-	cmdOptions().add( translation );
 	configOptions().add( translation );
 	shownOptions().add( translation );
 }
