@@ -64,9 +64,11 @@ LibxmlLocationForecastParser::DataList LibxmlLocationForecastParser::parse(std::
 
 		typedef std::map<TimeRange, std::string> ReferenceTimesForValidTimes;
 		ReferenceTimesForValidTimes referenceTimes;
-		for ( const xmlpp::Node * modelNode : root->find("/weatherdata/meta/model"))
+		const xmlpp::NodeSet & modelSet = root->find("/weatherdata/meta/model");
+		for ( xmlpp::NodeSet::const_iterator it = modelSet.begin(); it != modelSet.end(); ++ it )
+		//for ( const xmlpp::Node * modelNode : root->find("/weatherdata/meta/model"))
 		{
-			const xmlpp::Element * model = dynamic_cast<const xmlpp::Element *>(modelNode);
+			const xmlpp::Element * model = dynamic_cast<const xmlpp::Element *>(* it);
 			if ( ! model )
 				continue;
 			std::string from = model->get_attribute_value("from");
@@ -77,21 +79,23 @@ LibxmlLocationForecastParser::DataList LibxmlLocationForecastParser::parse(std::
 		}
 
 		std::vector<DataElement> dataOut;
-		for ( const xmlpp::Node * node : root->find("/weatherdata/product/time") )
+		const xmlpp::NodeSet & nodes = root->find("/weatherdata/product/time");
+		//for ( const xmlpp::Node * node : root->find("/weatherdata/product/time") )
+		for ( xmlpp::NodeSet::const_iterator it = nodes.begin(); it != nodes.end(); ++ it )
 		{
 			DataElement workingData;
-			parseTime_(workingData, dataOut, node);
+			parseTime_(workingData, dataOut, * it);
 		}
 
-		for ( DataElement & element : dataOut )
-			for ( const ReferenceTimesForValidTimes::value_type & refFromValid : referenceTimes)
-				if ( refFromValid.first.encloses(element.validTo()) )
+		for ( std::vector<DataElement>::iterator element = dataOut.begin(); element != dataOut.end(); ++ element )
+			for ( ReferenceTimesForValidTimes::const_iterator refFromValid = referenceTimes.begin(); refFromValid != referenceTimes.end(); ++ refFromValid )
+				if ( refFromValid->first.encloses(element->validTo()) )
 				{
-					element.referenceTime(refFromValid.second);
-					if ( element.complete() )
-						out.push_back(element);
+					element->referenceTime(refFromValid->second);
+					if ( element->complete() )
+						out.push_back(* element);
 					else
-						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element.parameter() << '>';
+						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element->parameter() << '>';
 				}
 	}
 	else
@@ -156,9 +160,10 @@ void LibxmlLocationForecastParser::parseLocation_(DataElement workingData, std::
 			boost::lexical_cast<double>(locationElement->get_attribute_value("latitude")));
 	workingData.location(point);
 
-	auto children = node->get_children();
-	for ( const xmlpp::Node * node : children )
-		parseParameter_(workingData, out, node);
+	const xmlpp::Node::NodeList & children = node->get_children();
+	//for ( const xmlpp::Node * node : children )
+	for ( xmlpp::Node::NodeList::const_iterator it = children.begin(); it != children.end(); ++ it )
+		parseParameter_(workingData, out, * it);
 }
 
 void LibxmlLocationForecastParser::parseTime_(DataElement workingData, std::vector<DataElement> & out, const xmlpp::Node * node) const
@@ -182,9 +187,10 @@ void LibxmlLocationForecastParser::parseTime_(DataElement workingData, std::vect
 	workingData.validFrom(validFrom);
 	workingData.validTo(validTo);
 
-	auto children = node->get_children();
-	for ( const xmlpp::Node * node : children )
-		parseLocation_(workingData, out, node);
+	const xmlpp::Node::NodeList & children = node->get_children();
+	//for ( const xmlpp::Node * node : children )
+	for ( xmlpp::Node::NodeList::const_iterator it = children.begin(); it != children.end(); ++ it )
+		parseLocation_(workingData, out, * it);
 }
 
 } /* namespace locationforecast */

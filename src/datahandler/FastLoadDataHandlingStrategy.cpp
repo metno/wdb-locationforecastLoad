@@ -46,14 +46,14 @@ void FastLoadDataHandlingStrategy::handle(const locationforecast::Document & doc
 {
 	out_ << "locationforecast\t88,0,88\n";
 
-	for ( const locationforecast::Document::value_type & element : document)
+	for ( locationforecast::Document::const_iterator element = document.begin(); element != document.end(); ++ element )
 	{
-		if ( conf_.locationforecastConfiguration().canCreateSaveSpecificationFor(element) )
+		if ( conf_.locationforecastConfiguration().canCreateSaveSpecificationFor(* element) )
 		{
 			std::vector<WdbSaveSpecification> saveSpecs;
-			conf_.locationforecastConfiguration().createSaveSpecification(saveSpecs, element);
-			for ( const WdbSaveSpecification & spec : saveSpecs )
-				spec.getFastloadText(out_);
+			conf_.locationforecastConfiguration().createSaveSpecification(saveSpecs, * element);
+			for ( std::vector<WdbSaveSpecification>::const_iterator spec = saveSpecs.begin(); spec != saveSpecs.end(); ++ spec )
+				spec->getFastloadText(out_);
 		}
 	}
 

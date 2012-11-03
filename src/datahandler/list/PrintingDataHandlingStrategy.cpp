@@ -45,22 +45,22 @@ void PrintingDataHandlingStrategy::handle(const locationforecast::Document & doc
 	std::string validTo;
 	std::string parameter;
 
-	for (const locationforecast::Document::value_type & element : document)
+	for ( locationforecast::Document::const_iterator element = document.begin(); element != document.end(); ++ element )
 	{
-		if ( location != element.location() )
+		if ( location != element->location() )
 		{
-			location = element.location();
+			location = element->location();
 			std::cout << location.wkt() << ":\n";
 		}
-		if ( validFrom != element.validFrom() or validTo != element.validTo())
+		if ( validFrom != element->validFrom() or validTo != element->validTo())
 		{
-			validFrom = element.validFrom();
-			validTo = element.validTo();
+			validFrom = element->validFrom();
+			validTo = element->validTo();
 			std::cout << "\t" << validFrom;
 			if ( validTo != validFrom )
 				std::cout << " - " << validTo;
 			std::cout << ":\n";
 		}
-		std::cout << "\t\t" << element.parameter() << "\t" << element.value() << std::endl;
+		std::cout << "\t\t" << element->parameter() << "\t" << element->value() << std::endl;
 	}
 }

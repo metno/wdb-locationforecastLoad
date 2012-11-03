@@ -62,8 +62,8 @@ void wciBegin(pqxx::work & transaction, const locationforecast::LoaderConfigurat
 			for ( int i = 0; i < 3; ++ i )
 				query << ", " << getInt(namespaceElements.front());
 		else if ( namespaceElements.size() == 3 )
-			for ( const std::string & s : namespaceElements )
-				query << ", " << getInt(s);
+			for ( std::vector<std::string>::const_iterator s = namespaceElements.begin(); s != namespaceElements.end(); ++ s )
+				query << ", " << getInt(*s);
 	}
 	query << ')';
 

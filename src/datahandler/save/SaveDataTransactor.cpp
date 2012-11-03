@@ -71,15 +71,15 @@ void SaveDataTransactor::operator () (pqxx::work & transaction)
 
 	Escaper escape(transaction);
 
-	for (const locationforecast::Document::value_type & element : document_)
+	for (locationforecast::Document::const_iterator element = document_.begin(); element != document_.end(); ++ element)
 	{
-		if ( conf_.locationforecastConfiguration().canCreateSaveSpecificationFor(element) )
+		if ( conf_.locationforecastConfiguration().canCreateSaveSpecificationFor(* element) )
 		{
 			std::vector<WdbSaveSpecification> saveSpecs;
-			conf_.locationforecastConfiguration().createSaveSpecification(saveSpecs, element);
-			for ( const WdbSaveSpecification & spec : saveSpecs )
+			conf_.locationforecastConfiguration().createSaveSpecification(saveSpecs, * element);
+			for ( std::vector<WdbSaveSpecification>::const_iterator spec = saveSpecs.begin(); spec != saveSpecs.end(); ++ spec )
 			{
-				const std::string writeQuery = spec.getWriteQuery(escape, getPlaceName_(transaction, spec.location(), spec.referenceTime()));
+				const std::string writeQuery = spec->getWriteQuery(escape, getPlaceName_(transaction, spec->location(), spec->referenceTime()));
 				log.debug(writeQuery);
 				transaction.exec(writeQuery);
 			}

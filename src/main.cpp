@@ -117,20 +117,20 @@ int main(int argc, char ** argv)
 		}
 		else
 		{
-			for ( const std::string & url : conf.input().file )
+			for ( std::vector<std::string>::const_iterator url = conf.input().file.begin(); url != conf.input().file.end(); ++ url )
 			{
 				try
 				{
-					log.infoStream() << "Loading " << url;
+					log.infoStream() << "Loading " << * url;
 
-					if ( url.find_first_of("://") != std::string::npos )
+					if ( url->find_first_of("://") != std::string::npos )
 					{
-						locationforecast::Document doc(url, conf.locationforecastConfiguration());
+						locationforecast::Document doc(* url, conf.locationforecastConfiguration());
 						dataHandler->handle(doc);
 					}
 					else
 					{
-						DataHandlingStrategy::Position pos = dataHandler->getPosition(url);
+						DataHandlingStrategy::Position pos = dataHandler->getPosition(* url);
 						locationforecast::Document doc(pos.longitude, pos.latitude, conf.locationforecastConfiguration());
 						dataHandler->handle(doc);
 					}

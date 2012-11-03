@@ -111,9 +111,11 @@ LocationforecastConfiguration::LocationforecastConfiguration(const LoaderConfigu
 	else if ( not sourceNodes.empty() )
 		throw ParseException("Many locationforecast/source elements in configuration");
 
-	for ( const xmlpp::Node * node : root->find("/locationforecastLoad/configuration/data"))
+	const xmlpp::NodeSet & configurationData = root->find("/locationforecastLoad/configuration/data");
+	for ( xmlpp::NodeSet::const_iterator node = configurationData.begin(); node != configurationData.end(); ++ node )
+	//for ( const xmlpp::Node * node : root->find("/locationforecastLoad/configuration/data"))
 	{
-		const xmlpp::Element * element = dynamic_cast<const xmlpp::Element *>(node);
+		const xmlpp::Element * element = dynamic_cast<const xmlpp::Element *>(* node);
 		if ( ! element ) // should never happen
 			continue;
 		std::string name = element->get_attribute_value("name");
