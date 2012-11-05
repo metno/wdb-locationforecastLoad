@@ -64,11 +64,15 @@ public:
 	const Translation & translation() const { return translation_; }
 	Translation & translation() { return translation_; }
 
+	bool shouldProcessModel(const std::string & modelName) const;
+
 	LocationforecastConfiguration & locationforecastConfiguration() const;
 
 private:
 	Translation translation_;
 	mutable LocationforecastConfiguration * locationforecastConfiguration_;
+
+	std::vector<std::string> modelsToLoad_;
 };
 
 }

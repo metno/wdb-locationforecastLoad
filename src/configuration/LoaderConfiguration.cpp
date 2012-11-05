@@ -28,6 +28,7 @@
 
 #include "LoaderConfiguration.h"
 #include "LocationforecastConfiguration.h"
+#include <algorithm>
 
 namespace locationforecast
 {
@@ -47,11 +48,30 @@ LoaderConfiguration::LoaderConfiguration() :
 
 	configOptions().add( translation );
 	shownOptions().add( translation );
+
+	options_description models("Models");
+	models.add_options()
+			("models,m",
+			value(& modelsToLoad_),
+			"Only load the models with the given name(s) in the meta.model.name tag"
+			);
+
+	configOptions().add( models );
+	shownOptions().add( models );
+
 }
 
 LoaderConfiguration::~LoaderConfiguration()
 {
 	delete locationforecastConfiguration_;
+}
+
+bool LoaderConfiguration::shouldProcessModel(const std::string & modelName) const
+{
+	if ( modelsToLoad_.empty() )
+		return true;
+
+	return std::find(modelsToLoad_.begin(), modelsToLoad_.end(), modelName) != modelsToLoad_.end();
 }
 
 LocationforecastConfiguration & LoaderConfiguration::locationforecastConfiguration() const

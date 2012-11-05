@@ -73,6 +73,7 @@ BoostPropertyTreeLocationForecastParser::DataList BoostPropertyTreeLocationForec
 			if ( meta.first == "model")
 			{
 				ptree model = meta.second;
+				std::string name = model.get<std::string>("<xmlattr>.name");
 				std::string from = model.get<std::string>("<xmlattr>.from");
 				std::string to = model.get<std::string>("<xmlattr>.to");
 				std::string referenceTime = model.get<std::string>("<xmlattr>.termin");

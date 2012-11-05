@@ -66,16 +66,20 @@ LibxmlLocationForecastParser::DataList LibxmlLocationForecastParser::parse(std::
 		ReferenceTimesForValidTimes referenceTimes;
 		const xmlpp::NodeSet & modelSet = root->find("/weatherdata/meta/model");
 		for ( xmlpp::NodeSet::const_iterator it = modelSet.begin(); it != modelSet.end(); ++ it )
-		//for ( const xmlpp::Node * modelNode : root->find("/weatherdata/meta/model"))
 		{
 			const xmlpp::Element * model = dynamic_cast<const xmlpp::Element *>(* it);
 			if ( ! model )
 				continue;
-			std::string from = model->get_attribute_value("from");
-			std::string to = model->get_attribute_value("to");
-			std::string referenceTime = model->get_attribute_value("termin");
 
-			referenceTimes[TimeRange(from, to)] = referenceTime;
+			std::string name = model->get_attribute_value("name");
+			if ( configuration_.shouldProcessModel(name) )
+			{
+				std::string from = model->get_attribute_value("from");
+				std::string to = model->get_attribute_value("to");
+				std::string referenceTime = model->get_attribute_value("termin");
+
+				referenceTimes[TimeRange(from, to)] = referenceTime;
+			}
 		}
 
 		std::vector<DataElement> dataOut;

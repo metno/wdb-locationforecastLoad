@@ -124,3 +124,94 @@ TEST(DocumentTest, setsReferenceTime)
 	EXPECT_EQ("2012-01-26T00:00:00Z", element->validTo());
 	EXPECT_EQ("2012-01-18T12:00:00Z", element->referenceTime());
 }
+
+TEST(DocumentTest, onlyOneModel_a)
+{
+	LoaderConfiguration config;
+	const char * options[3] = {
+			"<program name>",
+			"--translation="SRCDIR"/etc/locationforecastLoad.conf.xml",
+			"-mYR"
+	};
+	config.parse(3, (char **) options);
+	LocationforecastConfiguration conf(config);
+	Document doc(testFiles/"small_document.xml", conf);
+
+	EXPECT_EQ(1, doc.size());
+}
+
+TEST(DocumentTest, onlyOneModel_b)
+{
+	LoaderConfiguration config;
+	const char * options[3] = {
+			"<program name>",
+			"--translation="SRCDIR"/etc/locationforecastLoad.conf.xml",
+			"-mEPS"
+	};
+	config.parse(3, (char **) options);
+	LocationforecastConfiguration conf(config);
+	Document doc(testFiles/"small_document.xml", conf);
+
+	EXPECT_EQ(1, doc.size());
+}
+
+TEST(DocumentTest, twoModels)
+{
+	LoaderConfiguration config;
+	const char * options[4] = {
+			"<program name>",
+			"--translation="SRCDIR"/etc/locationforecastLoad.conf.xml",
+			"-mEPS",
+			"-mYR"
+	};
+	config.parse(4, (char **) options);
+	LocationforecastConfiguration conf(config);
+	Document doc(testFiles/"small_document.xml", conf);
+
+	EXPECT_EQ(2, doc.size());
+}
+
+TEST(DocumentTest, nonexistingModel)
+{
+	LoaderConfiguration config;
+	const char * options[3] = {
+			"<program name>",
+			"--translation="SRCDIR"/etc/locationforecastLoad.conf.xml",
+			"-mFOO"
+	};
+	config.parse(3, (char **) options);
+	LocationforecastConfiguration conf(config);
+	Document doc(testFiles/"small_document.xml", conf);
+
+	EXPECT_TRUE(doc.empty());
+}
+
+TEST(DocumentTest, realDocument_a)
+{
+	LoaderConfiguration config;
+	const char * options[3] = {
+			"<program name>",
+			"--translation="SRCDIR"/etc/locationforecastLoad.conf.xml",
+			"-mYR"
+	};
+	config.parse(3, (char **) options);
+	LocationforecastConfiguration conf(config);
+	Document doc(testFiles/"real_example.xml", conf);
+
+	EXPECT_EQ(1056, doc.size());
+}
+
+TEST(DocumentTest, realDocument_b)
+{
+	LoaderConfiguration config;
+	const char * options[3] = {
+			"<program name>",
+			"--translation="SRCDIR"/etc/locationforecastLoad.conf.xml",
+			"-mEPS"
+	};
+	config.parse(3, (char **) options);
+	LocationforecastConfiguration conf(config);
+	Document doc(testFiles/"real_example.xml", conf);
+
+	EXPECT_EQ(234, doc.size());
+}

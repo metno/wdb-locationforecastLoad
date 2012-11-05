@@ -54,6 +54,11 @@ public:
 
 	void createSaveSpecification(std::vector<WdbSaveSpecification> & out, const locationforecast::DataElement & element) const;
 
+	bool shouldProcessModel(const std::string & modelName) const
+	{
+		return conf_.shouldProcessModel(modelName);
+	}
+
 private:
 	std::string baseUrl_;
 	std::map<std::string, std::string> parameterUnits_;
