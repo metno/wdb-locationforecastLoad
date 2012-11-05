@@ -68,36 +68,41 @@ BoostPropertyTreeLocationForecastParser::DataList BoostPropertyTreeLocationForec
 		typedef std::map<TimeRange, std::string> ReferenceTimesForValidTimes;
 		ReferenceTimesForValidTimes referenceTimes;
 
-		for ( const ptree::value_type & meta : weatherdata.get_child("meta") )
+		const ptree & metaTag = weatherdata.get_child("meta");
+		for ( ptree::const_iterator meta = metaTag.begin(); meta != metaTag.end(); ++ meta )
 		{
-			if ( meta.first == "model")
+			if ( meta->first == "model")
 			{
-				ptree model = meta.second;
+				ptree model = meta->second;
 				std::string name = model.get<std::string>("<xmlattr>.name");
-				std::string from = model.get<std::string>("<xmlattr>.from");
-				std::string to = model.get<std::string>("<xmlattr>.to");
-				std::string referenceTime = model.get<std::string>("<xmlattr>.termin");
-				referenceTimes[TimeRange(from, to)] = referenceTime;
+				if ( configuration_.shouldProcessModel(name) )
+				{
+					std::string from = model.get<std::string>("<xmlattr>.from");
+					std::string to = model.get<std::string>("<xmlattr>.to");
+					std::string referenceTime = model.get<std::string>("<xmlattr>.termin");
+					referenceTimes[TimeRange(from, to)] = referenceTime;
+				}
 			}
 		}
 
 		std::vector<DataElement> dataOut;
-		for ( const ptree::value_type & product : weatherdata.get_child("product") )
-			if ( product.first == "time" )
+		const ptree & productTag = weatherdata.get_child("product");
+		for ( ptree::const_iterator product = productTag.begin(); product != productTag.end(); ++ product )
+			if ( product->first == "time" )
 			{
 				DataElement workingData;
-				parseTime_(workingData, dataOut, product.second);
+				parseTime_(workingData, dataOut, product->second);
 			}
 
-		for ( DataElement & element : dataOut )
-			for ( const ReferenceTimesForValidTimes::value_type & refFromValid : referenceTimes)
-				if ( refFromValid.first.encloses(element.validTo()) )
+		for ( std::vector<DataElement>::iterator element = dataOut.begin(); element != dataOut.end(); ++ element )
+			for ( ReferenceTimesForValidTimes::const_iterator refFromValid = referenceTimes.begin(); refFromValid != referenceTimes.end(); ++ refFromValid )
+				if ( refFromValid->first.encloses(element->validTo()) )
 				{
-					element.referenceTime(refFromValid.second);
-					if ( element.complete() )
-						out.push_back(element);
+					element->referenceTime(refFromValid->second);
+					if ( element->complete() )
+						out.push_back(* element);
 					else
-						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element.parameter() << '>';
+						log.errorStream() << "Internal error: unable to fully understand data with parameter <" << element->parameter() << '>';
 				}
 	}
 	catch ( boost::property_tree::ptree_error & e )
@@ -118,9 +123,9 @@ void BoostPropertyTreeLocationForecastParser::parseTime_(DataElement workingData
 	workingData.validFrom(validFrom);
 	workingData.validTo(validTo);
 
-	for ( auto n : node )
-		if ( n.first == "location" )
-			parseLocation_(workingData, out, n.second);
+	for ( boost::property_tree::ptree::const_iterator n = node.begin(); n != node.end(); ++ n )
+		if ( n->first == "location" )
+			parseLocation_(workingData, out, n->second);
 }
 
 void BoostPropertyTreeLocationForecastParser::parseLocation_(DataElement workingData, std::vector<DataElement> & out, const boost::property_tree::ptree & node) const
@@ -130,9 +135,9 @@ void BoostPropertyTreeLocationForecastParser::parseLocation_(DataElement working
 			node.get<double>("<xmlattr>.latitude"));
 	workingData.location(point);
 
-	for ( auto n : node )
-		if ( n.first != "<xmlattr>" )
-			parseParameter_(workingData, out, n.first, n.second);
+	for ( boost::property_tree::ptree::const_iterator n = node.begin(); n != node.end(); ++ n )
+		if ( n->first != "<xmlattr>" )
+			parseParameter_(workingData, out, n->first, n->second);
 }
 
 void BoostPropertyTreeLocationForecastParser::parseParameter_(DataElement workingData, std::vector<DataElement> & out, const std::string & parameter, const boost::property_tree::ptree & node) const

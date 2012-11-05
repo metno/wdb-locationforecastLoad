@@ -58,17 +58,18 @@ LocationforecastConfiguration::LocationforecastConfiguration(const LoaderConfigu
 		ptree pt;
 		read_xml(configFile.string(), pt);
 
-		auto baseUrl = pt.get_child("locationforecastLoad.configuration.locationforecast.source");
+		ptree baseUrl = pt.get_child("locationforecastLoad.configuration.locationforecast.source");
 		if ( baseUrl.size() == 1 )
 			baseUrl_ = baseUrl.front().second.data();
 		if ( baseUrl.size() > 1 )
 			throw ParseException("Many locationforecast/source elements in configuration");
 
-		for ( const ptree::value_type & dataElement : pt.get_child("locationforecastLoad.configuration") )
+		const ptree & configurationTag = pt.get_child("locationforecastLoad.configuration");
+		for ( ptree::const_iterator dataElement = configurationTag.begin(); dataElement != configurationTag.end(); ++ dataElement )
 		{
-			if ( dataElement.first == "data" )
+			if ( dataElement->first == "data" )
 			{
-				const ptree & data = dataElement.second;
+				const ptree & data = dataElement->second;
 
 				std::string name = data.get<std::string>("<xmlattr>.name");
 				std::string unit = data.get("<xmlattr>.unit", std::string());
