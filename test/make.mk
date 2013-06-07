@@ -1,5 +1,3 @@
-if HAVE_GTEST
-
 TESTS = locationforecastLoadTest
 
 check_PROGRAMS = locationforecastLoadTest
@@ -21,7 +19,5 @@ locationforecastLoadTest_CXXFLAGS = \
 locationforecastLoadTest_LDADD = \
 	$(locationforecastLoad_LDADD) \
 	$(gtest_LIBS) -lgtest_main
-
-endif
 
 include test/etc/make.mk

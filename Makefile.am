@@ -45,5 +45,6 @@ CLEANFILES = $(man_MANS)
 include src/make.mk
 include etc/make.mk
 include test/make.mk
+include gtest.mk
 include debian.mk
 

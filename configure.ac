@@ -32,7 +32,7 @@ fi
 
 forbedre sjekk av libxml, så det bare gjres når det trengs
 
-GTEST_CHECK
+GMOCK_DIST_CHECK(.)
 
 AC_PATH_PROG([HELP2MAN], [help2man])
 test -z $HELP2MAN && AC_MSG_ERROR([Unable ot find help2man program])
