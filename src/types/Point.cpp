@@ -60,6 +60,8 @@ std::string Point::wkt() const
 std::string Point::wdbCanonicalName() const
 {
 	std::ostringstream s;
+	s.precision(4);
+	s.setf(std::ios::fixed,std::ios::floatfield);
 	s << "point(" << longitude_ << ' ' << latitude_ << ')';
 	return s.str();
 }

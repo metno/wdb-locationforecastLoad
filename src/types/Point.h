@@ -75,6 +75,9 @@ inline bool operator < (const Point & a, const Point & b)
 
 inline std::ostream & operator << (std::ostream & s, const Point & p)
 {
+	s.precision(4);
+	s.setf(std::ios::fixed,std::ios::floatfield);
+
 	return s << "POINT(" << p.longitude() << ' ' << p.latitude() << ')';
 }
 
