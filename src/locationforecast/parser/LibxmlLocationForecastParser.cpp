@@ -160,8 +160,8 @@ void LibxmlLocationForecastParser::parseLocation_(DataElement workingData, std::
 		return;
 	}
 
-	type::Point point(boost::lexical_cast<double>(locationElement->get_attribute_value("longitude")),
-			boost::lexical_cast<double>(locationElement->get_attribute_value("latitude")));
+	type::Point point(locationElement->get_attribute_value("longitude"),
+			locationElement->get_attribute_value("latitude"));
 	workingData.location(point);
 
 	const xmlpp::Node::NodeList & children = node->get_children();

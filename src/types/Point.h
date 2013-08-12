@@ -39,47 +39,26 @@ class Point
 {
 public:
 	Point();
-	Point(double longitude, double latitude);
+	Point(const std::string & wkt);
+	Point(const char * wkt);
+	Point(const std::string & longitude, const std::string & latitude);
 	~Point();
 
-	double longitude() const { return longitude_; }
-	double latitude() const { return latitude_; }
-
-	std::string wkt() const;
+	const std::string & wkt() const { return wkt_; }
 
 	std::string wdbCanonicalName() const;
 
 	bool initialized() const;
 
 private:
-	double longitude_;
-	double latitude_;
+	std::string wkt_;
 };
 
-inline bool operator == (const Point & a, const Point & b)
-{
-	return ((not a.initialized()) and (not b.initialized()) ) or
-			a.longitude() == b.longitude() and a.latitude() == b.latitude();
-}
-inline bool operator != (const Point & a, const Point & b)
-{
-	return not (a == b);
-}
-
-inline bool operator < (const Point & a, const Point & b)
-{
-	if ( a.longitude() != b.longitude() )
-		return a.longitude() < b.longitude();
-	return a.latitude() < b.latitude();
-}
-
-inline std::ostream & operator << (std::ostream & s, const Point & p)
-{
-	s.precision(4);
-	s.setf(std::ios::fixed,std::ios::floatfield);
-
-	return s << "POINT(" << p.longitude() << ' ' << p.latitude() << ')';
-}
+bool operator == (const Point & a, const Point & b);
+bool operator != (const Point & a, const Point & b);
+bool operator < (const Point & a, const Point & b);
+std::ostream & operator << (std::ostream & s, const Point & p);
 
 } /* namespace type */
+
 #endif /* POINT_H_ */

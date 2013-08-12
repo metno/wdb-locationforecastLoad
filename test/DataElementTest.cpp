@@ -36,7 +36,7 @@ TEST(DataElementTest, setValues)
 	DataElement de;
 	de.value(0.4);
 	de.parameter("precipitation");
-	de.location(type::Point(9, 63));
+	de.location("POINT(9 63)");
 	de.referenceTime("2012-01-23T00:00:00Z");
 	de.validFrom("2012-01-23T06:00:00Z");
 	de.validTo("2012-01-23T12:00:00Z");
@@ -44,7 +44,7 @@ TEST(DataElementTest, setValues)
 	EXPECT_TRUE(de.complete());
 	EXPECT_FLOAT_EQ(0.4, de.value());
 	EXPECT_EQ("precipitation", de.parameter());
-	EXPECT_EQ(type::Point(9, 63), de.location());
+	EXPECT_EQ("POINT(9 63)", de.location());
 	EXPECT_EQ("2012-01-23T06:00:00Z", de.validFrom());
 	EXPECT_EQ("2012-01-23T12:00:00Z", de.validTo());
 }
@@ -54,7 +54,7 @@ TEST(DataElement, incompleteOnMissingValidFrom)
 	DataElement de;
 	de.value(2.9);
 	de.parameter("precipitation");
-	de.location(type::Point(9, 63));
+	de.location("POINT(9 63)");
 	de.validTo("2012-01-23T12:00:00Z");
 
 	EXPECT_FALSE(de.complete());
@@ -65,7 +65,7 @@ TEST(DataElement, incompleteOnMissingValidTo)
 	DataElement de;
 	de.value(2.9);
 	de.parameter("precipitation");
-	de.location(type::Point(9, 63));
+	de.location("POINT(9 63)");
 	de.validFrom("2012-01-23T06:00:00Z");
 
 	EXPECT_FALSE(de.complete());
@@ -75,7 +75,7 @@ TEST(DataElement, incompleteOnMissingParameter)
 {
 	DataElement de;
 	de.value(2.9);
-	de.location(type::Point(9, 63));
+	de.location("POINT(9 63)");
 	de.validFrom("2012-01-23T06:00:00Z");
 	de.validTo("2012-01-23T12:00:00Z");
 
@@ -86,7 +86,7 @@ TEST(DataElement, incompleteOnMissingValue)
 {
 	DataElement de;
 	de.parameter("precipitation");
-	de.location(type::Point(9, 63));
+	de.location("POINT(9 63)");
 	de.validFrom("2012-01-23T06:00:00Z");
 	de.validTo("2012-01-23T12:00:00Z");
 
@@ -108,7 +108,7 @@ TEST(DataElementTest, incompleteOnMissingReferenceTime)
 {
 	DataElement de;
 	de.value(2.9);
-	de.location(type::Point(9, 63));
+	de.location("POINT(9 63)");
 	de.parameter("precipitation");
 	de.validFrom("2012-01-23T06:00:00Z");
 	de.validTo("2012-01-23T12:00:00Z");

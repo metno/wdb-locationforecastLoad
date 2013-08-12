@@ -30,7 +30,10 @@ if test x${xmlparser} != xboost -a x${xmlparser} != xlibxml; then
    AC_MSG_ERROR([Value for --with-xml-parser must be libxml or boost])
 fi
 
-forbedre sjekk av libxml, så det bare gjres når det trengs
+#forbedre sjekk av libxml, så det bare gjres når det trengs
+
+AX_BOOST_BASE
+AX_BOOST_REGEX
 
 GMOCK_DIST_CHECK(.)
 

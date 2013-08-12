@@ -131,8 +131,8 @@ void BoostPropertyTreeLocationForecastParser::parseTime_(DataElement workingData
 void BoostPropertyTreeLocationForecastParser::parseLocation_(DataElement workingData, std::vector<DataElement> & out, const boost::property_tree::ptree & node) const
 {
 	type::Point point(
-			node.get<double>("<xmlattr>.longitude"),
-			node.get<double>("<xmlattr>.latitude"));
+			node.get<std::string>("<xmlattr>.longitude"),
+			node.get<std::string>("<xmlattr>.latitude"));
 	workingData.location(point);
 
 	for ( boost::property_tree::ptree::const_iterator n = node.begin(); n != node.end(); ++ n )

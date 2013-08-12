@@ -19,6 +19,7 @@ AM_CXXFLAGS = \
 
 AM_LDADD = \
 	$(libwdbLoad_LIBS) \
+	$(BOOST_REGEX_LIB) \
 	$(libcurl_LIBS)
 
 if BOOST_XML_PARSE

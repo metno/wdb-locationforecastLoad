@@ -67,7 +67,7 @@ public:
 		// Default dataElement setup
 		dataElement.value(10);
 		dataElement.parameter("precipitation");
-		dataElement.location(type::Point(1, 2));
+		dataElement.location("POINT(1 2)");
 		dataElement.referenceTime("2012-01-26T00:00:00Z");
 		dataElement.validFrom("2012-01-26T12:00:00Z");
 		dataElement.validTo("2012-01-26T18:00:00Z");
@@ -91,7 +91,7 @@ TEST_F(WdbSaveSpecificationFactoryTest, test)
 	const WdbSaveSpecification & saveSpec = saveElements[0];
 
 	EXPECT_FLOAT_EQ(10, saveSpec.value());
-	EXPECT_EQ(type::Point(1, 2), saveSpec.location());
+	EXPECT_EQ("POINT(1 2)", saveSpec.location());
 	EXPECT_EQ("2012-01-26T00:00:00Z", saveSpec.referenceTime());
 	EXPECT_EQ("2012-01-26T12:00:00Z", saveSpec.validFrom());
 	EXPECT_EQ("2012-01-26T18:00:00Z", saveSpec.validTo());

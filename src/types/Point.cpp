@@ -27,50 +27,103 @@
  */
 
 #include "Point.h"
+#include <boost/regex.hpp>
 #include <sstream>
 #include <limits>
-
+#include <algorithm>
+#include <cctype>
 
 namespace type
 {
 
-Point::Point() :
-		longitude_(std::numeric_limits<double>::quiet_NaN()),
-		latitude_(std::numeric_limits<double>::quiet_NaN())
+namespace
+{
+void verify(const std::string & wkt)
+{
+	if ( not boost::regex_match(wkt, boost::basic_regex<char>("POINT\\(\\-?\\d*[.]?\\d+ \\-?\\d*[.]?\\d+\\)")) )
+		throw std::runtime_error("Invalid wkt: " + wkt);
+}
+
+std::string stripTrailingZero(const std::string & s)
+{
+	std::string::size_type f = s.find_last_not_of('0');
+	if ( f == std::string::npos )
+		return "";
+	if ( s[f] == '.' )
+		-- f;
+	return s.substr(0, f + 1);
+}
+}
+
+Point::Point()
 {
 }
 
-Point::Point(double longitude, double latitude) :
-		longitude_(longitude),
-		latitude_(latitude)
+Point::Point(const std::string & wkt) :
+		wkt_(wkt)
 {
+	verify(wkt_);
 }
+
+Point::Point(const char * wkt) :
+		wkt_(wkt)
+{
+	verify(wkt_);
+
+}
+
+Point::Point(const std::string & longitude, const std::string & latitude)
+{
+	std::ostringstream s;
+	s << "POINT(" << stripTrailingZero(longitude) << ' ' << stripTrailingZero(latitude) << ')';
+	wkt_ = s.str();
+	verify(wkt_);
+}
+
 
 Point::~Point()
 {
 }
 
-std::string Point::wkt() const
+namespace
 {
-	std::ostringstream s;
-	s << * this;
-	return s.str();
+inline char lower(char c)
+{
+	return std::tolower(c);
+}
 }
 
 std::string Point::wdbCanonicalName() const
 {
-	std::ostringstream s;
-	s.precision(4);
-	s.setf(std::ios::fixed,std::ios::floatfield);
-	s << "point(" << longitude_ << ' ' << latitude_ << ')';
-	return s.str();
+	std::string ret = wkt();
+	std::transform(ret.begin(), ret.end(), ret.begin(), lower);
+	return ret;
+
 }
 
 bool Point::initialized() const
 {
-	// this will be false if longitude_ or latitude_ is NaN
-	return longitude_ == longitude_ and
-			latitude_ == latitude_;
+	return not wkt_.empty();
+}
+
+bool operator == (const Point & a, const Point & b)
+{
+	return a.wkt() == b.wkt();
+}
+
+bool operator != (const Point & a, const Point & b)
+{
+	return not (a == b);
+}
+
+bool operator < (const Point & a, const Point & b)
+{
+	return a.wkt() < b.wkt();
+}
+
+std::ostream & operator << (std::ostream & s, const Point & p)
+{
+	return s << p.wkt();
 }
 
 
