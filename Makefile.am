@@ -37,6 +37,7 @@ locationforecastLoad.1 : locationforecastLoad
 	$(HELP2MAN) \
 	-n"load locationforecast data from api.met.no int a wdb database" \
 	-N \
+	--no-discard-stderr \
 	./$< > $@
 
 
