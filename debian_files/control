@@ -14,6 +14,7 @@ Standards-Version: 3.9.3
 Package: locationforecastload-0.8
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: locationforecastload
 Description: Load data from api.met.no locationforecast into wdb
  This is a loading program for parsing data, as provided by api.met.no's 
  service locationforecast, and storing it into a wdb database.
