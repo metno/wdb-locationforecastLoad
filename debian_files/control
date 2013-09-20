@@ -1,7 +1,8 @@
 Source: locationforecastload
 Section: science
 Priority: extra
-Maintainer: Vegard Bones <vegard.bones@met.no>
+Maintainer: WDB Group, Meteorologisk institutt <wdb@met.no>
+Uploaders: Vegard Bones <vegard.bones@met.no>
 Build-Depends: cdbs,
  debhelper (>= 7), 
  autotools-dev,
