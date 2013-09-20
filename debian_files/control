@@ -1,4 +1,4 @@
-Source: locationforecastload
+Source: locationforecastload-0.8
 Section: science
 Priority: extra
 Maintainer: Vegard Bones <vegard.bones@met.no>
@@ -11,7 +11,7 @@ Build-Depends: cdbs,
  libcurl4-openssl-dev
 Standards-Version: 3.9.3
 
-Package: locationforecastload
+Package: locationforecastload-0.8
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Load data from api.met.no locationforecast into wdb

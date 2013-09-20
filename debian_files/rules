@@ -3,6 +3,5 @@
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/autotools.mk
 
-
 # should avoid memory errors on ubuntu precise
 # DEB_CONFIGURE_EXTRA_FLAGS := --with-xml-parser=boost
